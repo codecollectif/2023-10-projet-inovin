@@ -1,0 +1,23 @@
+.box-navbar{
+  height: 5vh;
+  background-color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-image-logo{
+  height: 5vh;
+}
+
+.nav-title{
+  color:#dec439;
+}
+
+.nav-image-profil{
+  height: 6vh; 
+}
+
+.nav-image-home{
+  height: 6vh;
+}
