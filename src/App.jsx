@@ -1,12 +1,7 @@
-import './App.css'
-
 function App() {
-
   return (
-    <>
-      <h1>Hello Inovin</h1>
-    </>
-  )
+    <h1>Hello Inovin</h1>
+  );
 }
 
-export default App
+export default App;
