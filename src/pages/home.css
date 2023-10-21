@@ -1,56 +1,52 @@
-
-
-.home{
+.home {
   background-image: url("../pictures/Fond4.png");
   min-height: 100vh;
 }
 
-.home-title{
+.home-title {
   text-align: center;
   font-style: oblique;
-  
 }
 
-.home-data{
+.home-data {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
 }
 
-.card{
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  border:solid black 1px;
-  background:#a9621647;
+  border: solid black 1px;
+  background: #a9621647;
   margin: 2em;
 }
 
-.card-title{
-text-align: center;
-color: rgb(255, 255, 255);
-
+.card-title {
+  text-align: center;
+  color: rgb(255, 255, 255);
 }
 
-.card-img{
+.card-img {
   height: 25vh;
 }
 
-.home-div-btn{
+.home-div-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 5em;
 }
 
-.home-btn:hover{
+.home-btn:hover {
   background-color: gold;
-  transform: scale(1.1,1.1);
+  transform: scale(1.1, 1.1);
 }
 
-.home-btn{
+.home-btn {
   background: #eac550;
   font-size: medium;
   font-weight: 600;
@@ -59,4 +55,3 @@ color: rgb(255, 255, 255);
   border: solid black 1px;
   width: 11em;
 }
-
