@@ -3,7 +3,7 @@ import Papa from "papaparse";
 import Glasses from "../pictures/glass.png";
 import "../pages/home.css";
 
-const DataCepage = () => {
+const WineList = () => {
   const URL =
     "https://docs.google.com/spreadsheets/d/1Q2L2mJr6xuxMMcktiQ2i8oDr68ag_bVjXLwdUx4CKCM/export?exportFormat=csv&format=csv?pli=1#gid=0";
   const [data, setData] = useState(["chargement"]);
@@ -20,13 +20,13 @@ const DataCepage = () => {
   return (
     <>
       {data.map((o) => (
-        <div key={o} className="card">
+        <section key={o} className="card">
           <h2 className="card-title">{o}</h2>
-          <img className="card-img" src={Glasses} alt="verre" />
-        </div>
+          <img className="card-img" src={Glasses} alt="à déguster" />
+        </section>
       ))}
     </>
   );
 };
 
-export default DataCepage;
+export default WineList;

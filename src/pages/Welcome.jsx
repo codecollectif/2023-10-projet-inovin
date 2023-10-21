@@ -4,15 +4,15 @@ import Glasses from "../pictures/WinesColor.png";
 
 function Welcome() {
   return (
-    <div className="box">
+    <main className="box">
       <h1 className="title">Bienvenue</h1>
       <div className="glasses">
-        <img src={Glasses} alt="glasses of wine" />
+        <img src={Glasses} alt="" />
       </div>
       <Link to="/home" className="link">
         Commencer
       </Link>
-    </div>
+    </main>
   );
 }
 
