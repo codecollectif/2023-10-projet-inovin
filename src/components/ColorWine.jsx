@@ -1,7 +1,7 @@
 import { useState } from "react";
 import colorsWine from "../assets/datas/colorsWine";
 const ColorWine = () => {
-  const [ColorChecked, setColorChecked] = useState("");
+  const [colorChecked, setColorChecked] = useState("");
 
   const getIdColorChecked = (e) => {
     setColorChecked(parseInt(e.target.id));
@@ -17,7 +17,7 @@ const ColorWine = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdColorChecked(e)}
-            checked={wine.id === ColorChecked}
+            checked={wine.id === colorChecked}
           />
           <label style={{ backgroundColor: wine.color }} htmlFor={wine.name}>
             {wine.name}
