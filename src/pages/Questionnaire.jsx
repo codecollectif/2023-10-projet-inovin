@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import ColorWine from "../components/ColorWine";
 import ShineWine from "../components/ShineWine";
+import IntensityColor from "../components/IntensityColor";
 
 const Questionnaire = () => {
   const params = useParams();
@@ -12,6 +13,7 @@ const Questionnaire = () => {
         <div>
           <ColorWine />
           <ShineWine />
+          <IntensityColor />
         </div>
       </section>
     </>
