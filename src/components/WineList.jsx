@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import Glasses from "../pictures/glass.png";
 import "../pages/home.css";
+import {Link} from "react-router-dom"
 
 const WineList = () => {
   const URL =
@@ -20,10 +21,12 @@ const WineList = () => {
   return (
     <>
       {data.map((o) => (
-        <section key={o} className="card">
-          <h2 className="card-title">{o}</h2>
-          <img className="card-img" src={Glasses} alt="à déguster" />
-        </section>
+        <Link key={o} to={`/questionnaire/${o}`}>
+          <section className="card">
+            <h2 className="card-title">{o}</h2>
+            <img className="card-img" src={Glasses} alt="à déguster" />
+          </section>
+        </Link>
       ))}
     </>
   );
