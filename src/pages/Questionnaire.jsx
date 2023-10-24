@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ColorWine from "../components/ColorWine";
 import ShineWine from "../components/ShineWine";
 import IntensityColor from "../components/IntensityColor";
@@ -22,55 +23,58 @@ const Questionnaire = () => {
     setActualPage(actualPage - 1);
   };
 
-  const viewPage =()=>{
+  const viewPage = () => {
     switch (actualPage) {
       case 0:
-        console.log("page1");
-        break;
-      case 1:
-      console.log("page2");
-        break; 
-
-      case 3:
-        console.log("page3");
-        break;  
-      default:
-        console.log("pagepardefaut");
-        break;
-    }
-  }
-  useEffect(()=>{
-    viewPage()
-  },[actualPage])
-
-  console.log("test1", actualPage);
-  return (
-    <>
-      <section>
-        <div className="">
+        return(
+        <>
           <h1>Examen visuel</h1>
           <ColorWine />
           <ShineWine />
           <IntensityColor />
           <TearsFluidity />
           <button onClick={nextPage}>Suivant</button>
-        </div>
-        <div className="">
-          <h1>Examen olfactif</h1>
-          <IntensityAroma />
-          <Feeling />
-          <AromaticFamily />
-          <button onClick={previousPage}>Précédent</button>
-          <button>Suivant</button>
-        </div>
-        <div className="">
-          <h1>Examen gustatif</h1>
-          <Flavor />
-          <Framework />
-          <AromaticPersistence />
-          <button>Précédent</button>
-          <button>Valider</button>
-        </div>
+        </>
+        )
+        //break;
+      case 1:
+        return(
+          <>
+            <h1>Examen olfactif</h1>
+            <IntensityAroma />
+            <Feeling />
+            <AromaticFamily />
+            <button onClick={previousPage}>Précédent</button>
+            <button onClick={nextPage}>Suivant</button>
+          </>
+        )
+        //break;
+      case 2:
+        return(
+          <>
+            <h1>Examen gustatif</h1>
+            <Flavor />
+            <Framework />
+            <AromaticPersistence />
+            <button onClick={previousPage}>Précédent</button>
+            <Link to={"/"}>Valider</Link>
+          </>
+        )
+        //break;
+      default:
+        <Link to={"/"}></Link>
+        break;
+    }
+  };
+  useEffect(() => {
+    viewPage();
+  }, [actualPage]);
+
+  console.log("test1", actualPage);
+  return (
+    <>
+      <section>
+        {viewPage()}
       </section>
     </>
   );
