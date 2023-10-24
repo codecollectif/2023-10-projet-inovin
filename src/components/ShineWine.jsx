@@ -30,9 +30,7 @@ const ShineWine = () => {
             onChange={(e) => getIdShineChecked(e)}
             checked={wine.id === shineChecked}
           />
-          <label htmlFor={wine.name}>
-            {wine.name}
-          </label>
+          <label htmlFor={wine.name}>{wine.name}</label>
         </div>
       ))}
     </section>

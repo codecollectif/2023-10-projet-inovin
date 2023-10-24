@@ -27,7 +27,7 @@ const IntensityColor = () => {
 
   return (
     <section>
-      <h2>Brillance</h2>
+      <h2>Intensité de la couleur</h2>
       {intensityColor.map((wine) => (
         <div key={wine.name}>
           <input
@@ -38,9 +38,7 @@ const IntensityColor = () => {
             onChange={(e) => getIdIntensityColorChecked(e)}
             checked={wine.id === intensityColorChecked}
           />
-          <label htmlFor={wine.name}>
-            {wine.name}
-          </label>
+          <label htmlFor={wine.name}>{wine.name}</label>
         </div>
       ))}
     </section>

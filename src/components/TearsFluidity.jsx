@@ -19,7 +19,7 @@ const TearsFluidity = () => {
 
   return (
     <section>
-      <h2>Brillance</h2>
+      <h2>Fluidité des larmes</h2>
       {tearFludity.map((wine) => (
         <div key={wine.name}>
           <input
