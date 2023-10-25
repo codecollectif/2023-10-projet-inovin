@@ -27,10 +27,11 @@ const Flavor = () => {
       name: "Autre",
     },
   ];
-  const [flavorChecked, setFlavorChecked] = useState("");
-
+  const [flavorIdChecked, setFlavorIdChecked] = useState("");
+  const flavorChecked = sessionStorage.getItem("Saveurs");
   const getIdFlavorChecked = (e) => {
-    setFlavorChecked(parseInt(e.target.id));
+    setFlavorIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Saveurs", e.target.name);
   };
 
   return (
@@ -44,7 +45,7 @@ const Flavor = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdFlavorChecked(e)}
-            checked={wine.id === flavorChecked}
+            checked={wine.id === flavorIdChecked || wine.name === flavorChecked}
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>

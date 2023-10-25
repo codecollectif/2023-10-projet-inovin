@@ -12,7 +12,7 @@ const Gustatif = () => {
       <Framework />
       <AromaticPersistence />
       <Link to={`/${params.id}/olfactif`}>Précédent</Link>
-      <Link to={`/`}>Valider</Link>
+      <Link to={`/${params.id}/recapitulatif`}>Valider</Link>
     </section>
   );
 };

@@ -15,10 +15,11 @@ const Framework = () => {
       name: "Charpenté",
     },
   ];
-  const [frameworkChecked, setFrameworkChecked] = useState("");
-
+  const [frameworkIdChecked, setFrameworkIdChecked] = useState("");
+  const frameworkChecked = sessionStorage.getItem("Structure");
   const getIdFrameworkChecked = (e) => {
-    setFrameworkChecked(parseInt(e.target.id));
+    setFrameworkIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Structure", e.target.name);
   };
 
   return (
@@ -32,7 +33,9 @@ const Framework = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdFrameworkChecked(e)}
-            checked={wine.id === frameworkChecked}
+            checked={
+              wine.id === frameworkIdChecked || wine.name === frameworkChecked
+            }
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>

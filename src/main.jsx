@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Visuel from "./pages/Visuel";
 import Olfactif from "./pages/Olfactif";
 import Gustatif from "./pages/Gustatif";
+import Summary from "./pages/Summary";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/:id/gustatif",
     element: <Gustatif />,
+  },
+  {
+    path: "/:id/recapitulatif",
+    element: <Summary />,
   },
 ]);
 

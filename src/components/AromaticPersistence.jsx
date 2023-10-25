@@ -15,11 +15,12 @@ const AromaticPersistence = () => {
       name: "Persistante",
     },
   ];
-  const [aromaticPersistenceChecked, setAromaticPersistenceChecked] =
+  const [aromaticPersistenceIdChecked, setAromaticPersistenceIdChecked] =
     useState("");
-
+  const aromaticPersistenceChecked = sessionStorage.getItem("Persistance aromatique");
   const getIdAromaticPersistenceChecked = (e) => {
-    setAromaticPersistenceChecked(parseInt(e.target.id));
+    setAromaticPersistenceIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Persistance aromatique", e.target.name);
   };
   return (
     <section>
@@ -32,7 +33,7 @@ const AromaticPersistence = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdAromaticPersistenceChecked(e)}
-            checked={wine.id === aromaticPersistenceChecked}
+            checked={wine.id === aromaticPersistenceIdChecked || wine.name === aromaticPersistenceChecked}
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>
