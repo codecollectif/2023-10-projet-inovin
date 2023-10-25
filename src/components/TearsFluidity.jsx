@@ -11,10 +11,11 @@ const TearsFluidity = () => {
       name: "Larges et visqueses",
     },
   ];
-  const [tearFludityChecked, setTearFludityChecked] = useState("");
-
+  const [tearFludityIdChecked, setTearFludityIdChecked] = useState("");
+  const tearFludityChecked = sessionStorage.getItem("Fluidité des larmes");
   const getIdTearFluidityChecked = (e) => {
-    setTearFludityChecked(parseInt(e.target.id));
+    setTearFludityIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Fluidité des larmes", e.target.name);
   };
 
   return (
@@ -28,7 +29,7 @@ const TearsFluidity = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdTearFluidityChecked(e)}
-            checked={wine.id === tearFludityChecked}
+            checked={wine.id === tearFludityIdChecked || wine.name === tearFludityChecked}
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>

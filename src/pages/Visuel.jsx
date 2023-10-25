@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 const Visuel = () => {
   const params = useParams();
-
+  
   return (
     <section>
       <h1>Examen visuel</h1>

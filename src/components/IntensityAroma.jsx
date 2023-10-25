@@ -15,10 +15,11 @@ const IntensityAroma = () => {
       name: "Forte, vin ouvert",
     },
   ];
-  const [intensityAromaChecked, setIntensityAromaChecked] = useState("");
-
+  const [intensityAromaIdChecked, setIntensityAromaIdChecked] = useState("");
+  const intensityAromaChecked = sessionStorage.getItem("Intensité des arômes");
   const getIdIntensityAromaChecked = (e) => {
-    setIntensityAromaChecked(parseInt(e.target.id));
+    setIntensityAromaIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Intensité des arômes", e.target.name);
   };
   return (
     <section>
@@ -31,7 +32,10 @@ const IntensityAroma = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdIntensityAromaChecked(e)}
-            checked={wine.id === intensityAromaChecked}
+            checked={
+              wine.id === intensityAromaIdChecked ||
+              wine.name === intensityAromaChecked
+            }
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>

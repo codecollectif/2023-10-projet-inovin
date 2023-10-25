@@ -19,10 +19,11 @@ const IntensityColor = () => {
       name: "Opaque",
     },
   ];
-  const [intensityColorChecked, setIntensityColorChecked] = useState("");
-
+  const [intensityIdColorChecked, setIntensityIdColorChecked] = useState("");
+  const intensityChecked = sessionStorage.getItem("Intensité de la couleur");
   const getIdIntensityColorChecked = (e) => {
-    setIntensityColorChecked(parseInt(e.target.id));
+    setIntensityIdColorChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Intensité de la couleur", e.target.name);
   };
 
   return (
@@ -36,7 +37,10 @@ const IntensityColor = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdIntensityColorChecked(e)}
-            checked={wine.id === intensityColorChecked}
+            checked={
+              wine.id === intensityIdColorChecked ||
+              wine.name === intensityChecked
+            }
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>

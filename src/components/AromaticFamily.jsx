@@ -31,10 +31,11 @@ const AromaticFamily = () => {
       name: "Défauts",
     },
   ];
-  const [aromaticFamilyChecked, setAromaticFamilyChecked] = useState("");
-
+  const [aromaticFamilyIdChecked, setAromaticFamilyIdChecked] = useState("");
+  const aromaticFamilyChecked = sessionStorage.getItem("Familles aromatiques");
   const getIdAromaticFamilyChecked = (e) => {
-    setAromaticFamilyChecked(parseInt(e.target.id));
+    setAromaticFamilyIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Familles aromatiques", e.target.name);
   };
 
   return (
@@ -48,7 +49,10 @@ const AromaticFamily = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdAromaticFamilyChecked(e)}
-            checked={wine.id === aromaticFamilyChecked}
+            checked={
+              wine.id === aromaticFamilyIdChecked ||
+              wine.name === aromaticFamilyChecked
+            }
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>

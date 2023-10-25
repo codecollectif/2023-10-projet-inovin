@@ -19,10 +19,11 @@ const Feeling = () => {
       name: "Default",
     },
   ];
-  const [feelingChecked, setFeelingChecked] = useState("");
-
+  const [feelingIdChecked, setFeelingIdChecked] = useState("");
+  const feelingChecked = sessionStorage.getItem("Impression");
   const getIdFeelingChecked = (e) => {
-    setFeelingChecked(parseInt(e.target.id));
+    setFeelingIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Impression", e.target.name);
   };
 
   return (
@@ -36,7 +37,9 @@ const Feeling = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdFeelingChecked(e)}
-            checked={wine.id === feelingChecked}
+            checked={
+              wine.id === feelingIdChecked || wine.name === feelingChecked
+            }
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>

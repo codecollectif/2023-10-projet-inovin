@@ -11,10 +11,11 @@ const ShineWine = () => {
       name: "éclatante",
     },
   ];
-  const [shineChecked, setShineChecked] = useState("");
-
+  const [shineIdChecked, setShineIdChecked] = useState("");
+  const shineChecked = sessionStorage.getItem("Brillance");
   const getIdShineChecked = (e) => {
-    setShineChecked(parseInt(e.target.id));
+    setShineIdChecked(parseInt(e.target.id));
+    sessionStorage.setItem("Brillance", e.target.name);
   };
 
   return (
@@ -28,7 +29,7 @@ const ShineWine = () => {
             style={{ backgroundColor: wine.color }}
             name={wine.name}
             onChange={(e) => getIdShineChecked(e)}
-            checked={wine.id === shineChecked}
+            checked={wine.id === shineIdChecked || wine.name === shineChecked}
           />
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>
