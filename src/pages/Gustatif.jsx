@@ -10,7 +10,7 @@ const Gustatif = () => {
   return (
     <>
       <Navbar />
-      <section className="tasting-box" >
+      <section className="tasting-box">
         <h1>Examen gustatif</h1>
         <Flavor />
         <Framework />

@@ -7,7 +7,7 @@ import Visuel from "./pages/Visuel";
 import Olfactif from "./pages/Olfactif";
 import Gustatif from "./pages/Gustatif";
 import Summary from "./pages/Summary";
-import "./main.css"
+import "./main.css";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/:id/visuel",
-    element:  <Visuel />,
+    element: <Visuel />,
   },
   {
     path: "/:id/olfactif",

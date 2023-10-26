@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import Glasses from "../pictures/glass.png";
 import "../pages/home.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const WineList = () => {
   const URL =

@@ -23,9 +23,7 @@ export default function ColorWine() {
               onChange={(e) => getIdColorChecked(e)}
               checked={wine.id === colorIdChecked || wine.name === colorChecked}
             />
-            <label htmlFor={wine.name}>
-              {wine.name}
-            </label>
+            <label htmlFor={wine.name}>{wine.name}</label>
           </div>
         ))}
       </div>
