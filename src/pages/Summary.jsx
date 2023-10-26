@@ -6,7 +6,7 @@ const Summary = () => {
 
   return (
     <>
-      <h1>Cépage choisi: {params.id} </h1>
+      <h1>Vin choisi: {params.id} </h1>
       <p>Couleur et nuance: {sessionStorage.getItem("Couleur et nuance")}</p>
       <p>Brillance: {sessionStorage.getItem("Brillance")}</p>
       <p>

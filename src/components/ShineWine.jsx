@@ -24,7 +24,6 @@ const ShineWine = () => {
       <div className="tasting-div-checkbox">
         {shineWine.map((wine) => (
           <div key={wine.name} className="checkbox-1 ">
-            <label htmlFor={wine.name}>{wine.name}</label>
             <input
               id={wine.id}
               type="checkbox"
@@ -33,7 +32,7 @@ const ShineWine = () => {
               onChange={(e) => getIdShineChecked(e)}
               checked={wine.id === shineIdChecked || wine.name === shineChecked}
             />
-            
+            <label htmlFor={wine.name}>{wine.name}</label>
           </div>
         ))}
       </div>

@@ -32,7 +32,6 @@ const IntensityColor = () => {
       <div className="tasting-div-checkbox">
         {intensityColor.map((wine) => (
           <div key={wine.name} className="checkbox-1">
-            <label htmlFor={wine.name}>{wine.name}</label>
             <input
               id={wine.id}
               type="checkbox"
@@ -44,6 +43,7 @@ const IntensityColor = () => {
                 wine.name === intensityChecked
               }
             />
+            <label htmlFor={wine.name}>{wine.name}</label>
           </div>
         ))}
       </div>

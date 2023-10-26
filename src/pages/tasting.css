@@ -6,29 +6,45 @@
   width: 50vw;
 }
 
-.tasting-box{
+.tasting-box {
   background-image: url("../pictures/Fond4.png");
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
 }
 
-.tasting-section-checkbox{
-  min-width: 70vw;
+.tasting-box h1 {
+  font-size: xx-large;
+}
+
+.tasting-box h2 {
+  font-size: x-large;
+}
+
+.tasting-section-checkbox {
+  max-width: 72vw;
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding-bottom: 2rem;
 }
 
-.tasting-div-checkbox{
+.tasting-div-checkbox {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto; 
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
 }
 
+.checkbox-1 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 30vw;
+  font-size: large;
+  font-weight: 500;
+}
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
   .checkbox-1 input[type="checkbox"] {
@@ -48,15 +64,9 @@
     margin-right: 0.5rem;
     padding: 0.1rem;
   }
-  .checkbox-1{
-    display: flex;
-    padding: 0 5rem;
-  }
+
   .checkbox-1 input[type="checkbox"]:after {
     content: "";
-    display: block;
-    left: 0;
-    top: 0;
     position: absolute;
     transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
       opacity var(--d-o, 0.2s);
@@ -104,7 +114,7 @@
 }
 
 /*Couleur bouton*/
-#Framboise {
+/* #Framboise {
   background-color: #ea4e64;
 }
 
@@ -158,8 +168,4 @@
 
 #Roux {
   background-color: #c67e2a;
-}
-
-
-
-
+} */

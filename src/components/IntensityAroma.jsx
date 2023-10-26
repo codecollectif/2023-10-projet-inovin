@@ -22,24 +22,26 @@ const IntensityAroma = () => {
     sessionStorage.setItem("Intensité des arômes", e.target.name);
   };
   return (
-    <section>
+    <section className="tasting-section-checkbox">
       <h2>Intensité des arômes</h2>
-      {intensityAromaWine.map((wine) => (
-        <div key={wine.name}>
-          <input
-            id={wine.id}
-            type="checkbox"
-            style={{ backgroundColor: wine.color }}
-            name={wine.name}
-            onChange={(e) => getIdIntensityAromaChecked(e)}
-            checked={
-              wine.id === intensityAromaIdChecked ||
-              wine.name === intensityAromaChecked
-            }
-          />
-          <label htmlFor={wine.name}>{wine.name}</label>
-        </div>
-      ))}
+      <div className="tasting-div-checkbox">
+        {intensityAromaWine.map((wine) => (
+          <div key={wine.name} className="checkbox-1">
+            <input
+              id={wine.id}
+              type="checkbox"
+              style={{ backgroundColor: "#F5F5DC" }}
+              name={wine.name}
+              onChange={(e) => getIdIntensityAromaChecked(e)}
+              checked={
+                wine.id === intensityAromaIdChecked ||
+                wine.name === intensityAromaChecked
+              }
+            />
+            <label htmlFor={wine.name}>{wine.name}</label>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

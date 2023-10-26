@@ -39,14 +39,15 @@ const AromaticFamily = () => {
   };
 
   return (
-    <section>
+    <section className="tasting-section-checkbox">
       <h2>Familles aromatiques</h2>
+      <div className="tasting-div-checkbox">
       {aromaticFamilyWine.map((wine) => (
-        <div key={wine.name}>
+        <div key={wine.name} className="checkbox-1">
           <input
             id={wine.id}
             type="checkbox"
-            style={{ backgroundColor: wine.color }}
+            style={{ backgroundColor: "#F5F5DC" }}
             name={wine.name}
             onChange={(e) => getIdAromaticFamilyChecked(e)}
             checked={
@@ -57,6 +58,7 @@ const AromaticFamily = () => {
           <label htmlFor={wine.name}>{wine.name}</label>
         </div>
       ))}
+      </div>
     </section>
   );
 };

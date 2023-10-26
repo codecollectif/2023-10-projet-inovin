@@ -27,23 +27,25 @@ const Feeling = () => {
   };
 
   return (
-    <section>
+    <section className="tasting-section-checkbox">
       <h2>Impression</h2>
-      {feelingWine.map((wine) => (
-        <div key={wine.name}>
-          <input
-            id={wine.id}
-            type="checkbox"
-            style={{ backgroundColor: wine.color }}
-            name={wine.name}
-            onChange={(e) => getIdFeelingChecked(e)}
-            checked={
-              wine.id === feelingIdChecked || wine.name === feelingChecked
-            }
-          />
-          <label htmlFor={wine.name}>{wine.name}</label>
-        </div>
-      ))}
+      <div className="tasting-div-checkbox">
+        {feelingWine.map((wine) => (
+          <div key={wine.name} className="checkbox-1">
+            <input
+              id={wine.id}
+              type="checkbox"
+              style={{ backgroundColor: "#F5F5DC" }}
+              name={wine.name}
+              onChange={(e) => getIdFeelingChecked(e)}
+              checked={
+                wine.id === feelingIdChecked || wine.name === feelingChecked
+              }
+            />
+            <label htmlFor={wine.name}>{wine.name}</label>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

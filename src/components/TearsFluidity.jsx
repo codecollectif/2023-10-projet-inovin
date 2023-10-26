@@ -24,7 +24,6 @@ const TearsFluidity = () => {
       <div className="tasting-div-checkbox">
         {tearFludity.map((wine) => (
           <div key={wine.name} className="checkbox-1">
-            <label htmlFor={wine.name}>{wine.name}</label>
             <input
               id={wine.id}
               type="checkbox"
@@ -36,6 +35,7 @@ const TearsFluidity = () => {
                 wine.name === tearFludityChecked
               }
             />
+            <label htmlFor={wine.name}>{wine.name}</label>
           </div>
         ))}
       </div>
