@@ -41,17 +41,11 @@
   height: 5em;
 }
 
-.home-btn:hover {
-  background-color: gold;
-  transform: scale(1.1, 1.1);
-}
-
 .home-btn {
   background: #eac550;
   font-size: medium;
   font-weight: 600;
   border-radius: 20px;
-  height: 3em;
   border: solid black 1px;
-  width: 11em;
+  padding: 1em 1.8em;
 }

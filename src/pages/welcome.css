@@ -1,16 +1,3 @@
-@font-face {
-  font-family: "exo2light";
-  src: url("../assets/fonts/exo2-light-webfont.woff2") format("woff2"),
-    url("../assets/fonts/exo2-light-webfont.woff") format("wooff");
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  font-family: "exo2light";
-}
-
 .box {
   background-image: url("../pictures/Fond4.png");
   height: 100vh;
@@ -32,21 +19,8 @@ img {
   max-height: 65vh;
 }
 
-.link:hover {
-  background-color: gold;
-  transform: scale(1.5, 1.5);
-}
-
-.link {
-  text-decoration: none;
-  color: black;
+.welcome-btn{
   position: fixed;
   right: 9vw;
   bottom: 6vw;
-  font-size: 1.2em;
-  font-weight: 900;
-  background-color: #eac550;
-  border-radius: 20px;
-  padding: 1em 1.8em;
-  border: 1px solid black;
 }

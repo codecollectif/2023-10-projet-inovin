@@ -19,21 +19,26 @@ const TearsFluidity = () => {
   };
 
   return (
-    <section>
+    <section className="tasting-section-checkbox">
       <h2>Fluidité des larmes</h2>
-      {tearFludity.map((wine) => (
-        <div key={wine.name}>
-          <input
-            id={wine.id}
-            type="checkbox"
-            style={{ backgroundColor: wine.color }}
-            name={wine.name}
-            onChange={(e) => getIdTearFluidityChecked(e)}
-            checked={wine.id === tearFludityIdChecked || wine.name === tearFludityChecked}
-          />
-          <label htmlFor={wine.name}>{wine.name}</label>
-        </div>
-      ))}
+      <div className="tasting-div-checkbox">
+        {tearFludity.map((wine) => (
+          <div key={wine.name} className="checkbox-1">
+            <label htmlFor={wine.name}>{wine.name}</label>
+            <input
+              id={wine.id}
+              type="checkbox"
+              style={{ backgroundColor: "#F5F5DC" }}
+              name={wine.name}
+              onChange={(e) => getIdTearFluidityChecked(e)}
+              checked={
+                wine.id === tearFludityIdChecked ||
+                wine.name === tearFludityChecked
+              }
+            />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

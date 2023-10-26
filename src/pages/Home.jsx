@@ -11,7 +11,7 @@ function Home() {
         <WineList />
       </div>
       <div className="home-div-btn">
-        <button type="button" className="home-btn">
+        <button type="button" className="link home-btn">
           Passer à la page suivante
         </button>
       </div>

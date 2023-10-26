@@ -27,24 +27,26 @@ const IntensityColor = () => {
   };
 
   return (
-    <section>
+    <section className="tasting-section-checkbox">
       <h2>Intensité de la couleur</h2>
-      {intensityColor.map((wine) => (
-        <div key={wine.name}>
-          <input
-            id={wine.id}
-            type="checkbox"
-            style={{ backgroundColor: wine.color }}
-            name={wine.name}
-            onChange={(e) => getIdIntensityColorChecked(e)}
-            checked={
-              wine.id === intensityIdColorChecked ||
-              wine.name === intensityChecked
-            }
-          />
-          <label htmlFor={wine.name}>{wine.name}</label>
-        </div>
-      ))}
+      <div className="tasting-div-checkbox">
+        {intensityColor.map((wine) => (
+          <div key={wine.name} className="checkbox-1">
+            <label htmlFor={wine.name}>{wine.name}</label>
+            <input
+              id={wine.id}
+              type="checkbox"
+              style={{ backgroundColor: "#F5F5DC" }}
+              name={wine.name}
+              onChange={(e) => getIdIntensityColorChecked(e)}
+              checked={
+                wine.id === intensityIdColorChecked ||
+                wine.name === intensityChecked
+              }
+            />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

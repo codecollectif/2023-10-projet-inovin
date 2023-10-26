@@ -8,25 +8,27 @@ export default function ColorWine() {
     setIdColorChecked(parseInt(e.target.id));
     sessionStorage.setItem("Couleur et nuance", e.target.name);
   };
-  console.log("colorwine", colorChecked);
+
   return (
-    <section>
+    <section className="tasting-section-checkbox">
       <h2>Couleur et nuance</h2>
-      {colorsWine.map((wine) => (
-        <div key={wine.name}>
-          <input
-            id={wine.id}
-            type="checkbox"
-            style={{ backgroundColor: wine.color }}
-            name={wine.name}
-            onChange={(e) => getIdColorChecked(e)}
-            checked={wine.id === colorIdChecked || wine.name === colorChecked}
-          />
-          <label style={{ backgroundColor: wine.color }} htmlFor={wine.name}>
-            {wine.name}
-          </label>
-        </div>
-      ))}
+      <div className="tasting-div-checkbox">
+        {colorsWine.map((wine) => (
+          <div key={wine.name} className="checkbox-1">
+            <input
+              id={wine.id}
+              type="checkbox"
+              style={{ backgroundColor: wine.color }}
+              name={wine.name}
+              onChange={(e) => getIdColorChecked(e)}
+              checked={wine.id === colorIdChecked || wine.name === colorChecked}
+            />
+            <label htmlFor={wine.name}>
+              {wine.name}
+            </label>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

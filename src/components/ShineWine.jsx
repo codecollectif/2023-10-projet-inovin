@@ -19,21 +19,24 @@ const ShineWine = () => {
   };
 
   return (
-    <section>
+    <section className="tasting-section-checkbox">
       <h2>Brillance</h2>
-      {shineWine.map((wine) => (
-        <div key={wine.name}>
-          <input
-            id={wine.id}
-            type="checkbox"
-            style={{ backgroundColor: wine.color }}
-            name={wine.name}
-            onChange={(e) => getIdShineChecked(e)}
-            checked={wine.id === shineIdChecked || wine.name === shineChecked}
-          />
-          <label htmlFor={wine.name}>{wine.name}</label>
-        </div>
-      ))}
+      <div className="tasting-div-checkbox">
+        {shineWine.map((wine) => (
+          <div key={wine.name} className="checkbox-1 ">
+            <label htmlFor={wine.name}>{wine.name}</label>
+            <input
+              id={wine.id}
+              type="checkbox"
+              style={{ backgroundColor: "#F5F5DC" }}
+              name={wine.name}
+              onChange={(e) => getIdShineChecked(e)}
+              checked={wine.id === shineIdChecked || wine.name === shineChecked}
+            />
+            
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

@@ -29,8 +29,8 @@ const Summary = () => {
         Persistance aromatique:{" "}
         {sessionStorage.getItem("Persistance aromatique")}
       </p>
-      <Link to={`/${params.id}/gustatif`}>Revenir</Link>
-      <Link to={"/"}>Envoyer mail</Link>
+      <Link className="link" to={`/${params.id}/gustatif`}>Revenir</Link>
+      <Link className="link" to={"/"}>Envoyer mail</Link>
     </>
   );
 };
