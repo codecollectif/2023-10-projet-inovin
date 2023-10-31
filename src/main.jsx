@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     element: <Summary />,
   },
   {
-    path: "score",
+    path: "/:id/score",
     element: <Score />,
   },
 ]);
