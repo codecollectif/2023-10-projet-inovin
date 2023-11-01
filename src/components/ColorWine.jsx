@@ -1,12 +1,19 @@
 import { useState } from "react";
 import colorsWine from "../assets/datas/colorsWine";
+import { useWine } from "../contexts/Context";
+import { useParams } from "react-router-dom";
 
 export default function ColorWine() {
+  const params =useParams()
+  const { setName,setColorShade } = useWine();
   const [colorIdChecked, setIdColorChecked] = useState("");
-  const colorChecked = sessionStorage.getItem("Couleur et nuance");
+  const colorChecked = sessionStorage.getItem("colorShade");
+
   const getIdColorChecked = (e) => {
-    setIdColorChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Couleur et nuance", e.target.name);
+    setColorShade(e.target.name);
+    setName(params.id)
+    setIdColorChecked(e.target.name);
+    sessionStorage.setItem("colorShade", e.target.name);
   };
 
   return (

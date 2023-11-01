@@ -1,5 +1,10 @@
+import Welcome from "./pages/Welcome";
 function App() {
-  return <h1>Hello Inovin</h1>;
+  return (
+    <>
+      <Welcome />
+    </>
+  );
 }
 
 export default App;

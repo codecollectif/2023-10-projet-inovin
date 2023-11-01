@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWine } from "../contexts/Context";
 
 const AromaticFamily = () => {
   const aromaticFamilyWine = [
@@ -31,11 +32,14 @@ const AromaticFamily = () => {
       name: "Défauts",
     },
   ];
+
+  const { setAromaticFamilies } = useWine();
   const [aromaticFamilyIdChecked, setAromaticFamilyIdChecked] = useState("");
-  const aromaticFamilyChecked = sessionStorage.getItem("Familles aromatiques");
+  const aromaticFamilyChecked = sessionStorage.getItem("aromaticFamilies");
   const getIdAromaticFamilyChecked = (e) => {
     setAromaticFamilyIdChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Familles aromatiques", e.target.name);
+    setAromaticFamilies(e.target.name);
+    sessionStorage.setItem("aromaticFamilies", e.target.name);
   };
 
   return (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWine } from "../contexts/Context";
 
 const Framework = () => {
   const frameworkWine = [
@@ -15,11 +16,14 @@ const Framework = () => {
       name: "Charpenté",
     },
   ];
+
+  const { setFramework } = useWine();
   const [frameworkIdChecked, setFrameworkIdChecked] = useState("");
-  const frameworkChecked = sessionStorage.getItem("Structure");
+  const frameworkChecked = sessionStorage.getItem("framework");
   const getIdFrameworkChecked = (e) => {
     setFrameworkIdChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Structure", e.target.name);
+    setFramework(e.target.name);
+    sessionStorage.setItem("framework", e.target.name);
   };
 
   return (

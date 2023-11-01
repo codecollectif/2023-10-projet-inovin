@@ -8,7 +8,6 @@ import Navbar from "../components/Navbar";
 
 const Visual = () => {
   const params = useParams();
-
   return (
     <>
       <Navbar />
@@ -19,6 +18,7 @@ const Visual = () => {
         <IntensityColor />
         <TearsFluidity />
         <div className="tasting-div-link">
+          
           <Link className="link" to={`/${params.id}/olfactif`}>
             Suivant
           </Link>

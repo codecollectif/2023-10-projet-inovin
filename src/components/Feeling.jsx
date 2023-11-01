@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWine } from "../contexts/Context";
 
 const Feeling = () => {
   const feelingWine = [
@@ -19,11 +20,14 @@ const Feeling = () => {
       name: "Default",
     },
   ];
+
+  const { setFeeling } = useWine();
   const [feelingIdChecked, setFeelingIdChecked] = useState("");
-  const feelingChecked = sessionStorage.getItem("Impression");
+  const feelingChecked = sessionStorage.getItem("feeling");
   const getIdFeelingChecked = (e) => {
     setFeelingIdChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Impression", e.target.name);
+    setFeeling(e.target.name);
+    sessionStorage.setItem("feeling", e.target.name);
   };
 
   return (

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useWine } from "../contexts/Context";
 
 const ShineWine = () => {
+  const { setShine }=useWine()
   const shineWine = [
     {
       id: 0,
@@ -12,10 +14,11 @@ const ShineWine = () => {
     },
   ];
   const [shineIdChecked, setShineIdChecked] = useState("");
-  const shineChecked = sessionStorage.getItem("Brillance");
+  const shineChecked = sessionStorage.getItem("shine");
   const getIdShineChecked = (e) => {
     setShineIdChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Brillance", e.target.name);
+    setShine(e.target.name)
+    sessionStorage.setItem("shine", e.target.name);
   };
 
   return (

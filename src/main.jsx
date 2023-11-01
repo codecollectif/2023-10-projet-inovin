@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Welcome from "./pages/Welcome";
+import App from "./App";
 import Home from "./pages/Home";
 import Visual from "./pages/Visual";
 import Olfactory from "./pages/Olfactory";
@@ -10,12 +10,12 @@ import Summary from "./pages/Summary";
 import Score from "./pages/Score";
 import Profile from "./pages/Profile";
 import "./main.css";
-
+import { WineContextProvider } from "./contexts/Context";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Welcome />,
+    element: <App />,
   },
   {
     path: "home",
@@ -49,6 +49,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <WineContextProvider>
+      <RouterProvider router={router} />
+    </WineContextProvider>
   </React.StrictMode>
 );

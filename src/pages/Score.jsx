@@ -3,13 +3,16 @@ import { Rating } from "react-simple-star-rating";
 import { GiWineBottle } from "react-icons/gi";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useWine } from "../contexts/Context";
 import "./score.css";
 
 const Scrore = () => {
+  const { setScore } = useWine();
   const params = useParams();
   const [rating, setRating] = useState(50);
   const handleRating = (rate) => {
     setRating(rate);
+    setScore(rate);
     sessionStorage.setItem("score", rate);
   };
   return (

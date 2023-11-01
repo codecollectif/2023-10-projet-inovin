@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWine } from "../contexts/Context";
 
 const IntensityAroma = () => {
   const intensityAromaWine = [
@@ -15,11 +16,13 @@ const IntensityAroma = () => {
       name: "Forte, vin ouvert",
     },
   ];
+  const { setIntensityOfAromas } = useWine();
   const [intensityAromaIdChecked, setIntensityAromaIdChecked] = useState("");
-  const intensityAromaChecked = sessionStorage.getItem("Intensité des arômes");
+  const intensityAromaChecked = sessionStorage.getItem("intensityOfAromas");
   const getIdIntensityAromaChecked = (e) => {
     setIntensityAromaIdChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Intensité des arômes", e.target.name);
+    setIntensityOfAromas(e.target.name);
+    sessionStorage.setItem("intensityOfAromas", e.target.name);
   };
   return (
     <section className="tasting-section-checkbox">
