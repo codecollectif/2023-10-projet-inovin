@@ -35,7 +35,6 @@ const IntensityColor = () => {
             <input
               id={wine.id}
               type="checkbox"
-              style={{ backgroundColor: "#F5F5DC" }}
               name={wine.name}
               onChange={(e) => getIdIntensityColorChecked(e)}
               checked={

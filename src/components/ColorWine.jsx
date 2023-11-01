@@ -16,9 +16,8 @@ export default function ColorWine() {
         {colorsWine.map((wine) => (
           <div key={wine.name} className="checkbox-1">
             <input
-              id={wine.id}
+              id={wine.name}
               type="checkbox"
-              style={{ backgroundColor: wine.color }}
               name={wine.name}
               onChange={(e) => getIdColorChecked(e)}
               checked={wine.id === colorIdChecked || wine.name === colorChecked}

@@ -11,7 +11,7 @@ const Navbar = () => {
         <img className="nav-image-logo" src={Logo} alt="Inovin" />
       </Link>
       <div className="nav-link">
-        <Link className="nav-link-profil" to={"/"}>
+        <Link className="nav-link-profil" to={"/profile"}>
           <img className="nav-image-profil" src={LogoProfil} alt="profil" />
         </Link>
         <Link className="nav-link-home" to={"/"}>

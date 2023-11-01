@@ -31,9 +31,8 @@ const AromaticPersistence = () => {
         {aromaticPersistenceWine.map((wine) => (
           <div key={wine.name} className="checkbox-1">
             <input
-              id={wine.id}
+              id={wine.name}
               type="checkbox"
-              style={{ backgroundColor: "#F5F5DC" }}
               name={wine.name}
               onChange={(e) => getIdAromaticPersistenceChecked(e)}
               checked={
