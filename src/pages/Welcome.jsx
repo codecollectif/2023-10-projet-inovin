@@ -10,7 +10,7 @@ function Welcome() {
       <div className="glasses">
         <img src={Glasses} alt="" />
       </div>
-      <Link to="/home" className="link welcome-btn">
+      <Link to="/start" className="link welcome-btn">
         Commencer
       </Link>
     </main>

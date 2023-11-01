@@ -1,13 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import Welcome from "./pages/Welcome";
-import Home from "./pages/Home";
+import Start from "./pages/Start";
+
+import App from "./App";
+
 import Visuel from "./pages/Visuel";
 import Olfactif from "./pages/Olfactif";
 import Gustatif from "./pages/Gustatif";
 import Summary from "./pages/Summary";
 import Score from "./pages/Score";
+
 import "./main.css";
 
 const router = createBrowserRouter([
@@ -16,28 +21,34 @@ const router = createBrowserRouter([
     element: <Welcome />,
   },
   {
-    path: "home",
-    element: <Home />,
+    path: "/start",
+    element: <Start />,
   },
   {
-    path: "/:id/visuel",
-    element: <Visuel />,
+    path: "/:id/",
+    element: <App />,
+    children: [
+      {
+        path: "visuel",
+        element: <Visuel />,
+      },
+      {
+        path: "olfactif",
+        element: <Olfactif />,
+      },
+      {
+        path: "gustatif",
+        element: <Gustatif />,
+      },
+      {
+        path: "score",
+        element: <Score />,
+      },
+    ],
   },
   {
-    path: "/:id/olfactif",
-    element: <Olfactif />,
-  },
-  {
-    path: "/:id/gustatif",
-    element: <Gustatif />,
-  },
-  {
-    path: "/:id/recapitulatif",
+    path: "/:id/summary",
     element: <Summary />,
-  },
-  {
-    path: "/:id/score",
-    element: <Score />,
   },
 ]);
 

@@ -1,12 +1,13 @@
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+import "./tasting.css";
 
 const Summary = () => {
-  const params = useParams();
+  const { id } = useParams();
 
   return (
     <>
-      <h1>Vin choisi: {params.id} </h1>
+      <h1>Vin choisi: {id} </h1>
       <p>Couleur et nuance: {sessionStorage.getItem("Couleur et nuance")}</p>
       <p>Brillance: {sessionStorage.getItem("Brillance")}</p>
       <p>
@@ -30,7 +31,7 @@ const Summary = () => {
         {sessionStorage.getItem("Persistance aromatique")}
       </p>
       <p>score:{sessionStorage.getItem("score")}</p>
-      <Link className="link" to={`/${params.id}/score`}>
+      <Link className="link" to={`/${id}/score`}>
         Revenir
       </Link>
       <Link className="link" to={"/"}>
