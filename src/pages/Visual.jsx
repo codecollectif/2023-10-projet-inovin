@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import "./tasting.css";
 import Navbar from "../components/Navbar";
 
-const Visuel = () => {
+const Visual = () => {
   const params = useParams();
 
   return (
@@ -28,4 +28,4 @@ const Visuel = () => {
   );
 };
 
-export default Visuel;
+export default Visual;

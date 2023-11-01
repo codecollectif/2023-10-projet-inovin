@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import "./tasting.css";
 import Navbar from "../components/Navbar";
 
-const Olfactif = () => {
+const Olfactory = () => {
   const params = useParams();
 
   return (
@@ -29,4 +29,4 @@ const Olfactif = () => {
   );
 };
 
-export default Olfactif;
+export default Olfactory;

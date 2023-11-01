@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import "./tasting.css";
 import Navbar from "../components/Navbar";
 
-const Gustatif = () => {
+const Taste = () => {
   const params = useParams();
   return (
     <>
@@ -28,4 +28,4 @@ const Gustatif = () => {
   );
 };
 
-export default Gustatif;
+export default Taste;
