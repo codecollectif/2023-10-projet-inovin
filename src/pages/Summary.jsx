@@ -1,6 +1,4 @@
-import { Link, useParams } from "react-router-dom";
-
-import "./tasting.css";
+import { useParams } from "react-router-dom";
 
 const Summary = () => {
   const { id } = useParams();
@@ -30,13 +28,7 @@ const Summary = () => {
         Persistance aromatique:
         {sessionStorage.getItem("Persistance aromatique")}
       </p>
-      <p>score:{sessionStorage.getItem("score")}</p>
-      <Link className="link" to={`/${id}/score`}>
-        Revenir
-      </Link>
-      <Link className="link" to={"/"}>
-        Envoyer mail
-      </Link>
+      <p>Score:{sessionStorage.getItem("score")}</p>
     </>
   );
 };

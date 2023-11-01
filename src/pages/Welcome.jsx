@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Glasses from "../pictures/WinesColor.png";
+import Glasses from "../assets/pictures/WinesColor.png";
 import "./welcome.css";
 
 function Welcome() {

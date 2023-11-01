@@ -7,7 +7,7 @@
 }
 
 .tasting-box {
-  background-image: url("../pictures/Fond4.png");
+  background-image: url("./assets/pictures/Fond4.png");
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@ import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 
-import "./pages/tasting.css";
+import "./app.css";
 
 const allLinks = {
   ["visuel"]: {
@@ -15,6 +15,9 @@ const allLinks = {
   ["gustatif"]: {
     previous: "olfactif",
     next: "score",
+  },
+  ["score"]: {
+    previous: "gustatif",
   },
 };
 
@@ -36,9 +39,13 @@ function App() {
               Précédent
             </Link>
           )}
-          {links.next && (
+          {links.next ? (
             <Link className="link" to={`/${id}/${links.next}`}>
               Suivant
+            </Link>
+          ) : (
+            <Link className="link" to={"/"}>
+              Envoyer mail
             </Link>
           )}
         </div>
