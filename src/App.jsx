@@ -18,6 +18,10 @@ const allLinks = {
   },
   ["score"]: {
     previous: "gustatif",
+    next: "summary",
+  },
+  ["summary"]: {
+    previous: "score",
   },
 };
 
@@ -44,8 +48,8 @@ function App() {
               Suivant
             </Link>
           ) : (
-            <Link className="link" to={"/"}>
-              Envoyer mail
+            <Link className="link" to={"/start"}>
+              Valider
             </Link>
           )}
         </div>
