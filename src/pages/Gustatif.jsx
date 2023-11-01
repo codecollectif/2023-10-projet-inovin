@@ -19,7 +19,7 @@ const Gustatif = () => {
           <Link className="link" to={`/${params.id}/olfactif`}>
             Précédent
           </Link>
-          <Link className="link" to={`/${params.id}/recapitulatif`}>
+          <Link className="link" to={`/${params.id}/score`}>
             Valider
           </Link>
         </div>

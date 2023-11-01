@@ -26,10 +26,11 @@ const Summary = () => {
       <p>Saveurs: {sessionStorage.getItem("Saveurs")}</p>
       <p>Structure: {sessionStorage.getItem("Structure")}</p>
       <p>
-        Persistance aromatique:{" "}
+        Persistance aromatique:
         {sessionStorage.getItem("Persistance aromatique")}
       </p>
-      <Link className="link" to={`/${params.id}/gustatif`}>
+      <p>score:{sessionStorage.getItem("score")}</p>
+      <Link className="link" to={`/${params.id}/score`}>
         Revenir
       </Link>
       <Link className="link" to={"/"}>

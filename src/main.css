@@ -1,7 +1,7 @@
 @font-face {
   font-family: "exo2light";
-  src: url("../assets/fonts/exo2-light-webfont.woff2") format("woff2"),
-    url("../assets/fonts/exo2-light-webfont.woff") format("wooff");
+  src: url("./assets/fonts/exo2-light-webfont.woff2") format("woff2"),
+    url("./assets/fonts/exo2-light-webfont.woff") format("wooff");
 }
 
 body {

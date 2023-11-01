@@ -7,6 +7,7 @@ import Visuel from "./pages/Visuel";
 import Olfactif from "./pages/Olfactif";
 import Gustatif from "./pages/Gustatif";
 import Summary from "./pages/Summary";
+import Score from "./pages/Score";
 import "./main.css";
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/:id/recapitulatif",
     element: <Summary />,
+  },
+  {
+    path: "/:id/score",
+    element: <Score />,
   },
 ]);
 
