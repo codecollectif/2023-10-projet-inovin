@@ -8,7 +8,7 @@ import Olfactory from "./pages/Olfactory";
 import Taste from "./pages/Taste";
 import Summary from "./pages/Summary";
 import Score from "./pages/Score";
-import TestContext from "./pages/TestContext";
+import Profile from "./pages/Profile";
 import "./main.css";
 
 
@@ -42,8 +42,8 @@ const router = createBrowserRouter([
     element: <Score />,
   },
   {
-    path: "/test",
-    element: <TestContext />,
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 
