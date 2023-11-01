@@ -1,0 +1,22 @@
+.score-box {
+  background-image: url("../pictures/Fond4.png");
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.score-title {
+  text-align: center;
+  font-style: oblique;
+  font-size: xx-large;
+}
+
+.score-div-link {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 5em;
+  width: 50vw;
+}

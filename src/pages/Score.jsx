@@ -1,146 +1,58 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import BarScore from "../components/BarScore";
+import { Rating } from "react-simple-star-rating";
 import { GiWineBottle } from "react-icons/gi";
+import { Link, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import "./score.css";
 
 const Scrore = () => {
-  //v1
-  const [scorWine, setScoreWine] = useState("");
-  const [error, setError] = useState("");
-  //v2
-  const [selectButton, setSelectButton] = useState("");
-
-  const verifScoreChange = (e) => {
-    if (parseInt(e.target.value) > 10 || parseInt(e.target.value) < 0) {
-      setError("votre score doit etre entre 0 et 10");
-      setScoreWine(e.target.value);
-    } else {
-      setScoreWine(e.target.value);
-      setError("");
-    }
+  const params = useParams();
+  const [rating, setRating] = useState(50);
+  const handleRating = (rate) => {
+    setRating(rate);
+    sessionStorage.setItem("score", rate);
   };
   return (
     <>
-      <div>
-        <h1>La notation V1</h1>
-        <label htmlFor="">Votre score sur 10</label>
-        <p>{error}</p>
-        <input
-          type="text"
-          value={scorWine}
-          placeholder="votre score"
-          onChange={(e) => verifScoreChange(e)}
-        />
-        <progress max="10" value={scorWine}>
-          {5}
-        </progress>
-        <Link to={"/"}> Valider </Link>
-      </div>
-      <div>
-        <h1>La notation V2</h1>
-        <p>Votre score sur {selectButton} /10</p>
-        <div>
-          <div>
-            <GiWineBottle
-              id="1"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="2"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="3"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="4"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="5"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="6"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="7"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="8"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="9"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-            <GiWineBottle
-              id="10"
-              style={{color:"#ac1e44"}}
-              size={38}
-              onClick={(e) => setSelectButton(e.target.id)}
-            />
-          </div>
-
-          <div>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="1">
-              1
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="2">
-              2
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="3">
-              3
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="4">
-              4
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="5">
-              5
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="6">
-              6
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="7">
-              7
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="8">
-              8
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="9">
-              9
-            </button>
-            <button onClick={(e) => setSelectButton(e.target.id)} id="10">
-              10
-            </button>
-          </div>
+      <Navbar />
+      <section className="score-box">
+        <h1 className="score-title">La notation</h1>
+        <div className="rating">
+          <Rating
+            tooltipArray={[
+              "1/10",
+              "2/10",
+              "3/10",
+              "4/10",
+              "5/10",
+              "6/10",
+              "7/10",
+              "8/10",
+              "9/10",
+              "10/10",
+            ]}
+            tooltipDefaultText={sessionStorage.getItem("score") + "/10"}
+            transition
+            showTooltip
+            fillIcon={<GiWineBottle size={38} />}
+            emptyIcon={<GiWineBottle size={38} />}
+            fillColor="#ac1e44"
+            iconsCount={10}
+            onClick={handleRating}
+            ratingValue={rating}
+            emptyColor={"#00000"}
+          />
         </div>
-        <Link to={"/"}> Valider </Link>
-      </div>
-      <div>
-        <BarScore />
-      </div>
+        <div className="score-div-link">
+          <Link className="link" to={`/${params.id}/gustatif`}>
+            Précédent
+          </Link>
+          <Link className="link" to={`/${params.id}/recapitulatif`}>
+            {" "}
+            Valider{" "}
+          </Link>
+        </div>
+      </section>
     </>
   );
 };
