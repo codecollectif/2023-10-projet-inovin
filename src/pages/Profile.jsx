@@ -1,27 +1,31 @@
-import Navbar from "../components/Navbar";
 import { useWine } from "../contexts/WineContext";
 
+import Navbar from "../components/Navbar";
+
 const Profile = () => {
-  const {name,colorShade,shine,colorIntensity,fluidityOfTears,intensityOfAromas,feeling,aromaticFamilies,flavors,framework,AromaticPersistence,score} = useWine();
+  const { dataWine } = useWine();
+
   return (
     <>
       <Navbar />
       <section>
         <h1>Vos goûts</h1>
-        <div>
-          <h2>Vin: {name ?? "" }</h2>
-          <p>Couleur et nuance: {colorShade ?? "" } </p>
-          <p>Brillance: {shine ?? "" } </p>
-          <p>Intensité de la couleur: {colorIntensity ?? "" } </p>
-          <p>Fluidité des larmes: {fluidityOfTears ??""}</p>
-          <p>Intensité des arômes: {intensityOfAromas ??""}</p>
-          <p>Impression: {feeling ??""}</p>
-          <p>Familles aromatiques: {aromaticFamilies ??""}</p>
-          <p>Saveurs: {flavors ??""}</p>
-          <p>Structure: {framework ??""}</p>
-          <p>Persistance aromatique: {AromaticPersistence ??""}</p>
-          <p>score: {score ??""}</p>
-        </div>
+        {dataWine.map((o) => (
+          <div key={o.wineName}>
+            <h2>{o.wineName ?? ""}</h2>
+            <p>Couleur et nuance: {o.colorShade ?? ""} </p>
+            <p>Brillance: {o.shine ?? ""} </p>
+            <p>Intensité de la couleur: {o.colorIntensity ?? ""} </p>
+            <p>Fluidité des larmes: {o.fluidityOfTears ?? ""}</p>
+            <p>Intensité des arômes: {o.intensityOfAromas ?? ""}</p>
+            <p>Impression: {o.feeling ?? ""}</p>
+            <p>Familles aromatiques: {o.aromaticFamilies ?? ""}</p>
+            <p>Saveurs: {o.flavors ?? ""}</p>
+            <p>Structure: {o.framework ?? ""}</p>
+            <p>Persistance aromatique: {o.AromaticPersistence ?? ""}</p>
+            <p>score: {o.score ?? ""}</p>
+          </div>
+        ))}
       </section>
     </>
   );

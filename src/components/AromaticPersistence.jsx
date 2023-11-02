@@ -21,12 +21,12 @@ const AromaticPersistence = () => {
   const [aromaticPersistenceIdChecked, setAromaticPersistenceIdChecked] =
     useState("");
   const aromaticPersistenceChecked = sessionStorage.getItem(
-    "AromaticPersistence"
+    "aromaticPersistence"
   );
   const getIdAromaticPersistenceChecked = (e) => {
     setAromaticPersistenceIdChecked(parseInt(e.target.id));
     setAromaticPersistence(e.target.name);
-    sessionStorage.setItem("AromaticPersistence", e.target.name);
+    sessionStorage.setItem("aromaticPersistence", e.target.name);
   };
 
   return (
