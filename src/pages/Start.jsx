@@ -7,7 +7,8 @@ import "./start.css";
 
 function Start() {
   const wines = useLoaderData();
-
+  sessionStorage.clear();
+  
   return (
     <main className="start">
       <Navbar />

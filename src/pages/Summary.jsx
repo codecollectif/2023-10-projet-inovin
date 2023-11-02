@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { useWine } from "../contexts/WineContext";
 
 const Summary = () => {
