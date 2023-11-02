@@ -3,7 +3,6 @@ import Glasses from "../assets/pictures/WinesColor.png";
 import "./welcome.css";
 
 function Welcome() {
-  sessionStorage.clear();
   return (
     <main className="box">
       <h1 className="title">Bienvenue</h1>

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { WineContextProvider } from "./contexts/WineContext";
 
 import Welcome from "./pages/Welcome";
 import Start from "./pages/Start";
@@ -75,6 +76,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <WineContextProvider>
     <RouterProvider router={router} />
+    </WineContextProvider>
   </React.StrictMode>
 );
