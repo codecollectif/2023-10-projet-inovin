@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Glasses from "../pictures/WinesColor.png";
+import Glasses from "../assets/pictures/WinesColor.png";
 import "./welcome.css";
 
 function Welcome() {
@@ -10,7 +10,7 @@ function Welcome() {
       <div className="glasses">
         <img src={Glasses} alt="" />
       </div>
-      <Link to="/home" className="link welcome-btn">
+      <Link to="/start" className="link welcome-btn">
         Commencer
       </Link>
     </main>
