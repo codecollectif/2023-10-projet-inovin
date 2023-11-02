@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWine } from "../contexts/WineContext";
 
 const IntensityColor = () => {
   const intensityColor = [
@@ -19,11 +20,14 @@ const IntensityColor = () => {
       name: "Opaque",
     },
   ];
+
+  const { setColorIntensity } = useWine();
   const [intensityIdColorChecked, setIntensityIdColorChecked] = useState("");
-  const intensityChecked = sessionStorage.getItem("Intensité de la couleur");
+  const intensityChecked = sessionStorage.getItem("colorIntensity");
   const getIdIntensityColorChecked = (e) => {
     setIntensityIdColorChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Intensité de la couleur", e.target.name);
+    setColorIntensity(e.target.name);
+    sessionStorage.setItem("colorIntensity", e.target.name);
   };
 
   return (
@@ -35,7 +39,6 @@ const IntensityColor = () => {
             <input
               id={wine.id}
               type="checkbox"
-              style={{ backgroundColor: "#F5F5DC" }}
               name={wine.name}
               onChange={(e) => getIdIntensityColorChecked(e)}
               checked={

@@ -114,7 +114,7 @@
 }
 
 /*Couleur bouton*/
-/* #Framboise {
+#Framboise {
   background-color: #ea4e64;
 }
 
@@ -168,4 +168,8 @@
 
 #Roux {
   background-color: #c67e2a;
-} */
+}
+
+.checkbox-1 input{
+  background-color: #F5F5DC;
+}

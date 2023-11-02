@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWine } from "../contexts/WineContext";
 
 const ShineWine = () => {
   const shineWine = [
@@ -11,11 +12,14 @@ const ShineWine = () => {
       name: "éclatante",
     },
   ];
+
+  const { setShine } = useWine();
   const [shineIdChecked, setShineIdChecked] = useState("");
-  const shineChecked = sessionStorage.getItem("Brillance");
+  const shineChecked = sessionStorage.getItem("shine");
   const getIdShineChecked = (e) => {
     setShineIdChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Brillance", e.target.name);
+    setShine(e.target.name);
+    sessionStorage.setItem("shine", e.target.name);
   };
 
   return (
@@ -27,7 +31,6 @@ const ShineWine = () => {
             <input
               id={wine.id}
               type="checkbox"
-              style={{ backgroundColor: "#F5F5DC" }}
               name={wine.name}
               onChange={(e) => getIdShineChecked(e)}
               checked={wine.id === shineIdChecked || wine.name === shineChecked}

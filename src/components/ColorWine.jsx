@@ -1,12 +1,20 @@
 import { useState } from "react";
+import { useWine } from "../contexts/WineContext";
+import { useParams } from "react-router-dom";
+
 import colorsWine from "../assets/datas/colorsWine";
 
 export default function ColorWine() {
+  const params =useParams()
+  const { setName,setColorShade } = useWine();
   const [colorIdChecked, setIdColorChecked] = useState("");
-  const colorChecked = sessionStorage.getItem("Couleur et nuance");
+  const colorChecked = sessionStorage.getItem("colorShade");
+
   const getIdColorChecked = (e) => {
-    setIdColorChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Couleur et nuance", e.target.name);
+    setColorShade(e.target.name);
+    setName(params.id)
+    setIdColorChecked(e.target.name);
+    sessionStorage.setItem("colorShade", e.target.name);
   };
 
   return (
@@ -16,9 +24,8 @@ export default function ColorWine() {
         {colorsWine.map((wine) => (
           <div key={wine.name} className="checkbox-1">
             <input
-              id={wine.id}
+              id={wine.name}
               type="checkbox"
-              style={{ backgroundColor: wine.color }}
               name={wine.name}
               onChange={(e) => getIdColorChecked(e)}
               checked={wine.id === colorIdChecked || wine.name === colorChecked}

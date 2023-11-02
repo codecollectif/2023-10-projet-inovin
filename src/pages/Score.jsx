@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import { GiWineBottle } from "react-icons/gi";
+import { useWine } from "../contexts/WineContext";
 
 import "./score.css";
 
 const Score = () => {
+  const { setScore } = useWine();
   const [rating, setRating] = useState(50);
   const handleRating = (rate) => {
     setRating(rate);
+    setScore(rate);
     sessionStorage.setItem("score", rate);
   };
   return (

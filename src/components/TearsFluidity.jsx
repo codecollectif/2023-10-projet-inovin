@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWine } from "../contexts/WineContext";
 
 const TearsFluidity = () => {
   const tearFludity = [
@@ -11,11 +12,14 @@ const TearsFluidity = () => {
       name: "Larges et visqueses",
     },
   ];
+  
+  const { setFluidityOfTears } = useWine();
   const [tearFludityIdChecked, setTearFludityIdChecked] = useState("");
-  const tearFludityChecked = sessionStorage.getItem("Fluidité des larmes");
+  const tearFludityChecked = sessionStorage.getItem("fluidityOfTears");
   const getIdTearFluidityChecked = (e) => {
     setTearFludityIdChecked(parseInt(e.target.id));
-    sessionStorage.setItem("Fluidité des larmes", e.target.name);
+    setFluidityOfTears(e.target.name);
+    sessionStorage.setItem("fluidityOfTears", e.target.name);
   };
 
   return (
@@ -27,7 +31,6 @@ const TearsFluidity = () => {
             <input
               id={wine.id}
               type="checkbox"
-              style={{ backgroundColor: "#F5F5DC" }}
               name={wine.name}
               onChange={(e) => getIdTearFluidityChecked(e)}
               checked={
