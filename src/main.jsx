@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Welcome from "./pages/Welcome";
 import Start from "./pages/Start";
+import Profile from "./pages/Profile";
 
 import App from "./App";
 
@@ -16,6 +17,7 @@ import Score from "./pages/Score";
 import "./main.css";
 
 import Papa from "papaparse";
+
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
       });
     },
     element: <Start />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
   {
     path: "/:id/",
