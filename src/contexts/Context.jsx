@@ -2,10 +2,8 @@ import { createContext, useContext, useMemo, useState } from "react";
 
 const WineContext = createContext();
 
-export function WineContextProvider({ children }) {
-  const [name, setName] = useState(
-    sessionStorage.getItem("name")
-  );
+export function WineContextProvider( {children} ) {
+  const [name, setName] = useState(sessionStorage.getItem("name"));
   const [colorShade, setColorShade] = useState(
     sessionStorage.getItem("colorShade")
   );
@@ -62,7 +60,20 @@ export function WineContextProvider({ children }) {
       score,
       setScore,
     };
-  }, [colorShade, shine]);
+  }, [
+    name,
+    colorShade,
+    shine,
+    colorIntensity,
+    fluidityOfTears,
+    intensityOfAromas,
+    feeling,
+    aromaticFamilies,
+    flavors,
+    framework,
+    AromaticPersistence,
+    score,
+  ]);
 
   return (
     <WineContext.Provider value={wineManage}>{children}</WineContext.Provider>

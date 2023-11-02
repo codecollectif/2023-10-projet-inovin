@@ -1,4 +1,4 @@
-export const data = [
+/* export const data = [
 { "colorShade":"" },
 { "shine": "" },
 { "colorIntensity": "" },
@@ -10,9 +10,9 @@ export const data = [
 { "framework": "" },
 { "AromaticPersistence": "" },
 { "score": "" },
-];
+]; */
 
-export const dataWine = [
+/* export const dataWine = [
   {
     name:"",
     colorShade:"",
@@ -27,10 +27,10 @@ export const dataWine = [
     aromaticPersistence:"",
     score:"",
   }
-];
+]; */
 
-export const DataWineFr=[
-  { "Couleurt nuance": "" },
+/* export const DataWineFr=[
+  { "Couleur et nuance": "" },
   { "Brillance": "" },
   { "Intensité de la couleur": "" },
   { "Fluidité des larmes": "" },
@@ -41,4 +41,5 @@ export const DataWineFr=[
   { "Structure": "" },
   { "Persistance aromatique": "" },
   { "score": "" },
-]
+] */
+
