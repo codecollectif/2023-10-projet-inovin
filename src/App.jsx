@@ -1,4 +1,5 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { useWine } from "./contexts/WineContext";
 
 import Navbar from "./components/Navbar";
 
@@ -31,6 +32,26 @@ function App() {
 
   const [lastUrlSegment] = pathname.match(/([^/]+)\/?$/);
   const links = allLinks[lastUrlSegment];
+  const {dataWine, setDataWine} = useWine()
+
+  const testButton = () =>{
+    dataWine.push({
+      wineName:id,
+      colorShade:sessionStorage.getItem("colorShade"),
+      shine:sessionStorage.getItem("shine"),
+      colorIntensity:sessionStorage.getItem("colorIntensity"),
+      fluidityOfTears:sessionStorage.getItem("fluidityOfTears"),
+      intensityOfAromas:sessionStorage.getItem("intensityOfAromas"),
+      feeling:sessionStorage.getItem("feeling"),
+      aromaticFamilies:sessionStorage.getItem("aromaticFamilies"),
+      flavors:sessionStorage.getItem("flavors"),
+      framework:sessionStorage.getItem("framework"),
+      aromaticPersistence:sessionStorage.getItem("aromaticPersistence"),
+      score:sessionStorage.getItem("score")
+    })
+    setDataWine(dataWine)
+    return console.log("testbtn",dataWine);
+  }
 
   return (
     <>
@@ -48,7 +69,7 @@ function App() {
               Suivant
             </Link>
           ) : (
-            <Link className="link" to={"/start"}>
+            <Link onClick={testButton} className="link" to={"/start"}>
               Valider
             </Link>
           )}
