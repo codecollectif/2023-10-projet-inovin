@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import WineList from "../components/WineList";
 import Navbar from "../components/Navbar";
@@ -8,7 +9,7 @@ import "./start.css";
 function Start() {
   const wines = useLoaderData();
   sessionStorage.clear();
-  
+
   return (
     <main className="start">
       <Navbar />
@@ -17,9 +18,9 @@ function Start() {
         <WineList data={wines} />
       </div>
       <div className="start-div-btn">
-        <button type="button" className="link start-btn">
+        <Link to={"/creation"} className="link start-btn">
           Passer à la page suivante
-        </button>
+        </Link>
       </div>
     </main>
   );
