@@ -1,9 +1,66 @@
 import { createContext, useContext, useMemo, useState } from "react";
-
+const DevDataWine = [
+  {
+    wineName: "Pinot noir",
+    colorShade: "Rubis",
+    shine: "éclatante",
+    colorIntensity: "Opaque",
+    fluidityOfTears: "Larges et visqueses",
+    intensityOfAromas: "Faible, vin fermé",
+    feeling: "Douteux",
+    aromaticFamilies: "Fleurs",
+    flavors: "Sucre",
+    framework: "Léger",
+    aromaticPersistence: "Persistante",
+    score: "3",
+  },
+  {
+    wineName: "Ciera",
+    colorShade: "Rubis",
+    shine: "éclatante",
+    colorIntensity: "Trouble",
+    fluidityOfTears: "Larges et visqueses",
+    intensityOfAromas: "Forte, vin ouvert",
+    feeling: "Douteux",
+    aromaticFamilies: "Epices",
+    flavors: "Sucre",
+    framework: "Charpenté",
+    aromaticPersistence: "Persistante",
+    score: "10",
+  },
+  {
+    wineName: "Grenache",
+    colorShade: "Cerise",
+    shine: "éclatante",
+    colorIntensity: "Moyenne",
+    fluidityOfTears: "Larges et visqueses",
+    intensityOfAromas: "Moyenne",
+    feeling: "Simple",
+    aromaticFamilies: "Fleurs",
+    flavors: "Amer",
+    framework: "Fluide",
+    aromaticPersistence: "Moyenne",
+    score: "6",
+  },
+  {
+    wineName: "Chasselat",
+    colorShade: "Tuile",
+    shine: "étincelante",
+    colorIntensity: "Claire",
+    fluidityOfTears: "Fines et fluides",
+    intensityOfAromas: "Faible, vin fermé",
+    feeling: "Franc",
+    aromaticFamilies: "Fruits",
+    flavors: "Acidité",
+    framework: "Léger",
+    aromaticPersistence: "Courte",
+    score: "8",
+  },
+];
 const WineContext = createContext();
 
 export function WineContextProvider( {children} ) {
-  const [dataWine, setDataWine] = useState([]);
+  const [dataWine, setDataWine] = useState(DevDataWine);
   const [name, setName] = useState(sessionStorage.getItem("name"));
   const [colorShade, setColorShade] = useState(
     sessionStorage.getItem("colorShade")

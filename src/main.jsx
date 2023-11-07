@@ -13,12 +13,13 @@ import Visual from "./pages/Visual";
 import Olfactory from "./pages/Olfactory";
 import Taste from "./pages/Taste";
 import Summary from "./pages/Summary";
+
 import Score from "./pages/Score";
+import Workshop from "./pages/Workshop";
 
 import "./main.css";
 
 import Papa from "papaparse";
-
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/creation",
+    element: <Workshop />,
   },
   {
     path: "/:id/",

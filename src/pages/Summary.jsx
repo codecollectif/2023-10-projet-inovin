@@ -1,31 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useWine } from "../contexts/WineContext";
 
 const Summary = () => {
   const { id } = useParams();
-  
-  const {dataWine, setDataWine} = useWine()
 
-  const testBtn =()=>{
-    dataWine.push({
-      wineName:id,
-      colorShade:sessionStorage.getItem("colorShade"),
-      shine:sessionStorage.getItem("shine"),
-      colorIntensity:sessionStorage.getItem("colorIntensity"),
-      fluidityOfTears:sessionStorage.getItem("fluidityOfTears"),
-      intensityOfAromas:sessionStorage.getItem("intensityOfAromas"),
-      feeling:sessionStorage.getItem("feeling"),
-      aromaticFamilies:sessionStorage.getItem("aromaticFamilies"),
-      flavors:sessionStorage.getItem("flavors"),
-      framework:sessionStorage.getItem("framework"),
-      aromaticPersistence:sessionStorage.getItem("aromaticPersistence"),
-      score:sessionStorage.getItem("score")
-    })
-    setDataWine(dataWine)
-    return console.log("testbtn",dataWine);
-  }
-
-  console.log("pageSumary",dataWine);
   return (
     <>
       <h1>Vin choisi: {id} </h1>
@@ -43,7 +20,6 @@ const Summary = () => {
         {sessionStorage.getItem("aromaticPersistence")}
       </p>
       <p>Score:{sessionStorage.getItem("score")}</p>
-      <button onClick={testBtn}>test</button>
     </>
   );
 };
