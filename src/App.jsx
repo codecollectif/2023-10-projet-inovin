@@ -50,7 +50,6 @@ function App() {
       score:sessionStorage.getItem("score")
     })
     setDataWine(dataWine)
-    return console.log("testbtn",dataWine);
   }
 
   return (
