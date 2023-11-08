@@ -34,7 +34,7 @@ function App() {
   const links = allLinks[lastUrlSegment];
   const {dataWine, setDataWine} = useWine()
 
-  const testButton = () =>{
+  const ButtonValid = () =>{
     dataWine.push({
       wineName:id,
       colorShade:sessionStorage.getItem("colorShade"),
@@ -68,7 +68,7 @@ function App() {
               Suivant
             </Link>
           ) : (
-            <Link onClick={testButton} className="link" to={"/start"}>
+            <Link onClick={ButtonValid} className="link" to={"/start"}>
               Valider
             </Link>
           )}

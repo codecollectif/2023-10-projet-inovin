@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
+import { useWine } from "../contexts/WineContext";
+
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
-import { useState } from "react";
 
 const SliderWorkshop = (props) => {
-  const [value, setValue] = useState(0);
-  const wineLevel = [
+  const slideWineLevel = [
     {
       title: `${props.wine.wineName}`,
       levelMax: [
@@ -61,24 +62,39 @@ const SliderWorkshop = (props) => {
       ],
     },
   ];
+  const [value, setValue] = useState(0);
+  const { dataWine, setLevelWines } = useWine();
 
-  /* function valuetext(e) {
-    return `${e.target.value}ml`;
-  } */
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    sessionStorage.setItem(`${props.wine.wineName}`, e.target.value);
+  };
+
+  useEffect(() => {
+    const wines = dataWine
+      .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
+      .reduce((acc, curent) => curent + acc);
+    setLevelWines(wines);
+  }, [value]);
 
   return (
     <>
       <h2>Cépage {props.wine.wineName}</h2>
-      {wineLevel.map((level) => (
-        <Stack className="center" key={level.title} sx={{ height: 150 }} spacing={10}>
+      {slideWineLevel.map((level) => (
+        <Stack
+          className="center"
+          key={level.title}
+          sx={{ height: 150 }}
+          spacing={10}
+        >
           <Slider
             orientation="vertical"
             aria-label={level.title}
             defaultValue={props.maxScore === props.wine.wineName ? 125 : 1}
             sx={{ color: "#ac1e44" }}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => handleChange(e)}
             valueLabelDisplay="auto"
-            aria-valuetext={value}
+            aria-valuetext={`${value}`}
             step={5}
             marks={
               props.maxScore === props.wine.wineName

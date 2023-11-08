@@ -59,7 +59,8 @@ const DevDataWine = [
 ];
 const WineContext = createContext();
 
-export function WineContextProvider( {children} ) {
+export function WineContextProvider({ children }) {
+  const [levelWines, setLevelWines] = useState([]);
   const [dataWine, setDataWine] = useState(DevDataWine);
   const [name, setName] = useState(sessionStorage.getItem("name"));
   const [colorShade, setColorShade] = useState(
@@ -93,6 +94,8 @@ export function WineContextProvider( {children} ) {
 
   const wineManage = useMemo(() => {
     return {
+      levelWines,
+      setLevelWines,
       dataWine,
       setDataWine,
       name,
@@ -121,6 +124,7 @@ export function WineContextProvider( {children} ) {
       setScore,
     };
   }, [
+    levelWines,
     dataWine,
     name,
     colorShade,
