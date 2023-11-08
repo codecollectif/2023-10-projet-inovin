@@ -3,7 +3,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  
 }
 
 .profile-main-title{
@@ -25,6 +24,7 @@ grid-template-columns: 1fr 1fr;
   border: solid black 1px;
   background: #a9621647;
   margin: 2em;
+  
 }
 
 .profile-title{

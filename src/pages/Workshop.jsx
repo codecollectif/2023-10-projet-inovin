@@ -6,6 +6,8 @@ import GlassesPicture from "../components/Glasses";
 
 import { Link } from "react-router-dom";
 
+import "./workshop.css"
+
 const Workshop = () => {
   const { dataWine, levelWines } = useWine();
 
@@ -15,22 +17,24 @@ const Workshop = () => {
   return (
     <>
       <Navbar />
-      <section>
-        <div>
-          <h1>Atelier de création</h1>
+      <section className="workshop-section">
+        <h1 className="workshop-title">Atelier de création</h1>
+        <div className="workshop-box">
           {dataWineSort.map((wine) => (
-            <div key={wine.wineName}>
+            <div className="workshop-card" key={wine.wineName}>
               <SliderWorkshop wine={wine} maxScore={firtWineName} />
             </div>
           ))}
         </div>
         <p>Volume total {levelWines} ml</p>
-        <div>
+        <div className="workshop-glass">
           <GlassesPicture />
         </div>
-        <Link to={"/finish"} className="link">
-          Passer à la page de fin
-        </Link>
+        <div className="workshop-link">
+          <Link to={"/finish"} className="link">
+            Passer à la page de fin
+          </Link>
+        </div>
       </section>
     </>
   );

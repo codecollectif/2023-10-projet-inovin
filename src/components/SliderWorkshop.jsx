@@ -79,7 +79,7 @@ const SliderWorkshop = (props) => {
 
   return (
     <>
-      <h2>Cépage {props.wine.wineName}</h2>
+      <h2>{props.wine.wineName}</h2>
       {slideWineLevel.map((level) => (
         <Stack
           className="center"
