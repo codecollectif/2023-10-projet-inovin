@@ -66,7 +66,6 @@ const SliderWorkshop = (props) => {
   const { dataWine, setLevelWines } = useWine();
 
   const handleChange = (e) => {
-    console.log("handleChange", e.target.value);
     setValue(e.target.value);
     sessionStorage.setItem(`${props.wine.wineName}`, e.target.value);
   };
