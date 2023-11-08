@@ -1,25 +1,27 @@
-import React from "react";
-import GlassesVoid from "../assets/pictures/verre.png";
-import SliderWorkshop from "../components/SliderWorkshop";
 import { useWine } from "../contexts/WineContext";
 
+import SliderWorkshop from "../components/SliderWorkshop";
+import GlassesPicture from "../components/Glasses";
+
 const Workshop = () => {
-  const { dataWine } = useWine();
-  console.log("0", dataWine);
-  //const wineList = dataWine.map((o) => o);
-  //console.log("1", wineList);
+  const { dataWine, levelWines } = useWine();
+
+  const dataWineSort = dataWine.sort((a, b) => a.score - b.score).reverse();
+  const firtWineName = dataWineSort[0].wineName;
+
   return (
     <section>
       <div>
-        <h1>Atelier de création </h1>
-        {dataWine.map((wine) => (
+        <h1>Atelier de création</h1>
+        {dataWineSort.map((wine) => (
           <div key={wine.wineName}>
-            <SliderWorkshop wine={wine} />
+            <SliderWorkshop wine={wine} maxScore={firtWineName} />
           </div>
         ))}
       </div>
+      <p>Volume total {levelWines} ml</p>
       <div>
-        <img src={GlassesVoid} alt="verre vide" />
+        <GlassesPicture />
       </div>
     </section>
   );
