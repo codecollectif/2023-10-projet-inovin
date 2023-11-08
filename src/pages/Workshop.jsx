@@ -1,7 +1,7 @@
 import { useWine } from "../contexts/WineContext";
 
-import GlassesVoid from "../assets/pictures/verre10.png";
 import SliderWorkshop from "../components/SliderWorkshop";
+import GlassesPicture from "../components/Glasses";
 
 const Workshop = () => {
   const { dataWine, levelWines } = useWine();
@@ -21,7 +21,7 @@ const Workshop = () => {
       </div>
       <p>Volume total {levelWines} ml</p>
       <div>
-        <img src={GlassesVoid} alt="verre vide" />
+        <GlassesPicture />
       </div>
     </section>
   );

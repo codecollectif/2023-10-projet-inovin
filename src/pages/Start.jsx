@@ -9,6 +9,7 @@ import "./start.css";
 function Start() {
   const wines = useLoaderData();
   sessionStorage.clear();
+  wines.map((wine) => sessionStorage.setItem(`${wine}`, 0));
 
   return (
     <main className="start">

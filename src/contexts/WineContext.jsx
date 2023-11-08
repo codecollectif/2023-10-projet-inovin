@@ -60,9 +60,12 @@ const DevDataWine = [
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
-  const [levelWines, setLevelWines] = useState([]);
+  const [levelWines, setLevelWines] = useState(0);
+
   const [dataWine, setDataWine] = useState(DevDataWine);
+
   const [name, setName] = useState(sessionStorage.getItem("name"));
+
   const [colorShade, setColorShade] = useState(
     sessionStorage.getItem("colorShade")
   );
