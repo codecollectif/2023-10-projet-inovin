@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, useState } from "react";
-const DevDataWine = [
+/* const DevDataWine = [
   {
     wineName: "Pinot noir",
     colorShade: "Rubis",
@@ -56,13 +56,13 @@ const DevDataWine = [
     aromaticPersistence: "Courte",
     score: "8",
   },
-];
+]; */
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
   const [levelWines, setLevelWines] = useState(0);
 
-  const [dataWine, setDataWine] = useState(DevDataWine);
+  const [dataWine, setDataWine] = useState([]);
 
   const [name, setName] = useState(sessionStorage.getItem("name"));
 
