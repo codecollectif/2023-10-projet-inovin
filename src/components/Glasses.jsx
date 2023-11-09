@@ -46,7 +46,7 @@ const Glasses = () => {
   }, [levelWines]);
   return (
     <>
-      <img src={Glasses} alt="verre de vin" />
+      <img className="workshop-glass-img" src={Glasses} alt="verre de vin" />
     </>
   );
 };

@@ -16,6 +16,7 @@ import Summary from "./pages/Summary";
 
 import Score from "./pages/Score";
 import Workshop from "./pages/Workshop";
+import Finish from "./pages/Finish";
 
 import "./main.css";
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/creation",
     element: <Workshop />,
+  },
+  {
+    path: "/finish",
+    element: <Finish />,
   },
   {
     path: "/:id/",
