@@ -5,14 +5,14 @@ import { useParams } from "react-router-dom";
 import colorsWine from "../assets/datas/colorsWine";
 
 export default function ColorWine() {
-  const params =useParams()
-  const { setName,setColorShade } = useWine();
+  const params = useParams();
+  const { setName, setColorShade } = useWine();
   const [colorIdChecked, setIdColorChecked] = useState("");
   const colorChecked = sessionStorage.getItem("colorShade");
 
   const getIdColorChecked = (e) => {
     setColorShade(e.target.name);
-    setName(params.id)
+    setName(params.id);
     setIdColorChecked(e.target.name);
     sessionStorage.setItem("colorShade", e.target.name);
   };

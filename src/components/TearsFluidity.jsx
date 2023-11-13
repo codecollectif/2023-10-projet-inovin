@@ -12,7 +12,7 @@ const TearsFluidity = () => {
       name: "Larges et visqueses",
     },
   ];
-  
+
   const { setFluidityOfTears } = useWine();
   const [tearFludityIdChecked, setTearFludityIdChecked] = useState("");
   const tearFludityChecked = sessionStorage.getItem("fluidityOfTears");
