@@ -6,7 +6,7 @@ import GlassesPicture from "../components/Glasses";
 
 import { Link } from "react-router-dom";
 
-import "./workshop.css"
+import "./workshop.css";
 
 const Workshop = () => {
   const { dataWine, levelWines } = useWine();

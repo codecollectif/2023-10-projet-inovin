@@ -1,23 +1,23 @@
-.workshop-section{
+.workshop-section {
   background-image: url("../assets/pictures/Fond4.png");
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.workshop-title{
+.workshop-title {
   font-size: xx-large;
   text-align: center;
   font-style: oblique;
 }
 
-.workshop-box{
+.workshop-box {
   display: grid;
-  grid-template-rows:auto ;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
 }
 
-.workshop-card{
+.workshop-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,22 +28,22 @@
   margin: 1rem 4rem;
 }
 
-p{
+p {
   text-align: center;
   font-size: large;
   font-weight: 600;
 }
 
-.workshop-glass{
-  display:flex ;
+.workshop-glass {
+  display: flex;
   justify-content: center;
 }
 
-.workshop-glass-img{
+.workshop-glass-img {
   height: 30vh;
 }
 
-.workshop-link{
+.workshop-link {
   display: flex;
   justify-content: center;
   align-items: center;

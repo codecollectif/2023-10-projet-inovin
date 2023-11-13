@@ -16,7 +16,7 @@ const Framework = () => {
       name: "Charpenté",
     },
   ];
-  
+
   const { setFramework } = useWine();
   const [frameworkIdChecked, setFrameworkIdChecked] = useState("");
   const frameworkChecked = sessionStorage.getItem("framework");

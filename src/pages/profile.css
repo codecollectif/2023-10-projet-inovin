@@ -1,38 +1,37 @@
-.profile-box{
+.profile-box {
   background-image: url("../assets/pictures/Fond4.png");
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.profile-main-title{
+.profile-main-title {
   font-size: xx-large;
   text-align: center;
   font-style: oblique;
 }
 
-.profile-div{
-display: grid;
-grid-template-rows: auto;
-grid-template-columns: 1fr 1fr;
+.profile-div {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
 }
 
-.profile-card{
+.profile-card {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
   border: solid black 1px;
   background: #a9621647;
   margin: 2em;
-  
 }
 
-.profile-title{
+.profile-title {
   font-size: x-large;
   font-weight: 700;
   text-align: center;
 }
-.profile-card p{
+.profile-card p {
   font-size: large;
   font-weight: 600;
 }

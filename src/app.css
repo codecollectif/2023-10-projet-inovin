@@ -170,6 +170,10 @@
   background-color: #c67e2a;
 }
 
-.checkbox-1 input{
-  background-color: #F5F5DC;
+.checkbox-1 input {
+  background-color: #f5f5dc;
+}
+
+.app-disable {
+  display: none;
 }
