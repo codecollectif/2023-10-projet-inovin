@@ -34,7 +34,7 @@ function App() {
   const [lastUrlSegment] = pathname.match(/([^/]+)\/?$/);
   const links = allLinks[lastUrlSegment];
   const { dataWine, setDataWine } = useWine();
-
+console.log(lastUrlSegment);
   const ButtonValid = () => {
     dataWine.push({
       wineName: id,
