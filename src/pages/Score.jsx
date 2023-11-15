@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useWine } from "../contexts/WineContext";
 
 import VoidBottle from "../assets/pictures/bouteille-vide.png";
-import Bottle1 from "../assets/pictures/bouteille-1.png";
+import Bottle1 from "../assets/pictures/bouteille-1-test.png";
 import Bottle2 from "../assets/pictures/bouteille-2.png";
 import Bottle3 from "../assets/pictures/bouteille-3.png";
 import Bottle4 from "../assets/pictures/bouteille-4.png";
