@@ -20,3 +20,31 @@
   height: 5em;
   width: 50vw;
 }
+
+.score-section{
+  display: flex;
+  flex-direction: column;
+}
+
+.score-div{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 40vw;
+}
+
+.score-btn{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.btn{
+  width: 3rem;
+  border-radius: 20px;
+  border: solid 1px black ;
+  background-color: #eac550;
+  padding: 0.2rem;
+  margin-bottom: 0.5rem;
+
+}

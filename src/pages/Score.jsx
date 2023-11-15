@@ -73,47 +73,50 @@ const Score = () => {
   }, [scoreProgress]);
 
   return (
-    <section>
-      <h1>La notation</h1>
-      <div>
-        <img style={{borderRadius:"20px"}} src={imgFilling} alt="remplissage bouteille" />
-      </div>
-    
-      <div>
-        <h2>votre note {scoreProgress} /10</h2>
-        <button onClick={(e) => handleClick(e)} type="button" id="0">
-          0
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="1">
-          1
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="2">
-          2
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="3">
-          3
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="4">
-          4
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="5">
-          5
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="6">
-          6
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="7">
-          7
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="8">
-          8
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="9">
-          9
-        </button>
-        <button onClick={(e) => handleClick(e)} type="button" id="10">
-          10
-        </button>
+    <section className="score-section">
+      <h1 className="score-title">La notation</h1>
+      <div className="score-div">
+        <img
+          style={{ borderRadius: "20px" }}
+          src={imgFilling}
+          alt="remplissage bouteille"
+        />
+        <div className="score-btn">
+          <button className="btn" onClick={(e) => handleClick(e)} id="0">
+            0
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="1">
+            1
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="2">
+            2
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="3">
+            3
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="4">
+            4
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="5">
+            5
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="6">
+            6
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="7">
+            7
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="8">
+            8
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="9">
+            9
+          </button>
+          <button className="btn" onClick={(e) => handleClick(e)} id="10">
+            10
+          </button>
+          <h2>votre note {scoreProgress} /10</h2>
+        </div>
       </div>
     </section>
   );
