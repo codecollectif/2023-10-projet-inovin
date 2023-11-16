@@ -1,6 +1,5 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { useWine } from "./contexts/WineContext";
-import { useEffect } from "react";
 
 import Navbar from "./components/Navbar";
 
@@ -58,35 +57,31 @@ function App() {
     sessionStorage.getItem("shine"),
     sessionStorage.getItem("colorIntensity"),
     sessionStorage.getItem("fluidityOfTears"),
-  ];
+  ].filter((o) => o !== null).length;
+
   const dataCheckedOlfactif = [
     sessionStorage.getItem("intensityOfAromas"),
     sessionStorage.getItem("feeling"),
     sessionStorage.getItem("aromaticFamilies"),
-  ];
+  ].filter((o) => o !== null).length;
+
   const dataCheckedGustatif = [
     sessionStorage.getItem("flavors"),
     sessionStorage.getItem("framework"),
     sessionStorage.getItem("aromaticPersistence"),
-  ];
-  const dataCheckedScore = [sessionStorage.getItem("score")];
-  const filterCheckedVisual = dataCheckedVisual.filter(
+  ].filter((o) => o !== null).length;
+  
+  const dataCheckedScore = [sessionStorage.getItem("score")].filter(
     (o) => o !== null
   ).length;
-  const filterCheckedOlfactif = dataCheckedOlfactif.filter(
-    (o) => o !== null
-  ).length;
-  const filterCheckedGustatif = dataCheckedGustatif.filter(
-    (o) => o !== null
-  ).length;
-  const filterCheckedScore = dataCheckedScore.filter((o) => o !== null).length;
 
-  useEffect(() => {}, [
-    filterCheckedVisual,
-    filterCheckedOlfactif,
-    filterCheckedGustatif,
-    filterCheckedScore,
-  ]);
+  console.log(
+    "test",
+    dataCheckedVisual,
+    dataCheckedOlfactif,
+    dataCheckedGustatif,
+    dataCheckedScore
+  );
 
   return (
     <>
@@ -101,7 +96,7 @@ function App() {
           )}
           {lastUrlSegment === "visuel" && (
             <Link
-              className={filterCheckedVisual === 4 ? "link" : "app-disable"}
+              className={dataCheckedVisual === 4 ? "link" : "app-disable"}
               to={`/${id}/${links.next}`}
             >
               Suivant
@@ -109,7 +104,7 @@ function App() {
           )}
           {lastUrlSegment === "olfactif" && (
             <Link
-              className={filterCheckedOlfactif === 3 ? "link" : "app-disable"}
+              className={dataCheckedOlfactif === 3 ? "link" : "app-disable"}
               to={`/${id}/${links.next}`}
             >
               Suivant
@@ -117,7 +112,7 @@ function App() {
           )}
           {lastUrlSegment === "gustatif" && (
             <Link
-              className={filterCheckedGustatif === 3 ? "link" : "app-disable"}
+              className={dataCheckedGustatif === 3 ? "link" : "app-disable"}
               to={`/${id}/${links.next}`}
             >
               Suivant
@@ -125,7 +120,7 @@ function App() {
           )}
           {lastUrlSegment === "score" && (
             <Link
-              className={filterCheckedScore === 1 ? "link" : "app-disable"}
+              className={dataCheckedScore === 1 ? "link" : "app-disable"}
               to={`/${id}/${links.next}`}
             >
               Suivant
