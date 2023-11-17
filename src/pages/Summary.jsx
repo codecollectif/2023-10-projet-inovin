@@ -1,12 +1,27 @@
-import { useParams } from "react-router-dom";
+import { useParams, useRevalidator } from "react-router-dom";
 
 const Summary = () => {
   const { id } = useParams();
+  const revalidator = useRevalidator();
+
+  const colorShadeLike =
+    (sessionStorage.getItem(`${id}.colorShadeLike`) ?? "false") !== "false";
 
   return (
     <>
       <h1>Vin choisi: {id} </h1>
-      <p>Couleur et nuance: {sessionStorage.getItem("colorShade")}</p>
+      <p>
+        Couleur et nuance: {sessionStorage.getItem("colorShade")}{" "}
+        <button
+          type="button"
+          onClick={() => {
+            sessionStorage.setItem(`${id}.colorShadeLike`, !colorShadeLike);
+            revalidator.revalidate(); // "recharge" la page
+          }}
+        >
+          {colorShadeLike ? "❤️" : "🖤"}
+        </button>
+      </p>
       <p>Brillance: {sessionStorage.getItem("shine")}</p>
       <p>Intensité de la couleur: {sessionStorage.getItem("colorIntensity")}</p>
       <p>Fluidité des larmes: {sessionStorage.getItem("fluidityOfTears")}</p>
@@ -19,7 +34,6 @@ const Summary = () => {
         Persistance aromatique:
         {sessionStorage.getItem("aromaticPersistence")}
       </p>
-      <p>Score:{sessionStorage.getItem("score")}</p>
     </>
   );
 };
