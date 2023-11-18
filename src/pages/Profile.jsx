@@ -30,7 +30,6 @@ const Profile = () => {
               <p>Saveurs: {o.flavors ?? ""}</p>
               <p>Structure: {o.framework ?? ""}</p>
               <p>Persistance aromatique: {o.AromaticPersistence ?? ""}</p>
-              <p>score: {o.score ?? ""}</p>
             </div>
           ))}
         </div>

@@ -14,7 +14,6 @@ import Olfactory from "./pages/Olfactory";
 import Taste from "./pages/Taste";
 import Summary from "./pages/Summary";
 
-import Score from "./pages/Score";
 import Workshop from "./pages/Workshop";
 import Finish from "./pages/Finish";
 
@@ -75,10 +74,6 @@ const router = createBrowserRouter([
       {
         path: "summary",
         element: <Summary />,
-      },
-      {
-        path: "score",
-        element: <Score />,
       },
     ],
   },

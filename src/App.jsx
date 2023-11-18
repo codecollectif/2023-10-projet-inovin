@@ -15,14 +15,10 @@ const allLinks = {
   },
   ["gustatif"]: {
     previous: "olfactif",
-    next: "score",
-  },
-  ["score"]: {
-    previous: "gustatif",
     next: "summary",
   },
   ["summary"]: {
-    previous: "score",
+    previous: "gustatif",
   },
 };
 
@@ -47,7 +43,6 @@ function App() {
       flavors: sessionStorage.getItem("flavors"),
       framework: sessionStorage.getItem("framework"),
       aromaticPersistence: sessionStorage.getItem("aromaticPersistence"),
-      score: sessionStorage.getItem("score"),
     });
     setDataWine(dataWine);
   };
@@ -70,18 +65,6 @@ function App() {
     sessionStorage.getItem("framework"),
     sessionStorage.getItem("aromaticPersistence"),
   ].filter((o) => o !== null).length;
-  
-  const dataCheckedScore = [sessionStorage.getItem("score")].filter(
-    (o) => o !== null
-  ).length;
-
-  console.log(
-    "test",
-    dataCheckedVisual,
-    dataCheckedOlfactif,
-    dataCheckedGustatif,
-    dataCheckedScore
-  );
 
   return (
     <>
@@ -113,14 +96,6 @@ function App() {
           {lastUrlSegment === "gustatif" && (
             <Link
               className={dataCheckedGustatif === 3 ? "link" : "app-disable"}
-              to={`/${id}/${links.next}`}
-            >
-              Suivant
-            </Link>
-          )}
-          {lastUrlSegment === "score" && (
-            <Link
-              className={dataCheckedScore === 1 ? "link" : "app-disable"}
               to={`/${id}/${links.next}`}
             >
               Suivant

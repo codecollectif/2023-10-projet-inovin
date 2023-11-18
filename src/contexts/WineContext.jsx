@@ -93,7 +93,6 @@ export function WineContextProvider({ children }) {
   const [aromaticPersistence, setAromaticPersistence] = useState(
     sessionStorage.getItem("AromaticPersistence")
   );
-  const [score, setScore] = useState(sessionStorage.getItem("score"));
 
   const wineManage = useMemo(() => {
     return {
@@ -123,8 +122,6 @@ export function WineContextProvider({ children }) {
       setFramework,
       aromaticPersistence,
       setAromaticPersistence,
-      score,
-      setScore,
     };
   }, [
     levelWines,
@@ -140,7 +137,6 @@ export function WineContextProvider({ children }) {
     flavors,
     framework,
     aromaticPersistence,
-    score,
   ]);
 
   return (
