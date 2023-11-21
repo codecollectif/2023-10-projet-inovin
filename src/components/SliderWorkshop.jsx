@@ -40,24 +40,24 @@ const SliderWorkshop = (props) => {
           label: "vide",
         },
         {
-          value: 10,
-          label: "10 ml",
-        },
-        {
           value: 20,
           label: "20 ml",
-        },
-        {
-          value: 30,
-          label: "30 ml",
         },
         {
           value: 40,
           label: "40 ml",
         },
         {
-          value: 50,
-          label: "50 ml",
+          value: 60,
+          label: "60 ml",
+        },
+        {
+          value: 80,
+          label: "80 ml",
+        },
+        {
+          value: 100,
+          label: "100 ml",
         },
       ],
     },
@@ -102,7 +102,7 @@ const SliderWorkshop = (props) => {
                 : level.level
             }
             min={0}
-            max={props.maxScore === props.wine.wineName ? 250 : 50}
+            max={props.maxScore === props.wine.wineName ? 250 : 100}
           />
         </Stack>
       ))}

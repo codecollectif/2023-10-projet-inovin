@@ -13,14 +13,14 @@ const Workshop = () => {
 
   const dataWineSort = dataWine.sort((a, b) => a.score - b.score).reverse();
   const firtWineName = dataWineSort[0].wineName;
-
+  console.log(dataWine);
   return (
     <>
       <Navbar />
       <section className="workshop-section">
         <h1 className="workshop-title">Atelier de création</h1>
         <div className="workshop-box">
-          {dataWineSort.map((wine) => (
+          {dataWine.map((wine) => (
             <div className="workshop-card" key={wine.wineName}>
               <SliderWorkshop wine={wine} maxScore={firtWineName} />
             </div>
