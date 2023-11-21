@@ -1,16 +1,16 @@
 import { useParams, useRevalidator } from "react-router-dom";
 
 const ButtonLike = (props) => {
-  const { id } = useParams();
+  //const { id } = useParams();
   const revalidator = useRevalidator();
   const like =
-    (sessionStorage.getItem(`${id}.${props.name}like`) ?? "false") !== "false";
+    (sessionStorage.getItem(`${props.name}Like`) ?? "false") !== "false";
   
   return (
     <button
       type="button"
           onClick={() => {
-            sessionStorage.setItem(`${id}.${props.name}like`, !like);
+            sessionStorage.setItem(`${props.name}Like`, !like);
             revalidator.revalidate(); // "recharge" la page
           }}
           >
