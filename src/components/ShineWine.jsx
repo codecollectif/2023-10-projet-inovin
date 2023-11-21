@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
-import { useParams, useRevalidator } from "react-router-dom";
+import { useRevalidator } from "react-router-dom";
 
 const ShineWine = () => {
   const shineWine = [
@@ -14,17 +14,16 @@ const ShineWine = () => {
     },
   ];
 
-  const { id } = useParams();
   const revalidator = useRevalidator();
   const { setShine } = useWine();
 
   const [shineIdChecked, setShineIdChecked] = useState("");
 
-  const shineChecked = sessionStorage.getItem(`${id}.shine`);
+  const shineChecked = sessionStorage.getItem(`shine`);
   const getIdShineChecked = (e) => {
     setShineIdChecked(parseInt(e.target.id));
     setShine(e.target.name);
-    sessionStorage.setItem(`${id}.shine`, e.target.name);
+    sessionStorage.setItem(`shine`, e.target.name);
     revalidator.revalidate();
   };
 

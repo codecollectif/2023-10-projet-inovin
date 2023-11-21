@@ -11,13 +11,13 @@ export default function ColorWine() {
 
   const [colorIdChecked, setIdColorChecked] = useState("");
 
-  const colorChecked = sessionStorage.getItem(`${id}.colorShade`);
+  const colorChecked = sessionStorage.getItem(`colorShade`);
 
   const getIdColorChecked = (e) => {
     setColorShade(e.target.name);
     setName(id.ColorShade);
     setIdColorChecked(e.target.name);
-    sessionStorage.setItem(`${id}.colorShade`, e.target.name);
+    sessionStorage.setItem(`colorShade`, e.target.name);
     revalidator.revalidate();
   };
 
