@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useParams, useRevalidator } from "react-router-dom";
 
 const Framework = () => {
   const frameworkWine = [
@@ -17,13 +18,19 @@ const Framework = () => {
     },
   ];
 
+  const { id } = useParams();
+  const revalidator = useRevalidator();
   const { setFramework } = useWine();
+
   const [frameworkIdChecked, setFrameworkIdChecked] = useState("");
-  const frameworkChecked = sessionStorage.getItem("framework");
+
+  const frameworkChecked = sessionStorage.getItem(`${id}.framework`);
+
   const getIdFrameworkChecked = (e) => {
     setFrameworkIdChecked(parseInt(e.target.id));
     setFramework(e.target.name);
-    sessionStorage.setItem("framework", e.target.name);
+    sessionStorage.setItem(`${id}.framework`, e.target.name);
+    revalidator.revalidate();
   };
 
   return (
@@ -31,7 +38,7 @@ const Framework = () => {
       <h2>Structure</h2>
       <div className="tasting-div-checkbox">
         {frameworkWine.map((wine) => (
-          <div key={wine.name} className="checkbox-1">
+          <div key={wine.name + "framework"} className="checkbox-1">
             <input
               id={wine.id}
               type="checkbox"

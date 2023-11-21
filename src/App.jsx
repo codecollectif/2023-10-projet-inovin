@@ -48,22 +48,22 @@ function App() {
   };
 
   const dataCheckedVisual = [
-    sessionStorage.getItem("colorShade"),
-    sessionStorage.getItem("shine"),
-    sessionStorage.getItem("colorIntensity"),
-    sessionStorage.getItem("fluidityOfTears"),
+    sessionStorage.getItem(`${id}.colorShade`),
+    sessionStorage.getItem(`${id}.shine`),
+    sessionStorage.getItem(`${id}.colorIntensity`),
+    sessionStorage.getItem(`${id}.fluidityOfTears`),
   ].filter((o) => o !== null).length;
 
   const dataCheckedOlfactif = [
-    sessionStorage.getItem("intensityOfAromas"),
-    sessionStorage.getItem("feeling"),
-    sessionStorage.getItem("aromaticFamilies"),
+    sessionStorage.getItem(`${id}.intensityOfAromas`),
+    sessionStorage.getItem(`${id}.feeling`),
+    sessionStorage.getItem(`${id}.aromaticFamilies`),
   ].filter((o) => o !== null).length;
 
   const dataCheckedGustatif = [
-    sessionStorage.getItem("flavors"),
-    sessionStorage.getItem("framework"),
-    sessionStorage.getItem("aromaticPersistence"),
+    sessionStorage.getItem(`${id}.flavors`),
+    sessionStorage.getItem(`${id}.framework`),
+    sessionStorage.getItem(`${id}.aromaticPersistence`),
   ].filter((o) => o !== null).length;
 
   return (

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useParams, useRevalidator } from "react-router-dom";
 
 const Flavor = () => {
   const flavorWine = [
@@ -29,13 +30,19 @@ const Flavor = () => {
     },
   ];
 
+  const { id } = useParams();
+  const revalidator = useRevalidator();
   const { setFlavors } = useWine();
+
   const [flavorIdChecked, setFlavorIdChecked] = useState("");
-  const flavorChecked = sessionStorage.getItem("flavors");
+
+  const flavorChecked = sessionStorage.getItem(`${id}.flavors`);
+
   const getIdFlavorChecked = (e) => {
     setFlavorIdChecked(parseInt(e.target.id));
     setFlavors(e.target.name);
-    sessionStorage.setItem("flavors", e.target.name);
+    sessionStorage.setItem(`${id}.flavors`, e.target.name);
+    revalidator.revalidate();
   };
 
   return (
@@ -43,7 +50,7 @@ const Flavor = () => {
       <h2>Saveurs</h2>
       <div className="tasting-div-checkbox">
         {flavorWine.map((wine) => (
-          <div key={wine.name} className="checkbox-1">
+          <div key={wine.name + "flavors"} className="checkbox-1">
             <input
               id={wine.id}
               type="checkbox"

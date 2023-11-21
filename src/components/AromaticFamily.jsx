@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useParams, useRevalidator } from "react-router-dom";
 
 const AromaticFamily = () => {
   const aromaticFamilyWine = [
@@ -32,13 +33,22 @@ const AromaticFamily = () => {
       name: "Défauts",
     },
   ];
+
+  const { id } = useParams();
+  const revalidator = useRevalidator();
   const { setAromaticFamilies } = useWine();
+
   const [aromaticFamilyIdChecked, setAromaticFamilyIdChecked] = useState("");
-  const aromaticFamilyChecked = sessionStorage.getItem("aromaticFamilies");
+
+  const aromaticFamilyChecked = sessionStorage.getItem(
+    `${id}.aromaticFamilies`
+  );
+
   const getIdAromaticFamilyChecked = (e) => {
     setAromaticFamilyIdChecked(parseInt(e.target.id));
     setAromaticFamilies(e.target.name);
-    sessionStorage.setItem("aromaticFamilies", e.target.name);
+    sessionStorage.setItem(`${id}.aromaticFamilies`, e.target.name);
+    revalidator.revalidate();
   };
 
   return (
@@ -46,7 +56,7 @@ const AromaticFamily = () => {
       <h2>Familles aromatiques</h2>
       <div className="tasting-div-checkbox">
         {aromaticFamilyWine.map((wine) => (
-          <div key={wine.name} className="checkbox-1">
+          <div key={wine.name + "aromaticFamilies"} className="checkbox-1">
             <input
               id={wine.id}
               type="checkbox"

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useParams, useRevalidator } from "react-router-dom";
 
 const IntensityColor = () => {
   const intensityColor = [
@@ -21,13 +22,19 @@ const IntensityColor = () => {
     },
   ];
 
+  const { id } = useParams();
+  const revalidator = useRevalidator();
   const { setColorIntensity } = useWine();
+
   const [intensityIdColorChecked, setIntensityIdColorChecked] = useState("");
-  const intensityChecked = sessionStorage.getItem("colorIntensity");
+
+  const intensityChecked = sessionStorage.getItem(`${id}.colorIntensity`);
+
   const getIdIntensityColorChecked = (e) => {
     setIntensityIdColorChecked(parseInt(e.target.id));
     setColorIntensity(e.target.name);
-    sessionStorage.setItem("colorIntensity", e.target.name);
+    sessionStorage.setItem(`${id}.colorIntensity`, e.target.name);
+    revalidator.revalidate();
   };
 
   return (
@@ -35,7 +42,7 @@ const IntensityColor = () => {
       <h2>Intensité de la couleur</h2>
       <div className="tasting-div-checkbox">
         {intensityColor.map((wine) => (
-          <div key={wine.name} className="checkbox-1">
+          <div key={wine.name + "colorIntensity"} className="checkbox-1">
             <input
               id={wine.id}
               type="checkbox"

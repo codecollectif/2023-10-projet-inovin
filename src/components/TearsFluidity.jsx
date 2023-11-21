@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useParams, useRevalidator } from "react-router-dom";
 
 const TearsFluidity = () => {
   const tearFludity = [
@@ -13,13 +14,19 @@ const TearsFluidity = () => {
     },
   ];
 
+  const { id } = useParams();
+  const revalidator = useRevalidator();
   const { setFluidityOfTears } = useWine();
+
   const [tearFludityIdChecked, setTearFludityIdChecked] = useState("");
-  const tearFludityChecked = sessionStorage.getItem("fluidityOfTears");
+
+  const tearFludityChecked = sessionStorage.getItem(`${id}.fluidityOfTears`);
+
   const getIdTearFluidityChecked = (e) => {
     setTearFludityIdChecked(parseInt(e.target.id));
     setFluidityOfTears(e.target.name);
-    sessionStorage.setItem("fluidityOfTears", e.target.name);
+    sessionStorage.setItem(`${id}.fluidityOfTears`, e.target.name);
+    revalidator.revalidate();
   };
 
   return (
@@ -31,7 +38,7 @@ const TearsFluidity = () => {
             <input
               id={wine.id}
               type="checkbox"
-              name={wine.name}
+              name={wine.name + "fluidityOfTears"}
               onChange={(e) => getIdTearFluidityChecked(e)}
               checked={
                 wine.id === tearFludityIdChecked ||

@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 
 import WineList from "../components/WineList";
 import Navbar from "../components/Navbar";
+
 import { useWine } from "../contexts/WineContext";
 
 import "./start.css";
 
 function Start() {
-  const wines = useLoaderData();
   const { dataWine } = useWine();
+
+  const wines = useLoaderData();
+
   sessionStorage.clear();
+
   wines.map((wine) => sessionStorage.setItem(`${wine}`, 0));
 
   return (

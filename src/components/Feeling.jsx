@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useParams, useRevalidator } from "react-router-dom";
 
 const Feeling = () => {
   const feelingWine = [
@@ -21,13 +22,19 @@ const Feeling = () => {
     },
   ];
 
+  const { id } = useParams();
+  const revalidator = useRevalidator();
   const { setFeeling } = useWine();
+
   const [feelingIdChecked, setFeelingIdChecked] = useState("");
-  const feelingChecked = sessionStorage.getItem("feeling");
+
+  const feelingChecked = sessionStorage.getItem(`${id}.feeling`);
+
   const getIdFeelingChecked = (e) => {
     setFeelingIdChecked(parseInt(e.target.id));
     setFeeling(e.target.name);
-    sessionStorage.setItem("feeling", e.target.name);
+    sessionStorage.setItem(`${id}.feeling`, e.target.name);
+    revalidator.revalidate();
   };
 
   return (
@@ -35,7 +42,7 @@ const Feeling = () => {
       <h2>Impression</h2>
       <div className="tasting-div-checkbox">
         {feelingWine.map((wine) => (
-          <div key={wine.name} className="checkbox-1">
+          <div key={wine.name + "feeling"} className="checkbox-1">
             <input
               id={wine.id}
               type="checkbox"

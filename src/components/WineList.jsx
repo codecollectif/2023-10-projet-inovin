@@ -7,18 +7,19 @@ import GlassWine from "../assets/pictures/glassWine.png";
 import "../pages/welcome.css";
 
 const WineList = ({ data }) => {
+
   const { dataWine } = useWine();
   const listWineName = dataWine.map((wine) => wine.wineName);
 
-  return data.map((o) => (
+  return data.map((wine) => (
     <Link
-      className={listWineName.includes(o) ? "card-link disable" : "card-link"}
-      key={o}
-      to={listWineName.includes(o) ? null : `/${o}/visuel`}
+      className={listWineName.includes(wine) ? "card-link disable" : "card-link"}
+      key={wine}
+      to={listWineName.includes(wine) ? null : `/${wine}/visuel`}
     >
       <section className="card">
-        <h2 className="card-title">{o}</h2>
-        {listWineName.includes(o) ? (
+        <h2 className="card-title">{wine}</h2>
+        {listWineName.includes(wine) ? (
           <img className="card-img" src={GlassWine} alt="déguster" />
         ) : (
           <img className="card-img" src={Glasses} alt="à déguster" />
