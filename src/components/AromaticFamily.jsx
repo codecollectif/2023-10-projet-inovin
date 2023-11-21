@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
-import { useParams, useRevalidator } from "react-router-dom";
+import { useRevalidator } from "react-router-dom";
 
 const AromaticFamily = () => {
   const aromaticFamilyWine = [
@@ -34,20 +34,19 @@ const AromaticFamily = () => {
     },
   ];
 
-  const { id } = useParams();
   const revalidator = useRevalidator();
   const { setAromaticFamilies } = useWine();
 
   const [aromaticFamilyIdChecked, setAromaticFamilyIdChecked] = useState("");
 
   const aromaticFamilyChecked = sessionStorage.getItem(
-    `${id}.aromaticFamilies`
+    `aromaticFamilies`
   );
 
   const getIdAromaticFamilyChecked = (e) => {
     setAromaticFamilyIdChecked(parseInt(e.target.id));
     setAromaticFamilies(e.target.name);
-    sessionStorage.setItem(`${id}.aromaticFamilies`, e.target.name);
+    sessionStorage.setItem(`aromaticFamilies`, e.target.name);
     revalidator.revalidate();
   };
 

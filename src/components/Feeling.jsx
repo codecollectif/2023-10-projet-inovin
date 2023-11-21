@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
-import { useParams, useRevalidator } from "react-router-dom";
+import { useRevalidator } from "react-router-dom";
 
 const Feeling = () => {
   const feelingWine = [
@@ -22,18 +22,17 @@ const Feeling = () => {
     },
   ];
 
-  const { id } = useParams();
   const revalidator = useRevalidator();
   const { setFeeling } = useWine();
 
   const [feelingIdChecked, setFeelingIdChecked] = useState("");
 
-  const feelingChecked = sessionStorage.getItem(`${id}.feeling`);
+  const feelingChecked = sessionStorage.getItem(`feeling`);
 
   const getIdFeelingChecked = (e) => {
     setFeelingIdChecked(parseInt(e.target.id));
     setFeeling(e.target.name);
-    sessionStorage.setItem(`${id}.feeling`, e.target.name);
+    sessionStorage.setItem(`feeling`, e.target.name);
     revalidator.revalidate();
   };
 

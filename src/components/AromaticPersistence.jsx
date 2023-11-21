@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
-import { useParams, useRevalidator } from "react-router-dom";
+import { useRevalidator } from "react-router-dom";
 
 const AromaticPersistence = () => {
   const aromaticPersistenceWine = [
@@ -17,7 +17,7 @@ const AromaticPersistence = () => {
       name: "Persistante",
     },
   ];
-  const { id } = useParams();
+
   const revalidator = useRevalidator();
   const { setAromaticPersistence } = useWine();
 
@@ -25,13 +25,13 @@ const AromaticPersistence = () => {
     useState("");
 
   const aromaticPersistenceChecked = sessionStorage.getItem(
-    `${id}.aromaticPersistence`
+    `aromaticPersistence`
   );
 
   const getIdAromaticPersistenceChecked = (e) => {
     setAromaticPersistenceIdChecked(parseInt(e.target.id));
     setAromaticPersistence(e.target.name);
-    sessionStorage.setItem(`${id}.aromaticPersistence`, e.target.name);
+    sessionStorage.setItem(`aromaticPersistence`, e.target.name);
     revalidator.revalidate();
   };
 

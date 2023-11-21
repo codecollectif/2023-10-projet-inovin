@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
-import { useParams, useRevalidator } from "react-router-dom";
+import { useRevalidator } from "react-router-dom";
 
 const IntensityColor = () => {
   const intensityColor = [
@@ -22,18 +22,17 @@ const IntensityColor = () => {
     },
   ];
 
-  const { id } = useParams();
   const revalidator = useRevalidator();
   const { setColorIntensity } = useWine();
 
   const [intensityIdColorChecked, setIntensityIdColorChecked] = useState("");
 
-  const intensityChecked = sessionStorage.getItem(`${id}.colorIntensity`);
+  const intensityChecked = sessionStorage.getItem(`colorIntensity`);
 
   const getIdIntensityColorChecked = (e) => {
     setIntensityIdColorChecked(parseInt(e.target.id));
     setColorIntensity(e.target.name);
-    sessionStorage.setItem(`${id}.colorIntensity`, e.target.name);
+    sessionStorage.setItem(`colorIntensity`, e.target.name);
     revalidator.revalidate();
   };
 
