@@ -6,7 +6,7 @@ import "./profile.css";
 
 const Profile = () => {
   const { dataWine } = useWine();
-  console.log(dataWine);
+  
   return (
     <>
       <Navbar />
