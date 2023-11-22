@@ -9,26 +9,13 @@ import { Link } from "react-router-dom";
 import "./workshop.css";
 
 const Workshop = () => {
+  
+  const { dataWine,levelWines } = useWine();
 
-  const { dataWine,dataLike, levelWines } = useWine();
-/* 
-  aromaticFamiliesLike
-  aromaticPersistenceLike
-  colorIntensityLike
-  colorShadeLike
-  feelingLike    
-  flavorsLike   
-  fluidityOfTearsLike 
-  frameworkLike 
-  intensityOfAromasLike
-  shineLike
-*/
   
-  const dataWineSort = dataWine.sort((a, b) => a - b).reverse();
+  const dataWineSort = dataWine.sort((a, b) => a.countLike - b.countLike).reverse();
   const firtWineName = dataWineSort[0].wineName;
-  
-  console.log(dataLike);
-  
+  sessionStorage.setItem(firtWineName,125)
   return (
     <>
       <Navbar />
@@ -41,7 +28,7 @@ const Workshop = () => {
             </div>
           ))}
         </div>
-        <p>Volume total {levelWines} ml</p>
+        <p>Volume total { levelWines ?? 125} ml</p>
         <div className="workshop-glass">
           <GlassesPicture />
         </div>

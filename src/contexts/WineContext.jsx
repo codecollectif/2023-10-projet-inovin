@@ -1,58 +1,4 @@
 import { createContext, useContext, useMemo, useState } from "react";
-const devDataLike = [
-  {
-    aromaticFamiliesLike: null,
-    aromaticPersistenceLike: null,
-    colorIntensityLike: "true",
-    colorShadeLike: "true",
-    feelingLike: null,
-    flavorsLike: null,
-    fluidityOfTearsLike: "true",
-    frameworkLike: "false",
-    intensityOfAromasLike: "true",
-    shineLike: "true",
-    wineName: "Chasselat",
-  },
-  {
-    aromaticFamiliesLike: "true",
-    aromaticPersistenceLike: null,
-    colorIntensityLike: "true",
-    colorShadeLike: "true",
-    feelingLike: null,
-    flavorsLike: null,
-    fluidityOfTearsLike: "true",
-    frameworkLike: "false",
-    intensityOfAromasLike: "true",
-    shineLike: "true",
-    wineName: "Ciera",
-  },
-  {
-    aromaticFamiliesLike: null,
-    aromaticPersistenceLike: null,
-    colorIntensityLike: "true",
-    colorShadeLike: "true",
-    feelingLike: null,
-    flavorsLike: null,
-    fluidityOfTearsLike: "true",
-    frameworkLike: "false",
-    intensityOfAromasLike: "true",
-    shineLike: "true",
-    wineName: "Grenache",
-  },
-  {
-    aromaticFamiliesLike: "true",
-    aromaticPersistenceLike: null,
-    colorIntensityLike: "true",
-    colorShadeLike: "true",
-    feelingLike: null,
-    flavorsLike: null,
-    fluidityOfTearsLike: "true",
-    frameworkLike: "false",
-    intensityOfAromasLike: "true",
-    shineLike: "true",
-    wineName: "Pinot noir",
-  },
-];
 const devDataWine = [
   {
     aromaticFamilies: "Fruits",
@@ -75,6 +21,7 @@ const devDataWine = [
     intensityOfAromasLike: "true",
     shine: "étincelante",
     shineLike: "true",
+    countLike:5,
     wineName: "Chasselat",
   },
   {
@@ -98,6 +45,7 @@ const devDataWine = [
     intensityOfAromasLike: null,
     shine: "étincelante",
     shineLike: "false",
+    countLike:6,
     wineName: "Ciera",
   },
   {
@@ -112,7 +60,7 @@ const devDataWine = [
     feeling: "Franc",
     feelingLike: "true",
     flavors: "Gras",
-    flavorsLike: "true",
+    flavorsLike: "false",
     fluidityOfTears: "Fines et fluides",
     fluidityOfTearsLike: null,
     framework: "Fluide",
@@ -121,6 +69,7 @@ const devDataWine = [
     intensityOfAromasLike: null,
     shine: "étincelante",
     shineLike: null,
+    countLike:4,
     wineName: "Grenache",
   },
   {
@@ -144,6 +93,7 @@ const devDataWine = [
     intensityOfAromasLike: null,
     shine: "étincelante",
     shineLike: null,
+    countLike:3,
     wineName: "Pinot noir",
   },
 ];
@@ -151,11 +101,11 @@ const devDataWine = [
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
-  const [levelWines, setLevelWines] = useState(0);
-
-  const [dataLike,setDataLike] = useState(devDataLike);
+  const [levelWines, setLevelWines] = useState(125);
 
   const [dataWine, setDataWine] = useState(devDataWine);
+
+  const [countLike,setCountLike]=useState(0)
 
   const [name, setName] = useState(sessionStorage.getItem("name"));
 
@@ -191,10 +141,10 @@ export function WineContextProvider({ children }) {
     return {
       levelWines,
       setLevelWines,
-      dataLike,
-      setDataLike,
       dataWine,
       setDataWine,
+      countLike,
+      setCountLike,
       name,
       setName,
       colorShade,
@@ -220,8 +170,8 @@ export function WineContextProvider({ children }) {
     };
   }, [
     levelWines,
-    dataLike,
     dataWine,
+    countLike,
     name,
     colorShade,
     shine,

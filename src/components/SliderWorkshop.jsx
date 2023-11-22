@@ -62,18 +62,21 @@ const SliderWorkshop = (props) => {
       ],
     },
   ];
-  const [value, setValue] = useState(0);
+
+  const [value, setValue] = useState(125);
   const { dataWine, setLevelWines } = useWine();
+  
 
   const handleChange = (e) => {
-    setValue(e.target.value);
-    sessionStorage.setItem(`${props.wine.wineName}`, e.target.value);
+       setValue(e.target.value);
+      sessionStorage.setItem(`${props.wine.wineName}`, e.target.value);
   };
 
   useEffect(() => {
     const wines = dataWine
       .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
-      .reduce((acc, curent) => curent + acc);
+      .reduce((acc, current) => current + acc);
+      console.log(wines);
     setLevelWines(parseInt(wines));
   }, [value]);
 
@@ -90,7 +93,7 @@ const SliderWorkshop = (props) => {
           <Slider
             orientation="vertical"
             aria-label={level.title}
-            defaultValue={props.maxScore === props.wine.wineName ? 125 : 1}
+            defaultValue={props.maxScore === props.wine.wineName ? 125 : 0}
             sx={{ color: "#ac1e44" }}
             onChange={(e) => handleChange(e)}
             valueLabelDisplay="auto"

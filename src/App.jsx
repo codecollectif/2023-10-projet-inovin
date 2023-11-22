@@ -28,7 +28,7 @@ function App() {
 
   const [lastUrlSegment] = pathname.match(/([^/]+)\/?$/);
   const links = allLinks[lastUrlSegment];
-  const { dataWine, dataLike, setDataWine, setDataLike } = useWine();
+  const { dataWine, countLike, setDataWine, setCountLike } = useWine();
 
   const ButtonValid = () => {
     dataWine.push({
@@ -53,22 +53,10 @@ function App() {
       frameworkLike: sessionStorage.getItem("frameworkLike"),
       aromaticPersistence: sessionStorage.getItem("aromaticPersistence"),
       aromaticPersistenceLike: sessionStorage.getItem("aromaticPersistenceLike"),
-    });
-    dataLike.push({
-      wineName: id,
-      colorShadeLike: sessionStorage.getItem("colorShadeLike"),
-      shineLike: sessionStorage.getItem("shineLike"),
-      colorIntensityLike: sessionStorage.getItem("colorIntensityLike"),
-      fluidityOfTearsLike: sessionStorage.getItem("fluidityOfTearsLike"),
-      intensityOfAromasLike: sessionStorage.getItem("intensityOfAromasLike"),
-      feelingLike: sessionStorage.getItem("feelingLike"),
-      aromaticFamiliesLike: sessionStorage.getItem("aromaticFamiliesLike"),
-      flavorsLike: sessionStorage.getItem("flavorsLike"),
-      frameworkLike: sessionStorage.getItem("frameworkLike"),
-      aromaticPersistenceLike: sessionStorage.getItem("aromaticPersistenceLike"),
+      countLike: countLike,
     });
     setDataWine(dataWine);
-    setDataLike(dataLike);
+    setCountLike(0)
   };
 
   const dataCheckedVisual = [
