@@ -9,11 +9,26 @@ import { Link } from "react-router-dom";
 import "./workshop.css";
 
 const Workshop = () => {
-  const { dataWine, levelWines } = useWine();
 
-  const dataWineSort = dataWine.sort((a, b) => a.score - b.score).reverse();
+  const { dataWine,dataLike, levelWines } = useWine();
+/* 
+  aromaticFamiliesLike
+  aromaticPersistenceLike
+  colorIntensityLike
+  colorShadeLike
+  feelingLike    
+  flavorsLike   
+  fluidityOfTearsLike 
+  frameworkLike 
+  intensityOfAromasLike
+  shineLike
+*/
+  
+  const dataWineSort = dataWine.sort((a, b) => a - b).reverse();
   const firtWineName = dataWineSort[0].wineName;
-  console.log(dataWine);
+  
+  console.log(dataLike);
+  
   return (
     <>
       <Navbar />
