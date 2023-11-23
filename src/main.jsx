@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { WineContextProvider } from "./contexts/WineContext";
 
 import Welcome from "./pages/Welcome";
+import Select from "./pages/Select";
 import Start from "./pages/Start";
 import Profile from "./pages/Profile";
 
@@ -19,7 +20,7 @@ import Finish from "./pages/Finish";
 
 import "./main.css";
 
-import Papa from "papaparse";
+//const oldURL = "https://docs.google.com/spreadsheets/d/1IKLybL1aU7br0tjb7KLa1BTskjQHeIf96WAjG5dlQ9Y/export?exportFormat=csv&format=csv#gid=0"
 
 const router = createBrowserRouter([
   {
@@ -27,12 +28,15 @@ const router = createBrowserRouter([
     element: <Welcome />,
   },
   {
+    path: "/select",
+    element: <Select />,
+  },
+  {
     path: "/start",
-    loader: () => {
+    /* loader: () => {
       return new Promise((resolve) => {
-        const URL =
-          "https://docs.google.com/spreadsheets/d/1Q2L2mJr6xuxMMcktiQ2i8oDr68ag_bVjXLwdUx4CKCM/export?exportFormat=csv&format=csv?pli=1#gid=0";
-
+        const URL = "https://docs.google.com/spreadsheets/d/1Q2L2mJr6xuxMMcktiQ2i8oDr68ag_bVjXLwdUx4CKCM/export?exportFormat=csv&format=csv?pli=1#gid=0"
+        
         Papa.parse(URL, {
           download: true,
           complete: function (result) {
@@ -40,7 +44,7 @@ const router = createBrowserRouter([
           },
         });
       });
-    },
+    }, */
     element: <Start />,
   },
   {

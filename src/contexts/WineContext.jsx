@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, useState } from "react";
-const devDataWine = [
+/* const devDataWine = [
   {
     aromaticFamilies: "Fruits",
     aromaticFamiliesLike: null,
@@ -96,14 +96,16 @@ const devDataWine = [
     countLike: 3,
     wineName: "Pinot noir",
   },
-];
+]; */
 
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
+  const [startWines, setStartWines] = useState([]);
+
   const [levelWines, setLevelWines] = useState(125);
 
-  const [dataWine, setDataWine] = useState(devDataWine);
+  const [dataWine, setDataWine] = useState([]);
 
   const [countLike, setCountLike] = useState(0);
 
@@ -139,6 +141,8 @@ export function WineContextProvider({ children }) {
 
   const wineManage = useMemo(() => {
     return {
+      startWines,
+      setStartWines,
       levelWines,
       setLevelWines,
       dataWine,
@@ -169,6 +173,7 @@ export function WineContextProvider({ children }) {
       setAromaticPersistence,
     };
   }, [
+    startWines,
     levelWines,
     dataWine,
     countLike,

@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+//import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import WineList from "../components/WineList";
@@ -9,26 +9,26 @@ import { useWine } from "../contexts/WineContext";
 import "./start.css";
 
 function Start() {
-  const { dataWine } = useWine();
-
-  const wines = useLoaderData();
+  const { dataWine, startWines } = useWine();
+  console.log(dataWine, startWines);
+  // const wines = useLoaderData();
 
   sessionStorage.clear();
 
-  wines.map((wine) => sessionStorage.setItem(`${wine}`, 0));
+  startWines.map((wine) => sessionStorage.setItem(`${wine}`, 0));
 
   return (
     <main className="start">
       <Navbar />
       <h1 className="start-title">Affinez vos goûts</h1>
       <div className="start-data">
-        <WineList data={wines} />
+        <WineList data={startWines} />
       </div>
       <div className="start-div-btn">
         <Link
           to={"/creation"}
           className={
-            wines.length !== dataWine.length
+            startWines.length !== dataWine.length
               ? "start-disable start-btn"
               : "link start-btn"
           }
