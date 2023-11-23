@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, useState } from "react";
-const devDataWine = [
+/* const devDataWine = [
   {
     aromaticFamilies: "Fruits",
     aromaticFamiliesLike: null,
@@ -96,14 +96,14 @@ const devDataWine = [
     countLike: 3,
     wineName: "Pinot noir",
   },
-];
+]; */
 
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
   const [levelWines, setLevelWines] = useState(125);
 
-  const [dataWine, setDataWine] = useState(devDataWine);
+  const [dataWine, setDataWine] = useState(/* devDataWine */[]);
 
   const [countLike, setCountLike] = useState(0);
 

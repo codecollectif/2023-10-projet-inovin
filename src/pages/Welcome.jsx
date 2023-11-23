@@ -9,6 +9,9 @@ function Welcome() {
       <div className="glasses">
         <img src={Glasses} alt="" />
       </div>
+      <Link to="/select" className="link ">
+        Selection
+      </Link>
       <Link to="/start" className="link welcome-btn">
         Commencer
       </Link>
