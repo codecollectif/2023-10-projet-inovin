@@ -105,7 +105,7 @@ export function WineContextProvider({ children }) {
 
   const [levelWines, setLevelWines] = useState(125);
 
-  const [dataWine, setDataWine] = useState(/* devDataWine */ []);
+  const [dataWine, setDataWine] = useState([]);
 
   const [countLike, setCountLike] = useState(0);
 
