@@ -21,7 +21,7 @@ const devDataWine = [
     intensityOfAromasLike: "true",
     shine: "étincelante",
     shineLike: "true",
-    countLike:5,
+    countLike: 5,
     wineName: "Chasselat",
   },
   {
@@ -45,7 +45,7 @@ const devDataWine = [
     intensityOfAromasLike: null,
     shine: "étincelante",
     shineLike: "false",
-    countLike:6,
+    countLike: 6,
     wineName: "Ciera",
   },
   {
@@ -69,7 +69,7 @@ const devDataWine = [
     intensityOfAromasLike: null,
     shine: "étincelante",
     shineLike: null,
-    countLike:4,
+    countLike: 4,
     wineName: "Grenache",
   },
   {
@@ -93,7 +93,7 @@ const devDataWine = [
     intensityOfAromasLike: null,
     shine: "étincelante",
     shineLike: null,
-    countLike:3,
+    countLike: 3,
     wineName: "Pinot noir",
   },
 ];
@@ -105,7 +105,7 @@ export function WineContextProvider({ children }) {
 
   const [dataWine, setDataWine] = useState(devDataWine);
 
-  const [countLike,setCountLike]=useState(0)
+  const [countLike, setCountLike] = useState(0);
 
   const [name, setName] = useState(sessionStorage.getItem("name"));
 

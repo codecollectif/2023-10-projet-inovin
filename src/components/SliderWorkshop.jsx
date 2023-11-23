@@ -63,20 +63,19 @@ const SliderWorkshop = (props) => {
     },
   ];
 
-  const [value, setValue] = useState(125);
   const { dataWine, setLevelWines } = useWine();
-  
+  const [value, setValue] = useState(125);
 
   const handleChange = (e) => {
-       setValue(e.target.value);
-      sessionStorage.setItem(`${props.wine.wineName}`, e.target.value);
+    setValue(e.target.value);
+    sessionStorage.setItem(`${props.wine.wineName}`, e.target.value);
   };
 
   useEffect(() => {
     const wines = dataWine
       .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
       .reduce((acc, current) => current + acc);
-      console.log(wines);
+    console.log(wines);
     setLevelWines(parseInt(wines));
   }, [value]);
 
