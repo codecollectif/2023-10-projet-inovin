@@ -28,7 +28,7 @@ function App() {
 
   const [lastUrlSegment] = pathname.match(/([^/]+)\/?$/);
   const links = allLinks[lastUrlSegment];
-  const { dataWine, setDataWine } = useWine();
+  const { dataWine, countLike, setDataWine, setCountLike } = useWine();
 
   const ButtonValid = () => {
     dataWine.push({
@@ -53,8 +53,10 @@ function App() {
       frameworkLike: sessionStorage.getItem("frameworkLike"),
       aromaticPersistence: sessionStorage.getItem("aromaticPersistence"),
       aromaticPersistenceLike: sessionStorage.getItem("aromaticPersistenceLike"),
+      countLike: countLike,
     });
     setDataWine(dataWine);
+    setCountLike(0)
   };
 
   const dataCheckedVisual = [

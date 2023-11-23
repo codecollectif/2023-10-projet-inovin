@@ -11,8 +11,12 @@ import "./workshop.css";
 const Workshop = () => {
   const { dataWine, levelWines } = useWine();
 
-  const dataWineSort = dataWine.sort((a, b) => a.score - b.score).reverse();
+  const dataWineSort = dataWine
+    .sort((a, b) => a.countLike - b.countLike)
+    .reverse();
   const firtWineName = dataWineSort[0].wineName;
+
+  sessionStorage.setItem(firtWineName, 125);
 
   return (
     <>
@@ -20,13 +24,13 @@ const Workshop = () => {
       <section className="workshop-section">
         <h1 className="workshop-title">Atelier de création</h1>
         <div className="workshop-box">
-          {dataWineSort.map((wine) => (
+          {dataWine.map((wine) => (
             <div className="workshop-card" key={wine.wineName}>
               <SliderWorkshop wine={wine} maxScore={firtWineName} />
             </div>
           ))}
         </div>
-        <p>Volume total {levelWines} ml</p>
+        <p>Volume total {levelWines ?? 125} ml</p>
         <div className="workshop-glass">
           <GlassesPicture />
         </div>
