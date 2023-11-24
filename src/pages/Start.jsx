@@ -1,4 +1,3 @@
-//import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import WineList from "../components/WineList";
@@ -10,13 +9,11 @@ import "./start.css";
 
 function Start() {
   const { dataWine, startWines } = useWine();
-  console.log(dataWine, startWines);
-  // const wines = useLoaderData();
-
+  
   sessionStorage.clear();
-
+  //init tous les vin a zero ml 
   startWines.map((wine) => sessionStorage.setItem(`${wine}`, 0));
-
+  
   return (
     <main className="start">
       <Navbar />

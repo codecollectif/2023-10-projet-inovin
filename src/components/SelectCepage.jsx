@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
 import { Link } from "react-router-dom";
+
 const SelectCepage = (props) => {
   const { setStartWines } = useWine();
 
@@ -14,7 +15,7 @@ const SelectCepage = (props) => {
     setStartWines(Wines);
     if (Wines.includes("")) {
       const winesSort = Wines.sort((a, b) => a.localeCompare(b)).slice(1);
-      setStartWines(setStartWines(winesSort));
+      setStartWines(winesSort);
       if (winesSort.includes("")) {
         const secondSort = winesSort.slice(1);
         setStartWines(secondSort);
@@ -41,6 +42,7 @@ const SelectCepage = (props) => {
               </option>
             ))}
           </select>
+          <span className="select-star">*</span>
         </div>
         <div>
           <label className="select-label" htmlFor="2eme cepages">
@@ -58,6 +60,7 @@ const SelectCepage = (props) => {
               </option>
             ))}
           </select>
+          <span className="select-star">*</span>
         </div>
         <div>
           <label className="select-label" htmlFor="3eme cepages">
@@ -94,7 +97,13 @@ const SelectCepage = (props) => {
           </select>
         </div>
       </div>
-      <div className={firstSelect === "" ? "select-disable" : "select-link"}>
+      <div
+        className={
+          firstSelect === "" || secondSelect === ""
+            ? "select-disable"
+            : "select-link"
+        }
+      >
         <Link className="link" to="/start" onClick={selectAllWines}>
           selection ok
         </Link>

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 import "./workshop.css";
 
+
 const Workshop = () => {
   const { dataWine, levelWines } = useWine();
 
@@ -15,8 +16,6 @@ const Workshop = () => {
     .sort((a, b) => a.countLike - b.countLike)
     .reverse();
   const firtWineName = dataWineSort[0].wineName;
-
-  sessionStorage.setItem(firtWineName, 125);
 
   return (
     <>
