@@ -39,6 +39,12 @@
   margin-left: 1rem;
 }
 
+.select-star{
+  color: red;
+  font-size: xx-large;
+  font-weight: 900;
+}
+
 .select-disable {
   display: none;
 }

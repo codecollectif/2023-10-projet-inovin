@@ -22,7 +22,7 @@ import { createContext, useContext, useMemo, useState } from "react";
     shine: "étincelante",
     shineLike: "true",
     countLike: 5,
-    wineName: "Chasselat",
+    wineName: "Pinot blanc",
   },
   {
     aromaticFamilies: "Fruits",
@@ -46,7 +46,7 @@ import { createContext, useContext, useMemo, useState } from "react";
     shine: "étincelante",
     shineLike: "false",
     countLike: 6,
-    wineName: "Ciera",
+    wineName: "Petit Manseng",
   },
   {
     aromaticFamilies: "Fruits",
@@ -70,7 +70,7 @@ import { createContext, useContext, useMemo, useState } from "react";
     shine: "étincelante",
     shineLike: null,
     countLike: 4,
-    wineName: "Grenache",
+    wineName: "Chasselas",
   },
   {
     aromaticFamilies: "Fruits",
@@ -94,18 +94,20 @@ import { createContext, useContext, useMemo, useState } from "react";
     shine: "étincelante",
     shineLike: null,
     countLike: 3,
-    wineName: "Pinot noir",
+    wineName: "Sylvaner",
   },
 ]; */
+
+/* const devStartWines = ["Sylvaner","Chasselas","Petit Manseng","Pinot blanc",] */
 
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
-  const [startWines, setStartWines] = useState([]);
+  const [startWines, setStartWines] = useState(/* devStartWines */ []);
 
   const [levelWines, setLevelWines] = useState(125);
 
-  const [dataWine, setDataWine] = useState([]);
+  const [dataWine, setDataWine] = useState(/* devDataWine */ []);
 
   const [countLike, setCountLike] = useState(0);
 

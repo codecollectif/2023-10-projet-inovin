@@ -8,7 +8,8 @@ import Navbar from "../components/Navbar";
 
 const Select = () => {
   const URL =
-    "https://docs.google.com/spreadsheets/d/1Q2L2mJr6xuxMMcktiQ2i8oDr68ag_bVjXLwdUx4CKCM/export?exportFormat=csv&format=csv?pli=1#gid=0";
+    "https://docs.google.com/spreadsheets/d/1IKLybL1aU7br0tjb7KLa1BTskjQHeIf96WAjG5dlQ9Y/export?exportFormat=csv&format=csv#gid=0";
+
   const [data, setData] = useState([]);
   const dataSlice = data.slice(2);
   useEffect(() => {
@@ -16,7 +17,6 @@ const Select = () => {
       Papa.parse(URL, {
         download: true,
         complete: function (result) {
-          //resolve(result.data.flat());
           setData(result.data.flat());
         },
       });
