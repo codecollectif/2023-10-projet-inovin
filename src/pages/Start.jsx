@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 import WineList from "../components/WineList";
 import Navbar from "../components/Navbar";
@@ -7,17 +7,15 @@ import Navbar from "../components/Navbar";
 import { useWine } from "../contexts/WineContext";
 
 import "./start.css";
-import { useEffect } from "react";
 
 function Start() {
-  const { dataWine, startWines,setStartWines } = useWine();
+  const { dataWine, startWines, setStartWines } = useWine();
   const navigate = useNavigate();
-  console.log(dataWine, startWines);
-  let verifName = startWines
-  
+  let verifName = startWines;
+
   useEffect(() => {
-    if ((startWines.length === 0)||(verifName.length > new Set(verifName).size)) {
-      setStartWines([])
+    if (startWines.length === 0 || verifName.length > new Set(verifName).size) {
+      setStartWines([]);
       navigate("/");
     }
   });

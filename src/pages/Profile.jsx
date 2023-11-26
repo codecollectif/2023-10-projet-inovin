@@ -7,7 +7,10 @@ import ProfileLikes from "../components/ProfileLikes";
 import "./profile.css";
 
 const Profile = () => {
-  const { dataWine, dataLikes, setDataLikes } = useWine();
+  const { dataWine, dataLikes, startWines, setDataLikes } = useWine();
+
+  //init tous les vin a zero ml
+  startWines.map((wine) => sessionStorage.setItem(`${wine}`, 0));
 
   const handleClick = (e) => {
     const otherWine = dataLikes.filter(
@@ -28,9 +31,9 @@ const Profile = () => {
       wineName: e.target.name,
     });
     otherWine.sort((a, b) => a.countLike + b.countLike);
-
     setDataLikes(otherWine);
   };
+
   return (
     <>
       <Navbar />

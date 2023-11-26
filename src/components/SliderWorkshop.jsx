@@ -79,18 +79,16 @@ const SliderWorkshop = (props) => {
     const levelAllWines = dataWine
       .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
       .reduce((acc, current) => acc + current);
-      if (levelAllWines>=251) {
-        setLevelAllWines(0);
-      } else{
-        setLevelAllWines(levelAllWines);
-      }
+    if (levelAllWines >= 251) {
+      setLevelAllWines(0);
+    } else {
+      setLevelAllWines(levelAllWines);
+    }
   }, [value]);
 
   return (
     <>
-      <h2>
-        {props.wine.wineName}
-      </h2>
+      <h2>{props.wine.wineName}</h2>
       {slideWineLevel.map((level) => (
         <Stack
           className="center"

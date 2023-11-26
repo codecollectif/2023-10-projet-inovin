@@ -1,10 +1,9 @@
 import { useWine } from "../contexts/WineContext";
+import { Link } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import SliderWorkshop from "../components/SliderWorkshop";
 import GlassesPicture from "../components/Glasses";
-
-import { Link } from "react-router-dom";
 
 import "./workshop.css";
 
@@ -30,7 +29,10 @@ const Workshop = () => {
           <GlassesPicture />
         </div>
         <div className="workshop-link">
-          <Link to={"/finish"} className={levelAllWines === 0 ? "workshop-disable":"link"}>
+          <Link
+            to={"/finish"}
+            className={levelAllWines === 0 ? "workshop-disable" : "link"}
+          >
             Passer à la page de fin
           </Link>
         </div>
