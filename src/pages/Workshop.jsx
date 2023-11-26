@@ -31,7 +31,7 @@ const Workshop = () => {
         <div className="workshop-link">
           <Link
             to={"/finish"}
-            className={levelAllWines === 0 ? "workshop-disable" : "link"}
+            className={"link"}
           >
             Passer à la page de fin
           </Link>
