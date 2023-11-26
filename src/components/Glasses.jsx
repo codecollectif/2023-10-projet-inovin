@@ -15,35 +15,35 @@ import GlassesFull from "../assets/pictures/verre10.png";
 const Glasses = () => {
   const [Glasses, setGlasses] = useState(GlassesVoid);
 
-  const { levelWines } = useWine();
+  const { levelAllWines } = useWine();
 
   const displayGlasses = () => {
-    if (levelWines >= 250) {
+    if (levelAllWines >= 250) {
       setGlasses(GlassesFull);
-    } else if (levelWines >= 215) {
+    } else if (levelAllWines >= 215) {
       setGlasses(Glasses9);
-    } else if (levelWines >= 180) {
+    } else if (levelAllWines >= 180) {
       setGlasses(Glasses8);
-    } else if (levelWines >= 150) {
+    } else if (levelAllWines >= 150) {
       setGlasses(Glasses7);
-    } else if (levelWines >= 125) {
+    } else if (levelAllWines >= 125) {
       setGlasses(Glasses6);
-    } else if (levelWines >= 100) {
+    } else if (levelAllWines >= 100) {
       setGlasses(Glasses5);
-    } else if (levelWines >= 75) {
+    } else if (levelAllWines >= 75) {
       setGlasses(Glasses4);
-    } else if (levelWines >= 50) {
+    } else if (levelAllWines >= 50) {
       setGlasses(Glasses3);
-    } else if (levelWines >= 25) {
+    } else if (levelAllWines >= 25) {
       setGlasses(Glasses2);
-    } else if (levelWines === 0) {
+    } else if (levelAllWines === 0) {
       setGlasses(GlassesVoid);
     }
   };
 
   useEffect(() => {
     displayGlasses();
-  }, [levelWines]);
+  }, [levelAllWines]);
   return (
     <>
       <img className="workshop-glass-img" src={Glasses} alt="verre de vin" />

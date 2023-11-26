@@ -63,36 +63,34 @@ const SliderWorkshop = (props) => {
     },
   ];
 
-  const { dataWine, setLevelWines } = useWine();
+  const { dataWine, levelAllWines, setLevelAllWines } = useWine();
 
   const [value, setValue] = useState(
     props.maxScore === props.wine.wineName ? 125 : 0
   );
-  const [valueStep, setValueStep] = useState(5);
-
   const handleChange = (e) => {
-    if (value <= 250) {
+    if (levelAllWines <= 251) {
       setValue(e.target.value);
       sessionStorage.setItem(`${e.target.name}`, e.target.value);
     }
   };
 
   useEffect(() => {
-    const winesLevel = dataWine
+    const levelAllWines = dataWine
       .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
-      .reduce((acc, current) => current + acc);
-
-    if (winesLevel <= 250) {
-      setLevelWines(winesLevel);
-      setValueStep(5);
-    } else {
-      setValueStep(0);
-    }
+      .reduce((acc, current) => acc + current);
+      if (levelAllWines>=251) {
+        setLevelAllWines(0);
+      } else{
+        setLevelAllWines(levelAllWines);
+      }
   }, [value]);
 
   return (
     <>
-      <h2>{props.wine.wineName}</h2>
+      <h2>
+        {props.wine.wineName}
+      </h2>
       {slideWineLevel.map((level) => (
         <Stack
           className="center"
@@ -104,16 +102,16 @@ const SliderWorkshop = (props) => {
             name={props.wine.wineName}
             orientation="vertical"
             aria-label={level.title}
-            value={value}
+            value={levelAllWines >= 251 ? value : value}
             sx={{ color: "#ac1e44" }}
             onChange={(e) => handleChange(e)}
-            valueLabelDisplay="auto"
-            step={valueStep}
+            valueLabelDisplay={"auto"}
             marks={
               props.maxScore === props.wine.wineName
                 ? level.levelMax
                 : level.level
             }
+            step={5}
             min={0}
             max={props.maxScore === props.wine.wineName ? 250 : 100}
           />
