@@ -65,7 +65,7 @@ const SliderWorkshop = (props) => {
     },
   ];
 
-  const { dataWine, setLevelWines } = useWine();
+  const { dataWine, levelAllWines, setLevelAllWines } = useWine();
 
   const [value, setValue] = useState(
     props.maxScore === props.wine.wineName ? 125 : 0
@@ -88,7 +88,7 @@ const SliderWorkshop = (props) => {
       sessionStorage.setItem(`${e.target.name}`, value); // restore previous value in storage
 
       // state is kept unchanged
-      // slider is rendered with an unchanged value and looks "blocked"
+      // slider is rendered with an unchanged value and looks "blocked
     }
   };
 
@@ -106,16 +106,16 @@ const SliderWorkshop = (props) => {
             name={props.wine.wineName}
             orientation="vertical"
             aria-label={level.title}
-            value={value}
+            value={levelAllWines >= 251 ? value : value}
             sx={{ color: "#ac1e44" }}
             onChange={(e) => handleChange(e)}
-            valueLabelDisplay="auto"
-            step={valueStep}
+            valueLabelDisplay={"auto"}
             marks={
               props.maxScore === props.wine.wineName
                 ? level.levelMax
                 : level.level
             }
+            step={5}
             min={0}
             max={props.maxScore === props.wine.wineName ? 250 : 100}
           />

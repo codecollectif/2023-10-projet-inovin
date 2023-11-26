@@ -1,23 +1,17 @@
 import { useWine } from "../contexts/WineContext";
+import { Link } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import SliderWorkshop from "../components/SliderWorkshop";
 import GlassesPicture from "../components/Glasses";
 
-import { Link } from "react-router-dom";
-
 import "./workshop.css";
 
-
 const Workshop = () => {
-  const { dataWine,dataLikes, levelWines } = useWine();
+  const { dataLikes, levelAllWines } = useWine();
 
-  const dataWineSort = dataLikes
-    //.sort((a, b) => a.countLike - b.countLike)
-    
-  const firtWineName = dataWineSort[0].wineName;
-console.log("test1",dataWine);
-console.log("test2",dataLikes);
+  const firtWineName = dataLikes[0].wineName;
+
   return (
     <>
       <Navbar />
@@ -30,12 +24,15 @@ console.log("test2",dataLikes);
             </div>
           ))}
         </div>
-        <p>Volume total {levelWines ?? 125} ml</p>
+        <p>Volume total {levelAllWines} ml</p>
         <div className="workshop-glass">
           <GlassesPicture />
         </div>
         <div className="workshop-link">
-          <Link to={"/finish"} className="link">
+          <Link
+            to={"/finish"}
+            className={levelAllWines === 0 ? "workshop-disable" : "link"}
+          >
             Passer à la page de fin
           </Link>
         </div>
