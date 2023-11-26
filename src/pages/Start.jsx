@@ -10,10 +10,14 @@ import "./start.css";
 import { useEffect } from "react";
 
 function Start() {
-  const { dataWine, startWines } = useWine();
+  const { dataWine, startWines,setStartWines } = useWine();
   const navigate = useNavigate();
+  console.log(dataWine, startWines);
+  let verifName = startWines
+  
   useEffect(() => {
-    if (startWines.length === 0) {
+    if ((startWines.length === 0)||(verifName.length > new Set(verifName).size)) {
+      setStartWines([])
       navigate("/");
     }
   });
