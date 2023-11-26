@@ -1,113 +1,134 @@
 import { createContext, useContext, useMemo, useState } from "react";
-/* const devDataWine = [
+const devDataWine = [
   {
     aromaticFamilies: "Fruits",
-    aromaticFamiliesLike: null,
     aromaticPersistence: "Moyenne",
-    aromaticPersistenceLike: null,
     colorIntensity: "Claire",
-    colorIntensityLike: "true",
     colorShade: "Framboise",
-    colorShadeLike: "true",
     feeling: "Franc",
-    feelingLike: null,
     flavors: "Gras",
-    flavorsLike: null,
     fluidityOfTears: "Fines et fluides",
-    fluidityOfTearsLike: "true",
     framework: "Fluide",
-    frameworkLike: "false",
     intensityOfAromas: "Faible, vin fermé",
-    intensityOfAromasLike: "true",
     shine: "étincelante",
-    shineLike: "true",
     countLike: 5,
     wineName: "Pinot blanc",
   },
   {
     aromaticFamilies: "Fruits",
-    aromaticFamiliesLike: "true",
     aromaticPersistence: "Moyenne",
-    aromaticPersistenceLike: null,
     colorIntensity: "Claire",
-    colorIntensityLike: "true",
     colorShade: "Framboise",
-    colorShadeLike: "true",
     feeling: "Franc",
-    feelingLike: "true",
     flavors: "Gras",
-    flavorsLike: null,
     fluidityOfTears: "Fines et fluides",
-    fluidityOfTearsLike: "true",
     framework: "Fluide",
-    frameworkLike: "true",
     intensityOfAromas: "Faible, vin fermé",
-    intensityOfAromasLike: null,
     shine: "étincelante",
-    shineLike: "false",
     countLike: 6,
     wineName: "Petit Manseng",
   },
   {
     aromaticFamilies: "Fruits",
-    aromaticFamiliesLike: "true",
     aromaticPersistence: "Moyenne",
-    aromaticPersistenceLike: "true",
     colorIntensity: "Claire",
-    colorIntensityLike: "true",
     colorShade: "Framboise",
-    colorShadeLike: "false",
     feeling: "Franc",
-    feelingLike: "true",
     flavors: "Gras",
-    flavorsLike: "false",
     fluidityOfTears: "Fines et fluides",
-    fluidityOfTearsLike: null,
     framework: "Fluide",
-    frameworkLike: null,
     intensityOfAromas: "Faible, vin fermé",
-    intensityOfAromasLike: null,
     shine: "étincelante",
-    shineLike: null,
     countLike: 4,
     wineName: "Chasselas",
   },
   {
     aromaticFamilies: "Fruits",
-    aromaticFamiliesLike: "true",
     aromaticPersistence: "Moyenne",
-    aromaticPersistenceLike: "true",
     colorIntensity: "Claire",
-    colorIntensityLike: "false",
     colorShade: "Framboise",
-    colorShadeLike: null,
     feeling: "Franc",
-    feelingLike: null,
     flavors: "Gras",
-    flavorsLike: "true",
     fluidityOfTears: "Fines et fluides",
-    fluidityOfTearsLike: null,
     framework: "Fluide",
-    frameworkLike: null,
     intensityOfAromas: "Faible, vin fermé",
-    intensityOfAromasLike: null,
     shine: "étincelante",
-    shineLike: null,
     countLike: 3,
     wineName: "Sylvaner",
   },
-]; */
+];
 
-/* const devStartWines = ["Sylvaner","Chasselas","Petit Manseng","Pinot blanc",] */
+const devDataLikes = [
+  {
+    aromaticFamiliesLike: null,
+    aromaticPersistenceLike: null,
+    colorIntensityLike: "true",
+    colorShadeLike: "true",
+    feelingLike: "false",
+    flavorsLike: null,
+    fluidityOfTearsLike: "true",
+    frameworkLike: null,
+    intensityOfAromasLike: "true",
+    shineLike: "true",
+    countLike: 5,
+    wineName: "Pinot blanc",
+  },
+  {
+    aromaticFamiliesLike: "true",
+    aromaticPersistenceLike: null,
+    colorIntensityLike: "true",
+    colorShadeLike: "true",
+    feelingLike: "true",
+    flavorsLike: "true",
+    fluidityOfTearsLike: null,
+    frameworkLike: "false",
+    intensityOfAromasLike: null,
+    shineLike: "true",
+    countLike: 6,
+    wineName: "Petit Manseng",
+  },
+  {
+    aromaticFamiliesLike: null,
+    aromaticPersistenceLike: null,
+    colorIntensityLike: "true",
+    colorShadeLike: "true",
+    feelingLike: null,
+    flavorsLike: null,
+    fluidityOfTearsLike: "true",
+    frameworkLike: "false",
+    intensityOfAromasLike: "true",
+    shineLike: null,
+    countLike: 4,
+    wineName: "Chasselas",
+  },
+  {
+    aromaticFamiliesLike: null,
+    aromaticPersistenceLike: null,
+    colorIntensityLike: null,
+    colorShadeLike: null,
+    feelingLike: null,
+    flavorsLike: null,
+    fluidityOfTearsLike: "true",
+    frameworkLike: "false",
+    intensityOfAromasLike: "true",
+    shineLike: "true",
+    countLike: 3,
+    wineName: "Sylvaner",
+  },
+];
+
+const devStartWines = ["Sylvaner", "Chasselas", "Petit Manseng", "Pinot blanc"];
 
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
-  const [startWines, setStartWines] = useState(/* devStartWines */ []);
+  const [dataLikes, setDataLikes] = useState(devDataLikes);
+
+  const [startWines, setStartWines] = useState(devStartWines);
 
   const [levelWines, setLevelWines] = useState(125);
 
-  const [dataWine, setDataWine] = useState(/* devDataWine */ []);
+  const [dataWine, setDataWine] = useState(devDataWine);
 
   const [countLike, setCountLike] = useState(0);
 
@@ -143,6 +164,8 @@ export function WineContextProvider({ children }) {
 
   const wineManage = useMemo(() => {
     return {
+      dataLikes,
+      setDataLikes,
       startWines,
       setStartWines,
       levelWines,
@@ -175,6 +198,7 @@ export function WineContextProvider({ children }) {
       setAromaticPersistence,
     };
   }, [
+    dataLikes,
     startWines,
     levelWines,
     dataWine,
