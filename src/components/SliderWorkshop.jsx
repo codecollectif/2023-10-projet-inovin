@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
 
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
+
+const valueStep = 5;
 
 const SliderWorkshop = (props) => {
   const slideWineLevel = [
@@ -68,23 +70,27 @@ const SliderWorkshop = (props) => {
   const [value, setValue] = useState(
     props.maxScore === props.wine.wineName ? 125 : 0
   );
+
   const handleChange = (e) => {
-    if (levelAllWines <= 251) {
-      setValue(e.target.value);
-      sessionStorage.setItem(`${e.target.name}`, e.target.value);
+    sessionStorage.setItem(`${e.target.name}`, e.target.value); // update storage
+
+    // compute total
+    const winesLevel = dataWine
+      .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
+      .reduce((acc, current) => current + acc);
+
+    // check total
+    if (winesLevel <= 250) {
+      setValue(e.target.value); // update state : this will update slider rendering
+
+      setLevelWines(winesLevel);
+    } else {
+      sessionStorage.setItem(`${e.target.name}`, value); // restore previous value in storage
+
+      // state is kept unchanged
+      // slider is rendered with an unchanged value and looks "blocked
     }
   };
-
-  useEffect(() => {
-    const levelAllWines = dataWine
-      .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
-      .reduce((acc, current) => acc + current);
-    if (levelAllWines >= 251) {
-      setLevelAllWines(0);
-    } else {
-      setLevelAllWines(levelAllWines);
-    }
-  }, [value]);
 
   return (
     <>
