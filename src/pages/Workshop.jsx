@@ -10,20 +10,21 @@ import "./workshop.css";
 
 
 const Workshop = () => {
-  const { dataWine, levelWines } = useWine();
+  const { dataWine,dataLikes, levelWines } = useWine();
 
-  const dataWineSort = dataWine
-    .sort((a, b) => a.countLike - b.countLike)
-    .reverse();
+  const dataWineSort = dataLikes
+    //.sort((a, b) => a.countLike - b.countLike)
+    
   const firtWineName = dataWineSort[0].wineName;
-
+console.log("test1",dataWine);
+console.log("test2",dataLikes);
   return (
     <>
       <Navbar />
       <section className="workshop-section">
         <h1 className="workshop-title">Atelier de création</h1>
         <div className="workshop-box">
-          {dataWine.map((wine) => (
+          {dataLikes.map((wine) => (
             <div className="workshop-card" key={wine.wineName}>
               <SliderWorkshop wine={wine} maxScore={firtWineName} />
             </div>

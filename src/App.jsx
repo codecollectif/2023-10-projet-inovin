@@ -28,35 +28,49 @@ function App() {
 
   const [lastUrlSegment] = pathname.match(/([^/]+)\/?$/);
   const links = allLinks[lastUrlSegment];
-  const { dataWine, countLike, setDataWine, setCountLike } = useWine();
+  const {
+    dataWine,
+    countLike,
+    dataLikes,
+    setDataWine,
+    setCountLike,
+    setDataLikes,
+  } = useWine();
 
   const ButtonValid = () => {
     dataWine.push({
       wineName: id,
       colorShade: sessionStorage.getItem("colorShade"),
-      colorShadeLike: sessionStorage.getItem("colorShadeLike"),
       shine: sessionStorage.getItem("shine"),
-      shineLike: sessionStorage.getItem("shineLike"),
       colorIntensity: sessionStorage.getItem("colorIntensity"),
-      colorIntensityLike: sessionStorage.getItem("colorIntensityLike"),
       fluidityOfTears: sessionStorage.getItem("fluidityOfTears"),
-      fluidityOfTearsLike: sessionStorage.getItem("fluidityOfTearsLike"),
       intensityOfAromas: sessionStorage.getItem("intensityOfAromas"),
-      intensityOfAromasLike: sessionStorage.getItem("intensityOfAromasLike"),
       feeling: sessionStorage.getItem("feeling"),
-      feelingLike: sessionStorage.getItem("feelingLike"),
       aromaticFamilies: sessionStorage.getItem("aromaticFamilies"),
-      aromaticFamiliesLike: sessionStorage.getItem("aromaticFamiliesLike"),
       flavors: sessionStorage.getItem("flavors"),
-      flavorsLike: sessionStorage.getItem("flavorsLike"),
       framework: sessionStorage.getItem("framework"),
-      frameworkLike: sessionStorage.getItem("frameworkLike"),
       aromaticPersistence: sessionStorage.getItem("aromaticPersistence"),
-      aromaticPersistenceLike: sessionStorage.getItem("aromaticPersistenceLike"),
       countLike: countLike,
     });
+    dataLikes.push({
+      wineName: id,
+      countLike: countLike,
+      colorShadeLike: sessionStorage.getItem("colorShadeLike"),
+      shineLike: sessionStorage.getItem("shineLike"),
+      colorIntensityLike: sessionStorage.getItem("colorIntensityLike"),
+      fluidityOfTearsLike: sessionStorage.getItem("fluidityOfTearsLike"),
+      intensityOfAromasLike: sessionStorage.getItem("intensityOfAromasLike"),
+      feelingLike: sessionStorage.getItem("feelingLike"),
+      aromaticFamiliesLike: sessionStorage.getItem("aromaticFamiliesLike"),
+      flavorsLike: sessionStorage.getItem("flavorsLike"),
+      frameworkLike: sessionStorage.getItem("frameworkLike"),
+      aromaticPersistenceLike: sessionStorage.getItem(
+        "aromaticPersistenceLike"
+      ),
+    });
     setDataWine(dataWine);
-    setCountLike(0)
+    setDataLikes(dataLikes);
+    setCountLike(0);
   };
 
   const dataCheckedVisual = [

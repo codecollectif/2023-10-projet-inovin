@@ -35,3 +35,20 @@
   font-size: large;
   font-weight: 600;
 }
+
+.profile-disable{
+  display:none
+}
+
+.disable {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.profile-div-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5em;
+}
