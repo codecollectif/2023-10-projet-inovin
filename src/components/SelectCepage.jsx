@@ -21,6 +21,14 @@ const SelectCepage = (props) => {
         setStartWines(secondSort);
       }
     }
+    if (Wines.includes("Aucun")) {
+      const winesSort = Wines.sort((a, b) => a.localeCompare(b)).slice(1);
+      setStartWines(winesSort);
+      if (winesSort.includes("Aucun")) {
+        const secondSort = winesSort.slice(1);
+        setStartWines(secondSort);
+      }
+    }
   };
 
   return (

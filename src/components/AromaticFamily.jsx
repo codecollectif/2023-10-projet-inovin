@@ -39,9 +39,7 @@ const AromaticFamily = () => {
 
   const [aromaticFamilyIdChecked, setAromaticFamilyIdChecked] = useState("");
 
-  const aromaticFamilyChecked = sessionStorage.getItem(
-    `aromaticFamilies`
-  );
+  const aromaticFamilyChecked = sessionStorage.getItem(`aromaticFamilies`);
 
   const getIdAromaticFamilyChecked = (e) => {
     setAromaticFamilyIdChecked(parseInt(e.target.id));

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
 import { Link } from "react-router-dom";
 
@@ -8,10 +7,11 @@ import ProfileLikes from "../components/ProfileLikes";
 import "./profile.css";
 
 const Profile = () => {
-  const { dataWine, dataLikes, setDataLikes } = useWine();
+  const { dataWine, dataLikes, startWines, setDataLikes } = useWine();
 
-  const [click, setClick] = useState(false);
-  const FistWine = dataLikes.find((wine)=>wine.countLike === 10)
+  //init tous les vin a zero ml
+  startWines.map((wine) => sessionStorage.setItem(`${wine}`, 0));
+
   const handleClick = (e) => {
     const otherWine = dataLikes.filter(
       (like) => like.wineName !== e.target.name
@@ -31,10 +31,9 @@ const Profile = () => {
       wineName: e.target.name,
     });
     otherWine.sort((a, b) => a.countLike + b.countLike);
-    setClick(!click);
     setDataLikes(otherWine);
   };
-console.log(FistWine);
+
   return (
     <>
       <Navbar />
@@ -53,14 +52,17 @@ console.log(FistWine);
                   name={wine.wineName}
                   onClick={(e) => handleClick(e)}
                   className={
-                    dataLikes.find((wine)=>wine.countLike === 10) ? "profile-disable" : "profile-super-like "
+                    dataLikes.find((wine) => wine.countLike === 10)
+                      ? "profile-disable"
+                      : "profile-super-like "
                   }
                 >
                   Coups de ❤️
                 </button>
               </div>
               <p>
-                Couleur et nuance: {wine.colorShade ?? ""}{"   "}
+                Couleur et nuance: {wine.colorShade ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -69,7 +71,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Brillance: {wine.shine ?? ""}{"   "}
+                Brillance: {wine.shine ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -78,7 +81,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Intensité de la couleur: {wine.colorIntensity ?? ""}{"   "}
+                Intensité de la couleur: {wine.colorIntensity ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -87,7 +91,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Fluidité des larmes: {wine.fluidityOfTears ?? ""}{"   "}
+                Fluidité des larmes: {wine.fluidityOfTears ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -96,7 +101,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Intensité des arômes: {wine.intensityOfAromas ?? ""}{"   "}
+                Intensité des arômes: {wine.intensityOfAromas ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -105,7 +111,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Impression: {wine.feeling ?? ""}{"   "}
+                Impression: {wine.feeling ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -114,7 +121,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Familles aromatiques: {wine.aromaticFamilies ?? ""}{"   "}
+                Familles aromatiques: {wine.aromaticFamilies ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -123,7 +131,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Saveurs: {wine.flavors ?? ""}{"   "}
+                Saveurs: {wine.flavors ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -132,7 +141,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Structure: {wine.framework ?? ""}{"   "}
+                Structure: {wine.framework ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -141,7 +151,8 @@ console.log(FistWine);
                 />
               </p>
               <p>
-                Persistance aromatique: {wine.aromaticPersistence ?? ""}{"   "}
+                Persistance aromatique: {wine.aromaticPersistence ?? ""}
+                {"   "}
                 <ProfileLikes
                   data={dataLikes
                     .filter((type) => type.wineName === wine.wineName)
@@ -155,7 +166,9 @@ console.log(FistWine);
         <div className="profile-div-link">
           <Link
             className={
-              dataLikes.find((wine)=>wine.countLike === 10) ? "link" : "profile-disable"
+              dataLikes.find((wine) => wine.countLike === 10)
+                ? "link"
+                : "profile-disable"
             }
             to={"/creation"}
           >

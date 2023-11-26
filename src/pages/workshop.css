@@ -49,3 +49,7 @@ p {
   align-items: center;
   height: 6em;
 }
+
+.workshop-disable {
+  display: none;
+}
