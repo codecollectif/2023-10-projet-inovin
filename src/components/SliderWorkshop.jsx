@@ -4,8 +4,6 @@ import { useWine } from "../contexts/WineContext";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 
-const valueStep = 5;
-
 const SliderWorkshop = (props) => {
   const slideWineLevel = [
     {
@@ -65,30 +63,24 @@ const SliderWorkshop = (props) => {
     },
   ];
 
-  const { dataWine, levelAllWines, setLevelAllWines } = useWine();
+  const { dataWine, setLevelAllWines } = useWine();
 
   const [value, setValue] = useState(
     props.maxScore === props.wine.wineName ? 125 : 0
   );
 
   const handleChange = (e) => {
-    sessionStorage.setItem(`${e.target.name}`, e.target.value); // update storage
+    sessionStorage.setItem(`${e.target.name}`, e.target.value);
 
-    // compute total
-    const winesLevel = dataWine
+    const wineslevel = dataWine
       .map((wine) => parseInt(sessionStorage.getItem(wine.wineName)))
       .reduce((acc, current) => current + acc);
 
-    // check total
-    if (winesLevel <= 250) {
-      setValue(e.target.value); // update state : this will update slider rendering
-
-      setLevelWines(winesLevel);
+    if (wineslevel <= 250) {
+      setValue(e.target.value);
+      setLevelAllWines(wineslevel);
     } else {
-      sessionStorage.setItem(`${e.target.name}`, value); // restore previous value in storage
-
-      // state is kept unchanged
-      // slider is rendered with an unchanged value and looks "blocked
+      sessionStorage.setItem(`${e.target.name}`, value);
     }
   };
 
@@ -106,7 +98,7 @@ const SliderWorkshop = (props) => {
             name={props.wine.wineName}
             orientation="vertical"
             aria-label={level.title}
-            value={levelAllWines >= 251 ? value : value}
+            value={value}
             sx={{ color: "#ac1e44" }}
             onChange={(e) => handleChange(e)}
             valueLabelDisplay={"auto"}

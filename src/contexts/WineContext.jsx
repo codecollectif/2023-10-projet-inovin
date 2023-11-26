@@ -115,10 +115,10 @@ const devDataLikes = [
     countLike: 3,
     wineName: "Sylvaner",
   },
-];
+]; */
 
 const devStartWines = ["Sylvaner", "Chasselas", "Petit Manseng", "Pinot blanc"];
- */
+
 const WineContext = createContext();
 
 export function WineContextProvider({ children }) {
