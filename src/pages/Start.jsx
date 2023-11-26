@@ -23,7 +23,7 @@ function Start() {
       </div>
       <div className="start-div-btn">
         <Link
-          to={"/creation"}
+          to={"/profile"}
           className={
             startWines.length !== dataWine.length
               ? "start-disable start-btn"

@@ -1,20 +1,8 @@
 import { createContext, useContext, useMemo, useState } from "react";
 const devDataWine = [
   {
-    aromaticFamilies: "Fruits",
-    aromaticPersistence: "Moyenne",
-    colorIntensity: "Claire",
-    colorShade: "Framboise",
-    feeling: "Franc",
-    flavors: "Gras",
-    fluidityOfTears: "Fines et fluides",
-    framework: "Fluide",
-    intensityOfAromas: "Faible, vin fermé",
-    shine: "étincelante",
-    countLike: 5,
     wineName: "Pinot blanc",
-  },
-  {
+    countLike: 5,
     aromaticFamilies: "Fruits",
     aromaticPersistence: "Moyenne",
     colorIntensity: "Claire",
@@ -25,10 +13,10 @@ const devDataWine = [
     framework: "Fluide",
     intensityOfAromas: "Faible, vin fermé",
     shine: "étincelante",
-    countLike: 6,
+  },
+  {
     wineName: "Petit Manseng",
-  },
-  {
+    countLike: 6,
     aromaticFamilies: "Fruits",
     aromaticPersistence: "Moyenne",
     colorIntensity: "Claire",
@@ -39,10 +27,10 @@ const devDataWine = [
     framework: "Fluide",
     intensityOfAromas: "Faible, vin fermé",
     shine: "étincelante",
-    countLike: 4,
+  },
+  {
     wineName: "Chasselas",
-  },
-  {
+    countLike: 4,
     aromaticFamilies: "Fruits",
     aromaticPersistence: "Moyenne",
     colorIntensity: "Claire",
@@ -53,8 +41,20 @@ const devDataWine = [
     framework: "Fluide",
     intensityOfAromas: "Faible, vin fermé",
     shine: "étincelante",
-    countLike: 3,
+  },
+  {
     wineName: "Sylvaner",
+    countLike: 3,
+    aromaticFamilies: "Fruits",
+    aromaticPersistence: "Moyenne",
+    colorIntensity: "Claire",
+    colorShade: "Framboise",
+    feeling: "Franc",
+    flavors: "Gras",
+    fluidityOfTears: "Fines et fluides",
+    framework: "Fluide",
+    intensityOfAromas: "Faible, vin fermé",
+    shine: "étincelante",
   },
 ];
 
