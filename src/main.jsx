@@ -17,8 +17,10 @@ import Summary from "./pages/Summary";
 
 import Workshop from "./pages/Workshop";
 import Finish from "./pages/Finish";
+import Form from "./pages/Form";
 
 import "./main.css";
+
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/finish",
     element: <Finish />,
+  },
+  {
+    path: "/formulaire",
+    element: <Form />
   },
   {
     path: "/:id/",

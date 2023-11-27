@@ -1,5 +1,5 @@
 import { useWine } from "../contexts/WineContext";
-
+import { Link } from "react-router-dom";
 import Glasses from "../assets/pictures/glassWine.png";
 import Navbar from "../components/Navbar";
 
@@ -24,7 +24,7 @@ const Finish = () => {
           <img className="finish-picture" src={Glasses} alt="verre de vin" />
         </div>
         <div className="finish-link">
-          <button className="link">envoyer mail</button>
+          <Link className="link" to={"/formulaire"}>envoyer mail</Link>
         </div>
       </section>
     </>
