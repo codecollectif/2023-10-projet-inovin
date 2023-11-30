@@ -1,0 +1,54 @@
+.form-section{
+  background-image: url("../assets/pictures/Fond4.png");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-title{
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  
+}
+
+.form-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+  width: 30vw;
+  height: 40vh;
+  border-radius: 20px;
+  border: solid black 1px;
+  background: #a9621647;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-label-title{
+  font-size: xx-large;
+}
+
+.form-label{
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+}
+
+.form-input{
+  display: flex;
+  width: 12em;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-input::placeholder{
+  color: rgb(0, 0, 0);
+}
