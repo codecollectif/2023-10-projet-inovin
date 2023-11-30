@@ -30,7 +30,8 @@ const Form = () => {
         ...winesQuantity,
       },
     ];
-    console.log(formData, winesQuantity);
+
+    console.log("data",formData, winesQuantity);
     alert(
       `datas Submit
       ${firstname}
