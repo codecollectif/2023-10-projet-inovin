@@ -61,13 +61,24 @@ img {
 
 /*---Tablette---*/
 @media screen and (min-width:600px) and (max-width:1024px) and (orientation: portrait) {
-.main-img-glasses {
-    height: 600px;
+  .main-title {
+    font-style: oblique;
+    position: fixed;
+    top: 4rem;
+    left: 4rem;
   }
-  .img {
-    max-height: 80vh;
+  .main-img-glasses {
+      height: 600px;
+    }
+    .img {
+      max-height: 80vh;
+    }
   }
-}
+  .main-welcome-link {
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+  }
 @media screen and (min-width:960px) and (max-width:1366px) and (orientation: landscape) {
   .main-img-glasses {
       height: 800px;
@@ -77,3 +88,23 @@ img {
     }
   }
 
+/*---descktop---*/
+@media screen and (min-width:1024px) and (max-width:2048px) {
+  .main-title {
+    font-style: oblique;
+    position: fixed;
+    top: 6rem;
+    left: 6rem;
+  }
+  .main-img-glasses {
+      height: 1080px;
+  }
+  .img {
+    max-height: 100vh;
+  }
+  .main-welcome-link {
+    position: fixed;
+    right: 6rem;
+    bottom: 6rem;
+  }
+  }
