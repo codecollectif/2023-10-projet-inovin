@@ -2,7 +2,7 @@
   height: 5vh;
   background-color: #000000;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -15,9 +15,5 @@
 }
 
 .nav-image-profil {
-  height: 6vh;
-}
-
-.nav-image-home {
-  height: 6vh;
+  height: 7vh;
 }
