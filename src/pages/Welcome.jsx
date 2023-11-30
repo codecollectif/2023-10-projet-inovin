@@ -6,20 +6,22 @@ import "./welcome.css";
 function Welcome() {
   const { startWines } = useWine();
   return (
-    <main className="box">
-      <h1 className="title">Bienvenue</h1>
-      <div className="glasses">
-        <img src={Glasses} alt="" />
+    <main className="main">
+      <h1 className="main-title">Bienvenue</h1>
+      <div className="main-glasses">
+        <img className="main-img-glasses" src={Glasses} alt="" />
       </div>
-      {JSON.stringify(startWines) === JSON.stringify([]) ? (
-        <Link to="/select" className="link welcome-btn">
-          Selection{" "}
-        </Link>
-      ) : (
-        <Link to="/start" className="link welcome-btn">
-          Commencer
-        </Link>
-      )}
+      <div className="main-welcome-link">
+        {JSON.stringify(startWines) === JSON.stringify([]) ? (
+          <Link to="/select" className="link">
+            Selection{" "}
+          </Link>
+        ) : (
+          <Link to="/start" className="link">
+            Commencer
+          </Link>
+        )}
+      </div>
     </main>
   );
 }
