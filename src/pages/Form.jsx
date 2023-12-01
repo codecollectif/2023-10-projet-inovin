@@ -31,7 +31,7 @@ const Form = () => {
       },
     ];
 
-    console.log("data",formData, winesQuantity);
+    console.log("data", formData, winesQuantity);
     alert(
       `datas Submit
       ${firstname}
@@ -94,6 +94,15 @@ const Form = () => {
             </label>
             <input className="link" type="submit" value="Submit"></input>
           </form>
+        </div>
+        <div>
+          <iframe
+            width="540"
+            height="305"
+            src="https://e8caa85c.sibforms.com/serve/MUIFAJ1qBXWVRGQQw7jciR2QWiR6EpVQhgJVXnWs4qLex6v0jm4iYVcj6RRzD445n6tYqc5ubDqyGWDu6V4AnqsEqZClyBBSdMqX6qNW-EIUzcvGj3C0x15T0I9T4eP_Y3rlA6Xrd01LB9HyQBSp300IN0YdqNv-YhqJtlDtO9LnhyEgIGxf2T_bMvyPhBHc8hlic5GLCFJdCrcQ"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
         </div>
       </section>
     </>
