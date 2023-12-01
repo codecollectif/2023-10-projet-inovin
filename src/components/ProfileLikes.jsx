@@ -1,7 +1,7 @@
 const ProfileLikes = (props) => {
   const name = props.data;
 
-  return <>{name === "true" ? "❤️" : "🖤"}</>;
+  return <strong>{name === "true" ? "❤️" : "🖤"}</strong>;
 };
 
 export default ProfileLikes;
