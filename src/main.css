@@ -1,14 +1,22 @@
 @font-face {
-  font-family: "exo2light";
+  font-family: "Exo 2";
   src: url("./assets/fonts/exo2-light-webfont.woff2") format("woff2"),
-    url("./assets/fonts/exo2-light-webfont.woff") format("wooff");
+    url("./assets/fonts/exo2-light-webfont.woff") format("woff");
+  font-weight: light;
+}
+
+@font-face {
+  font-family: "Exo 2";
+  src: url("./assets/fonts/Exo2-Bold.otf") format("opentype");
+  font-weight: bold;
 }
 
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  font-family: "exo2light";
+  font-family: "Exo 2";
+  font-weight: light;
 }
 
 .link:hover {
@@ -19,7 +27,7 @@ body {
 .link {
   background-color: #eac550;
   font-size: medium;
-  font-weight: 600;
+  font-weight: bold;
   border-radius: 20px;
   border: solid black 1px;
   text-decoration: none;

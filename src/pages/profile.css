@@ -1,39 +1,65 @@
 .profile-box {
   background-image: url("../assets/pictures/Fond4.png");
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  padding: 2rem;
 }
 
 .profile-main-title {
   font-size: xx-large;
   text-align: center;
   font-style: oblique;
+  margin: 0 0 2rem 0;
 }
 
 .profile-div {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 .profile-card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
+  border-radius: 5px;
   border: solid black 1px;
   background: #a9621647;
-  margin: 2em;
+  padding: 1em;
+  background-color: whitesmoke;
+}
+
+.profile-card header {
+  display: flex;
+  align-items: center;
 }
 
 .profile-title {
   font-size: x-large;
-  font-weight: 700;
+  font-weight: bold;
   text-align: center;
+  flex-grow: 1;
 }
-.profile-card p {
+
+.profile-card dl {
   font-size: large;
-  font-weight: 600;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-card dt {
+  justify-self: right;
+}
+
+.profile-card dd {
+  margin: 0;
+  justify-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.profile-card dt:after {
+  content: " :";
 }
 
 .profile-disable {

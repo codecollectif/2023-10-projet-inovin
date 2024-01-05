@@ -1,3 +1,4 @@
+import React from "react";
 import { useWine } from "../contexts/WineContext";
 import { Link } from "react-router-dom";
 
@@ -5,6 +6,19 @@ import Navbar from "../components/Navbar";
 import ProfileLikes from "../components/ProfileLikes";
 
 import "./profile.css";
+
+const entries = [
+  { label: "Couleur et nuance", key: "colorShade" },
+  { label: "Brillance", key: "shine" },
+  { label: "Intensité de la couleur", key: "colorIntensity" },
+  { label: "Fluidité des larmes", key: "fluidityOfTears" },
+  { label: "Intensité des arômes", key: "intensityOfAromas" },
+  { label: "Impression", key: "feeling" },
+  { label: "Familles aromatiques", key: "aromaticFamilies" },
+  { label: "Saveur", key: "flavors" },
+  { label: "Structure", key: "framework" },
+  { label: "Persistance aromatique", key: "aromaticPersistence" },
+];
 
 const Profile = () => {
   const { dataWine, dataLikes, startWines, setDataLikes } = useWine();
@@ -45,8 +59,8 @@ const Profile = () => {
         </h1>
         <div className="profile-div">
           {dataWine.map((wine) => (
-            <div className="profile-card" key={wine.wineName}>
-              <div>
+            <section className="profile-card" key={wine.wineName}>
+              <header>
                 <h2 className="profile-title">{wine.wineName ?? ""}</h2>
                 <button
                   name={wine.wineName}
@@ -57,110 +71,25 @@ const Profile = () => {
                       : "profile-super-like "
                   }
                 >
-                  Coups de ❤️
+                  Coup de ❤️
                 </button>
-              </div>
-              <p>
-                Couleur et nuance: {wine.colorShade ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.colorShadeLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Brillance: {wine.shine ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.shineLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Intensité de la couleur: {wine.colorIntensity ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.colorIntensityLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Fluidité des larmes: {wine.fluidityOfTears ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.fluidityOfTearsLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Intensité des arômes: {wine.intensityOfAromas ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.intensityOfAromasLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Impression: {wine.feeling ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.feelingLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Familles aromatiques: {wine.aromaticFamilies ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.aromaticFamiliesLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Saveurs: {wine.flavors ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.flavorsLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Structure: {wine.framework ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.frameworkLike)
-                    .toString()}
-                />
-              </p>
-              <p>
-                Persistance aromatique: {wine.aromaticPersistence ?? ""}
-                {"   "}
-                <ProfileLikes
-                  data={dataLikes
-                    .filter((type) => type.wineName === wine.wineName)
-                    .map((truc) => truc.aromaticPersistenceLike)
-                    .toString()}
-                />
-              </p>
-            </div>
+              </header>
+              <dl>
+                {entries.map(({ label, key }) => (
+                  <React.Fragment key={key}>
+                    <dt>{label}</dt>
+                    <dd>
+                      {wine[key]}{" "}
+                      <ProfileLikes
+                        data={dataLikes
+                          .find((type) => type.wineName === wine.wineName)
+                          [`${key}Like`]?.toString()}
+                      />
+                    </dd>
+                  </React.Fragment>
+                ))}
+              </dl>
+            </section>
           ))}
         </div>
         <div className="profile-div-link">

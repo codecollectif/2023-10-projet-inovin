@@ -43,7 +43,7 @@
   align-items: center;
   width: 30vw;
   font-size: large;
-  font-weight: 500;
+  font-weight: normal;
 }
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
