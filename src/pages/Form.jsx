@@ -1,45 +1,75 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
 
-import "./form.css";
 import Navbar from "../components/Navbar";
+
+import "./form.css";
+
 
 const Form = () => {
   const { startWines } = useWine();
+  const URL = `${import.meta.env.VITE_URL_SERVER_MAIL}`;
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
 
-  const wines = startWines.map((wine) => wine);
+  //${JSON.stringify(sendWinesQuantity)}
+
   const quantity = startWines.map((wine) => sessionStorage.getItem(wine));
+
   const winesQuantity = {};
-  wines.forEach((element, index) => {
+  
+   startWines.forEach((element, index) => {
     winesQuantity[element] = quantity[index];
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = [
-      {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        age: age,
-        ...winesQuantity,
-      },
-    ];
 
-    console.log("data", formData, winesQuantity);
-    alert(
-      `datas Submit
-      ${firstname}
-      ${lastname}
-      ${email}
-      ${age}
-      ${winesQuantity}`
-    );
+    console.log("data",winesQuantity );
+    
+    fetch(URL, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sender: {
+          name: "Sender Alex",
+          email: "senderalex@exemple.com",
+        },
+        to: [
+          {
+            name: `${lastname}${firstname}`,
+            email: email,
+          },
+         /*  {
+            name: "Sender Alex",
+            email: "senderalex@exemple.com",
+          }, */
+        ],
+        subject: "Récapitulatif atelier Inovin",
+        htmlContent:
+          `<html>
+          <head></head>
+          <body><p>Bonjour ${lastname} ${firstname},</p>
+          Merci d'avoir participer à notre atelier voici votre mélange :</p>
+          ${{}}
+          ${JSON.stringify(winesQuantity)}</p></body></html>`,
+      }),
+    })
+      .then((response) => {
+        console.log(response.status);
+        alert(
+          `donée envoyer`
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    
   };
   return (
     <>
@@ -94,15 +124,6 @@ const Form = () => {
             </label>
             <input className="link" type="submit" value="Submit"></input>
           </form>
-        </div>
-        <div>
-          <iframe
-            width="540"
-            height="305"
-            src="https://e8caa85c.sibforms.com/serve/MUIFAJ1qBXWVRGQQw7jciR2QWiR6EpVQhgJVXnWs4qLex6v0jm4iYVcj6RRzD445n6tYqc5ubDqyGWDu6V4AnqsEqZClyBBSdMqX6qNW-EIUzcvGj3C0x15T0I9T4eP_Y3rlA6Xrd01LB9HyQBSp300IN0YdqNv-YhqJtlDtO9LnhyEgIGxf2T_bMvyPhBHc8hlic5GLCFJdCrcQ"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
         </div>
       </section>
     </>
