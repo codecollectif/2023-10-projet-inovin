@@ -28,7 +28,16 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("data",winesQuantity );
+    console.log("data",winesQuantity);
+
+    
+    let htmlList = "<ul>";
+
+    for (const [key, value] of Object.entries(winesQuantity)) {
+      htmlList += `<li>${key}: ${value} ml</li>`;
+    }
+
+    htmlList += "</ul>";
     
     fetch(URL, {
       method: "post",
@@ -56,8 +65,7 @@ const Form = () => {
           <head></head>
           <body><p>Bonjour ${lastname} ${firstname},</p>
           Merci d'avoir participer à notre atelier voici votre mélange :</p>
-          ${{}}
-          ${JSON.stringify(winesQuantity)}</p></body></html>`,
+          ${htmlList}</body></html>`,
       }),
     })
       .then((response) => {
