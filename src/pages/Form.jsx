@@ -5,17 +5,15 @@ import Navbar from "../components/Navbar";
 
 import "./form.css";
 
-
 const Form = () => {
   const { startWines } = useWine();
-  const URL = `${import.meta.env.VITE_URL_SERVER_MAIL}`;
+  const URL_SERVER = `${import.meta.env.VITE_URL_SERVER_MAIL}`;
+  const URL_SENDER = `${import.meta.env.VITE_URL_MAIL_SENDER}`;
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
-
-  //${JSON.stringify(sendWinesQuantity)}
 
   const quantity = startWines.map((wine) => sessionStorage.getItem(wine));
 
@@ -39,24 +37,26 @@ const Form = () => {
 
     htmlList += "</ul>";
     
-    fetch(URL, {
+    fetch(URL_SERVER, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         sender: {
-          name: "Sender Alex",
-          email: "senderalex@exemple.com",
+          name: "Inovin",
+          email: URL_SENDER,
         },
         to: [
+          //clien
           {
-            name: `${lastname}${firstname}`,
+            name: `${lastname} ${firstname}`,
             email: email,
           },
-         /*  {
-            name: "Sender Alex",
-            email: "senderalex@exemple.com",
+          //Entrepise
+          /* {
+            name: `Recapitulatif atelier inovin pour ${lastname}${firstname}`,
+            email: URL_SENDER,
           }, */
         ],
         subject: "Récapitulatif atelier Inovin",
