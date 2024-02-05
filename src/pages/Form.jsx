@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 
 import "./form.css";
 
 const Form = () => {
-  const { startWines } = useWine();
   const URL_SERVER = `${import.meta.env.VITE_URL_SERVER_MAIL}`;
   const URL_SENDER = `${import.meta.env.VITE_URL_MAIL_SENDER}`;
+
+  const { startWines, setDataLikes, setStartWines, setDataWine, setLevelAllWines } = useWine();
+  const navigate = useNavigate();
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -87,17 +90,21 @@ const Form = () => {
               email: URL_SENDER,
             }, */
           ],
-          subject: "Récapitulatif atelier Inovin",
+          subject: "Mon assemblage atelier Inovin",
           htmlContent: `<html>
             <head></head>
             <body><p>Bonjour ${lastname} ${firstname},</p>
-            Merci d'avoir participé à notre atelier voici votre mélange :</p>
+            Merci d'avoir participé à notre atelier voici votre assemblage :</p>
             ${htmlList}</body></html>`,
         }),
       })
         .then((response) => {
           console.log(response.status);
-          alert(`Email bien envoyer`);
+          setDataLikes([])
+          setStartWines([])
+          setDataWine([])
+          setLevelAllWines(125)
+          navigate("/");
         })
         .catch((error) => {
           console.log(error);
