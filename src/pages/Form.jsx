@@ -13,66 +13,96 @@ const Form = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  
+
   const quantity = startWines.map((wine) => sessionStorage.getItem(wine));
 
   const winesQuantity = {};
-  
-   startWines.forEach((element, index) => {
+
+  startWines.forEach((element, index) => {
     winesQuantity[element] = quantity[index];
   });
+
+  const validateEmail = (email) => {
+    const emailReg = new RegExp(
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i
+    );
+    if (!emailReg.test(email)) {
+      return alert("Email invalide");
+    } else {
+      return true;
+    }
+  };
+
+  const validateFirstname = (firstname) => {
+    if (firstname === "") {
+      return alert("Remplissez votre prenom");
+    } else {
+      return true;
+    }
+  };
+
+  const validateLastname = (lastname) => {
+    if (lastname === "") {
+      return alert("Remplissez votre nom");
+    } else {
+      return true;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let htmlList = "<ul>";
+    if (
+      validateFirstname(firstname) &&
+      validateLastname(lastname) &&
+      validateEmail(email)
+    ) {
+      //create message mail
+      let htmlList = "<ul>";
+      for (const [key, value] of Object.entries(winesQuantity)) {
+        htmlList += `<li>${key}: ${value} ml</li>`;
+      }
+      htmlList += "</ul>";
 
-    for (const [key, value] of Object.entries(winesQuantity)) {
-      htmlList += `<li>${key}: ${value} ml</li>`;
-    }
-
-    htmlList += "</ul>";
-    
-    fetch(URL_SERVER, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        sender: {
-          name: "Inovin",
-          email: URL_SENDER,
+      //send mail
+      fetch(URL_SERVER, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
         },
-        to: [
-          //clien
-          {
-            name: `${lastname} ${firstname}`,
-            email: email,
-          },
-          //Entrepise
-          /* {
-            name: `Récapitulatif atelier inovin pour ${lastname}${firstname}`,
+        body: JSON.stringify({
+          sender: {
+            name: "Inovin",
             email: URL_SENDER,
-          }, */
-        ],
-        subject: "Récapitulatif atelier Inovin",
-        htmlContent:
-          `<html>
-          <head></head>
-          <body><p>Bonjour ${lastname} ${firstname},</p>
-          Merci d'avoir participé à notre atelier voici votre mélange :</p>
-          ${htmlList}</body></html>`,
-      }),
-    })
-      .then((response) => {
-        console.log(response.status);
-        alert(
-          `donée envoyer`
-        );
+          },
+          to: [
+            //clien
+            {
+              name: `${lastname} ${firstname}`,
+              email: email,
+            },
+            //Entrepise
+            /* {
+              name: `Récapitulatif atelier inovin pour ${lastname}${firstname}`,
+              email: URL_SENDER,
+            }, */
+          ],
+          subject: "Récapitulatif atelier Inovin",
+          htmlContent: `<html>
+            <head></head>
+            <body><p>Bonjour ${lastname} ${firstname},</p>
+            Merci d'avoir participé à notre atelier voici votre mélange :</p>
+            ${htmlList}</body></html>`,
+        }),
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          console.log(response.status);
+          alert(`Email bien envoyer`);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <>
@@ -114,7 +144,11 @@ const Form = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
-            <input className="link submit" type="submit" value="Envoyer mail"></input>
+            <input
+              className="link submit"
+              type="submit"
+              value="Envoyer mail"
+            ></input>
           </form>
         </div>
       </section>
