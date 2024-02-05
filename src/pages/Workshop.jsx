@@ -9,8 +9,12 @@ import "./workshop.css";
 
 const Workshop = () => {
   const { dataLikes, levelAllWines } = useWine();
+  console.log("test0",dataLikes);
+
+  const wineFilter = dataLikes.filter((like)=> like.countLike === 10)
 
   const firtWineName = dataLikes[0].wineName;
+  console.log("test1",firtWineName ,wineFilter);
 
   return (
     <>
@@ -20,7 +24,7 @@ const Workshop = () => {
         <div className="workshop-box">
           {dataLikes.map((wine) => (
             <div className="workshop-card" key={wine.wineName}>
-              <SliderWorkshop wine={wine} maxScore={firtWineName} />
+              <SliderWorkshop wine={wine} maxScore={wineFilter[0].wineName} />
             </div>
           ))}
         </div>

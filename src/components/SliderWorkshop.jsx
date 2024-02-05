@@ -5,6 +5,7 @@ import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 
 const SliderWorkshop = (props) => {
+  console.log(props.maxScore);
   const slideWineLevel = [
     {
       title: `${props.wine.wineName}`,
