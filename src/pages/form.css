@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   font-size: large;
+  font-weight: 600;
 }
 
 .form-input{
@@ -51,4 +52,8 @@
 
 .form-input::placeholder{
   color: rgb(0, 0, 0);
+}
+
+.submit{
+  margin-top: 3rem;
 }

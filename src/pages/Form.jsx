@@ -1,45 +1,115 @@
 import { useState } from "react";
 import { useWine } from "../contexts/WineContext";
+import { useNavigate } from "react-router-dom";
 
-import "./form.css";
 import Navbar from "../components/Navbar";
 
+import "./form.css";
+
 const Form = () => {
-  const { startWines } = useWine();
+  const URL_SERVER = `${import.meta.env.VITE_URL_SERVER_MAIL}`;
+  const URL_SENDER = `${import.meta.env.VITE_URL_MAIL_SENDER}`;
+
+  const { startWines, setDataLikes, setStartWines, setDataWine, setLevelAllWines } = useWine();
+  const navigate = useNavigate();
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
 
-  const wines = startWines.map((wine) => wine);
   const quantity = startWines.map((wine) => sessionStorage.getItem(wine));
+
   const winesQuantity = {};
-  wines.forEach((element, index) => {
+
+  startWines.forEach((element, index) => {
     winesQuantity[element] = quantity[index];
   });
 
+  const validateEmail = (email) => {
+    const emailReg = new RegExp(
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i
+    );
+    if (!emailReg.test(email)) {
+      return alert("Email invalide");
+    } else {
+      return true;
+    }
+  };
+
+  const validateFirstname = (firstname) => {
+    if (firstname === "") {
+      return alert("Remplissez votre prenom");
+    } else {
+      return true;
+    }
+  };
+
+  const validateLastname = (lastname) => {
+    if (lastname === "") {
+      return alert("Remplissez votre nom");
+    } else {
+      return true;
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = [
-      {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        age: age,
-        ...winesQuantity,
-      },
-    ];
 
-    console.log("data", formData, winesQuantity);
-    alert(
-      `datas Submit
-      ${firstname}
-      ${lastname}
-      ${email}
-      ${age}
-      ${winesQuantity}`
-    );
+    if (
+      validateFirstname(firstname) &&
+      validateLastname(lastname) &&
+      validateEmail(email)
+    ) {
+      //create message mail
+      let htmlList = "<ul>";
+      for (const [key, value] of Object.entries(winesQuantity)) {
+        htmlList += `<li>${key}: ${value} ml</li>`;
+      }
+      htmlList += "</ul>";
+
+      //send mail
+      fetch(URL_SERVER, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sender: {
+            name: "Inovin",
+            email: URL_SENDER,
+          },
+          to: [
+            //clien
+            {
+              name: `${lastname} ${firstname}`,
+              email: email,
+            },
+            //Entrepise
+            /* {
+              name: `Récapitulatif atelier inovin pour ${lastname}${firstname}`,
+              email: URL_SENDER,
+            }, */
+          ],
+          subject: "Mon assemblage atelier Inovin",
+          htmlContent: `<html>
+            <head></head>
+            <body><p>Bonjour ${lastname} ${firstname},</p>
+            Merci d'avoir participé à notre atelier voici votre assemblage :</p>
+            ${htmlList}</body></html>`,
+        }),
+      })
+        .then((response) => {
+          console.log(response.status);
+          setDataLikes([])
+          setStartWines([])
+          setDataWine([])
+          setLevelAllWines(125)
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <>
@@ -81,28 +151,12 @@ const Form = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
-            <label className="form-label">
-              Age:
-              <input
-                className="form-input"
-                type="text"
-                name="age"
-                placeholder="age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </label>
-            <input className="link" type="submit" value="Submit"></input>
+            <input
+              className="link submit"
+              type="submit"
+              value="Envoyer mail"
+            ></input>
           </form>
-        </div>
-        <div>
-          <iframe
-            width="540"
-            height="305"
-            src="https://e8caa85c.sibforms.com/serve/MUIFAJ1qBXWVRGQQw7jciR2QWiR6EpVQhgJVXnWs4qLex6v0jm4iYVcj6RRzD445n6tYqc5ubDqyGWDu6V4AnqsEqZClyBBSdMqX6qNW-EIUzcvGj3C0x15T0I9T4eP_Y3rlA6Xrd01LB9HyQBSp300IN0YdqNv-YhqJtlDtO9LnhyEgIGxf2T_bMvyPhBHc8hlic5GLCFJdCrcQ"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
         </div>
       </section>
     </>
