@@ -55,7 +55,7 @@ const Form = () => {
           },
           //Entrepise
           /* {
-            name: `Recapitulatif atelier inovin pour ${lastname}${firstname}`,
+            name: `Récapitulatif atelier inovin pour ${lastname}${firstname}`,
             email: URL_SENDER,
           }, */
         ],
@@ -64,7 +64,7 @@ const Form = () => {
           `<html>
           <head></head>
           <body><p>Bonjour ${lastname} ${firstname},</p>
-          Merci d'avoir participer à notre atelier voici votre mélange :</p>
+          Merci d'avoir participé à notre atelier voici votre mélange :</p>
           ${htmlList}</body></html>`,
       }),
     })
