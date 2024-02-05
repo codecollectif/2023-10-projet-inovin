@@ -13,8 +13,7 @@ const Form = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-
+  
   const quantity = startWines.map((wine) => sessionStorage.getItem(wine));
 
   const winesQuantity = {};
@@ -26,9 +25,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("data",winesQuantity);
-
-    
     let htmlList = "<ul>";
 
     for (const [key, value] of Object.entries(winesQuantity)) {
@@ -77,7 +73,6 @@ const Form = () => {
       .catch((error) => {
         console.log(error);
       });
-    
   };
   return (
     <>
@@ -119,18 +114,7 @@ const Form = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
-            <label className="form-label">
-              Age:
-              <input
-                className="form-input"
-                type="text"
-                name="age"
-                placeholder="age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </label>
-            <input className="link" type="submit" value="Submit"></input>
+            <input className="link submit" type="submit" value="Envoyer mail"></input>
           </form>
         </div>
       </section>
