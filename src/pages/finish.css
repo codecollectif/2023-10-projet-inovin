@@ -26,7 +26,7 @@
   border-radius: 20px;
   border: solid black 1px;
   background: #a9621647;
-  width: 20vw;
+  width: 25vw;
 }
 
 .finish-link {
@@ -35,3 +35,12 @@
   align-items: center;
   height: 6em;
 }
+
+.return{
+margin-right: 1rem;
+}
+
+.send{
+margin-left: 1rem;
+}
+

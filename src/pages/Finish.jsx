@@ -1,12 +1,28 @@
 import { useWine } from "../contexts/WineContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Glasses from "../assets/pictures/glassWine.png";
 import Navbar from "../components/Navbar";
 
 import "./finish.css";
 
 const Finish = () => {
-  const { dataWine } = useWine();
+  const navigate = useNavigate();
+
+  const {
+    dataWine,
+    setDataLikes,
+    setStartWines,
+    setDataWine,
+    setLevelAllWines,
+  } = useWine();
+
+  const resetContext = () => {
+    setDataLikes([]);
+    setStartWines([]);
+    setDataWine([]);
+    setLevelAllWines(125);
+    navigate("/");
+  };
 
   return (
     <>
@@ -23,8 +39,14 @@ const Finish = () => {
           </div>
           <img className="finish-picture" src={Glasses} alt="verre de vin" />
         </div>
+        <div></div>
         <div className="finish-link">
-          <Link className="link" to={"/formulaire"}>envoyer mail</Link>
+          <Link className="link return" onClick={resetContext} to={"/"}>
+            Ne pas recevoir de mail
+          </Link>
+          <Link className="link send" to={"/formulaire"}>
+            Recevoir mail
+          </Link>
         </div>
       </section>
     </>
