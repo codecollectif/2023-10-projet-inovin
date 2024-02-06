@@ -6,10 +6,37 @@ import Navbar from "../components/Navbar";
 
 import "./form.css";
 
-const Form = () => {
-  const URL_SERVER = `${import.meta.env.VITE_URL_SERVER_MAIL}`;
-  const URL_SENDER = `${import.meta.env.VITE_URL_MAIL_SENDER}`;
+const URL_SERVER = `${import.meta.env.VITE_URL_SERVER_MAIL}`;
+const URL_SENDER = `${import.meta.env.VITE_URL_MAIL_SENDER}`;
 
+const validateEmail = (email) => {
+  const emailReg = new RegExp(
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i
+  );
+  if (!emailReg.test(email)) {
+    return alert("Email invalide");
+  } else {
+    return true;
+  }
+};
+
+const validateFirstname = (firstname) => {
+  if (firstname === "") {
+    return alert("Remplissez votre prénom");
+  } else {
+    return true;
+  }
+};
+
+const validateLastname = (lastname) => {
+  if (lastname === "") {
+    return alert("Remplissez votre nom");
+  } else {
+    return true;
+  }
+};
+
+const Form = () => {
   const { startWines, setDataLikes, setStartWines, setDataWine, setLevelAllWines } = useWine();
   const navigate = useNavigate();
 
@@ -24,33 +51,6 @@ const Form = () => {
   startWines.forEach((element, index) => {
     winesQuantity[element] = quantity[index];
   });
-
-  const validateEmail = (email) => {
-    const emailReg = new RegExp(
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i
-    );
-    if (!emailReg.test(email)) {
-      return alert("Email invalide");
-    } else {
-      return true;
-    }
-  };
-
-  const validateFirstname = (firstname) => {
-    if (firstname === "") {
-      return alert("Remplissez votre prenom");
-    } else {
-      return true;
-    }
-  };
-
-  const validateLastname = (lastname) => {
-    if (lastname === "") {
-      return alert("Remplissez votre nom");
-    } else {
-      return true;
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,14 +79,14 @@ const Form = () => {
             email: URL_SENDER,
           },
           to: [
-            //clien
+            //Client
             {
               name: `${lastname} ${firstname}`,
               email: email,
             },
-            //Entrepise
+            //Entreprise
             /* {
-              name: `Récapitulatif atelier inovin pour ${lastname}${firstname}`,
+              name: `Récapitulatif atelier Inovin pour ${lastname} ${firstname}`,
               email: URL_SENDER,
             }, */
           ],
@@ -119,7 +119,7 @@ const Form = () => {
         <div className="form-div">
           <form className="form" onSubmit={handleSubmit}>
             <label className="form-label">
-              Prénon:
+              Prénom :
               <input
                 className="form-input"
                 type="text"
@@ -130,7 +130,7 @@ const Form = () => {
               />
             </label>
             <label className="form-label">
-              Nom:
+              Nom :
               <input
                 className="form-input"
                 type="text"
@@ -141,7 +141,7 @@ const Form = () => {
               />
             </label>
             <label className="form-label">
-              Email:
+              Email :
               <input
                 className="form-input"
                 type="email"
