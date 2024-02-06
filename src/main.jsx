@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { WineContextProvider } from "./contexts/WineContext";
 
 import Welcome from "./pages/Welcome";
@@ -22,7 +22,7 @@ import Form from "./pages/Form";
 import "./main.css";
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Welcome />,
@@ -73,7 +73,9 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+], {
+  basename: import.meta.env.MODE === "production" ? "/2023-10-projet-inovin" : "",
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
