@@ -37,7 +37,13 @@ const validateLastname = (lastname) => {
 };
 
 const Form = () => {
-  const { startWines, setDataLikes, setStartWines, setDataWine, setLevelAllWines } = useWine();
+  const {
+    startWines,
+    setDataLikes,
+    setStartWines,
+    setDataWine,
+    setLevelAllWines,
+  } = useWine();
   const navigate = useNavigate();
 
   const [firstname, setFirstname] = useState("");
@@ -100,10 +106,10 @@ const Form = () => {
       })
         .then((response) => {
           console.log(response.status);
-          setDataLikes([])
-          setStartWines([])
-          setDataWine([])
-          setLevelAllWines(125)
+          setDataLikes([]);
+          setStartWines([]);
+          setDataWine([]);
+          setLevelAllWines(125);
           navigate("/");
         })
         .catch((error) => {

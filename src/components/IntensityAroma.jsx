@@ -23,9 +23,7 @@ const IntensityAroma = () => {
 
   const [intensityAromaIdChecked, setIntensityAromaIdChecked] = useState("");
 
-  const intensityAromaChecked = sessionStorage.getItem(
-    `intensityOfAromas`
-  );
+  const intensityAromaChecked = sessionStorage.getItem(`intensityOfAromas`);
 
   const getIdIntensityAromaChecked = (e) => {
     setIntensityAromaIdChecked(parseInt(e.target.id));

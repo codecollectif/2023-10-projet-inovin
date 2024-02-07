@@ -21,61 +21,64 @@ import Form from "./pages/Form";
 
 import "./main.css";
 
-
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Welcome />,
+    },
+    {
+      path: "/select",
+      element: <Select />,
+    },
+    {
+      path: "/start",
+      element: <Start />,
+    },
+    {
+      path: "/profile",
+      element: <Profile />,
+    },
+    {
+      path: "/creation",
+      element: <Workshop />,
+    },
+    {
+      path: "/finish",
+      element: <Finish />,
+    },
+    {
+      path: "/formulaire",
+      element: <Form />,
+    },
+    {
+      path: "/:id/",
+      element: <App />,
+      children: [
+        {
+          path: "visuel",
+          element: <Visual />,
+        },
+        {
+          path: "olfactif",
+          element: <Olfactory />,
+        },
+        {
+          path: "gustatif",
+          element: <Taste />,
+        },
+        {
+          path: "summary",
+          element: <Summary />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Welcome />,
-  },
-  {
-    path: "/select",
-    element: <Select />,
-  },
-  {
-    path: "/start",
-    element: <Start />,
-  },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/creation",
-    element: <Workshop />,
-  },
-  {
-    path: "/finish",
-    element: <Finish />,
-  },
-  {
-    path: "/formulaire",
-    element: <Form />
-  },
-  {
-    path: "/:id/",
-    element: <App />,
-    children: [
-      {
-        path: "visuel",
-        element: <Visual />,
-      },
-      {
-        path: "olfactif",
-        element: <Olfactory />,
-      },
-      {
-        path: "gustatif",
-        element: <Taste />,
-      },
-      {
-        path: "summary",
-        element: <Summary />,
-      },
-    ],
-  },
-], {
-  basename: import.meta.env.MODE === "production" ? "/2023-10-projet-inovin" : "",
-});
+    basename:
+      import.meta.env.MODE === "production" ? "/2023-10-projet-inovin" : "",
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
