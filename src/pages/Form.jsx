@@ -37,7 +37,13 @@ const validateLastname = (lastname) => {
 };
 
 const Form = () => {
-  const { startWines, setDataLikes, setStartWines, setDataWine, setLevelAllWines } = useWine();
+  const {
+    startWines,
+    setDataLikes,
+    setStartWines,
+    setDataWine,
+    setLevelAllWines,
+  } = useWine();
   const navigate = useNavigate();
 
   const [firstname, setFirstname] = useState("");
@@ -85,10 +91,10 @@ const Form = () => {
               email: email,
             },
             //Entreprise
-            /* {
+            {
               name: `Récapitulatif atelier Inovin pour ${lastname} ${firstname}`,
               email: URL_SENDER,
-            }, */
+            },
           ],
           subject: "Mon assemblage atelier Inovin",
           htmlContent: `<html>
@@ -100,10 +106,10 @@ const Form = () => {
       })
         .then((response) => {
           console.log(response.status);
-          setDataLikes([])
-          setStartWines([])
-          setDataWine([])
-          setLevelAllWines(125)
+          setDataLikes([]);
+          setStartWines([]);
+          setDataWine([]);
+          setLevelAllWines(125);
           navigate("/");
         })
         .catch((error) => {

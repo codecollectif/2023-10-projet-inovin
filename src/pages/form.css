@@ -1,4 +1,4 @@
-.form-section{
+.form-section {
   background-image: url("../assets/pictures/Fond4.png");
   min-height: 100vh;
   display: flex;
@@ -6,14 +6,13 @@
   align-items: center;
 }
 
-.form-title{
+.form-title {
   margin: 0;
   padding: 2rem;
   text-align: center;
-  
 }
 
-.form-div{
+.form-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,24 +24,24 @@
   background: #a9621647;
 }
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.form-label-title{
+.form-label-title {
   font-size: xx-large;
 }
 
-.form-label{
+.form-label {
   display: flex;
   flex-direction: column;
   font-size: large;
   font-weight: 600;
 }
 
-.form-input{
+.form-input {
   display: flex;
   width: 12em;
   border-radius: 20px;
@@ -50,10 +49,10 @@
   margin-bottom: 10px;
 }
 
-.form-input::placeholder{
+.form-input::placeholder {
   color: rgb(0, 0, 0);
 }
 
-.submit{
+.submit {
   margin-top: 3rem;
 }

@@ -9,12 +9,8 @@ import "./workshop.css";
 
 const Workshop = () => {
   const { dataLikes, levelAllWines } = useWine();
-  console.log("test0",dataLikes);
 
-  const wineFilter = dataLikes.filter((like)=> like.countLike === 10)
-
-  const firtWineName = dataLikes[0].wineName;
-  console.log("test1",firtWineName ,wineFilter);
+  const wineFilter = dataLikes.filter((like) => like.countLike === 10);
 
   return (
     <>
@@ -33,10 +29,7 @@ const Workshop = () => {
           <GlassesPicture />
         </div>
         <div className="workshop-link">
-          <Link
-            to={"/finish"}
-            className={"link"}
-          >
+          <Link to={"/finish"} className={"link"}>
             Passer à la page de fin
           </Link>
         </div>

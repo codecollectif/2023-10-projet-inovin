@@ -24,9 +24,8 @@ const AromaticPersistence = () => {
   const [aromaticPersistenceIdChecked, setAromaticPersistenceIdChecked] =
     useState("");
 
-  const aromaticPersistenceChecked = sessionStorage.getItem(
-    `aromaticPersistence`
-  );
+  const aromaticPersistenceChecked =
+    sessionStorage.getItem(`aromaticPersistence`);
 
   const getIdAromaticPersistenceChecked = (e) => {
     setAromaticPersistenceIdChecked(parseInt(e.target.id));
