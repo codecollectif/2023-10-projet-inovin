@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createRouter, RouterProvider } from "react-router-dom";
 import { WineContextProvider } from "./contexts/WineContext";
 
 import Welcome from "./pages/Welcome";
@@ -22,7 +22,7 @@ import Form from "./pages/Form";
 import "./main.css";
 
 
-const router = createHashRouter([
+const router = createRouter([
   {
     path: "/",
     element: <Welcome />,
