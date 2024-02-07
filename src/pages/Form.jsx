@@ -85,10 +85,10 @@ const Form = () => {
               email: email,
             },
             //Entreprise
-            /* {
+            {
               name: `Récapitulatif atelier Inovin pour ${lastname} ${firstname}`,
               email: URL_SENDER,
-            }, */
+            },
           ],
           subject: "Mon assemblage atelier Inovin",
           htmlContent: `<html>
